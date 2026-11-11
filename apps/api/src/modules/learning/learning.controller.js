@@ -12,7 +12,7 @@ const learningController = {
     try {
       const studentId = req.user.id;
 
-      const enrollments =
+      const { courses, expiredCount } =
         await learningService.getMyCourses({
           studentId,
         });
@@ -21,7 +21,10 @@ const learningController = {
         success: true,
         message:
           "Lấy danh sách khóa học thành công.",
-        data: enrollments,
+        data: courses,
+        meta: {
+          expiredCount,
+        },
       });
     } catch (error) {
       next(error);

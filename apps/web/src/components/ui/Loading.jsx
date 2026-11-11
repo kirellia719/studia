@@ -94,7 +94,7 @@ const Loading = ({
                         Stady
                     </h2>
 
-                    <p className="mt-1 text-[12px] text-[#9997AC]">
+                    <p className="mt-1 text-[12px] text-[#71717A]">
                         {text}
                     </p>
                 </div>

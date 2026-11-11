@@ -5,10 +5,11 @@ import learningRepository from "./learning.repository.js";
 const learningService = {
 
   async getMyCourses({ studentId }) {
-    const enrollments =
-      await learningRepository.findByStudentId(
-        studentId
-      );
+    const [enrollments, expiredCount] =
+      await Promise.all([
+        learningRepository.findByStudentId(studentId),
+        learningRepository.countExpiredByStudentId(studentId),
+      ]);
 
     const courses = await Promise.all(
       enrollments.map(async (enrollment) => {
@@ -49,7 +50,10 @@ const learningService = {
       })
     );
 
-    return courses;
+    return {
+      courses,
+      expiredCount,
+    };
   },
   // ==========================================
   // Get course for learning

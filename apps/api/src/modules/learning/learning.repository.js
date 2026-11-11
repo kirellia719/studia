@@ -29,6 +29,21 @@ const learningRepository = {
     });
   },
 
+  async countExpiredByStudentId(studentId) {
+    return prisma.enrollment.count({
+      where: {
+        studentId,
+        expiresAt: {
+          lte: new Date(),
+        },
+        course: {
+          isDelete: false,
+          status: true,
+        },
+      },
+    });
+  },
+
   async countLessonsByCourseId(courseId) {
     return prisma.lesson.count({
       where: {

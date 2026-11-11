@@ -12,6 +12,7 @@ const LearningVideo = ({ lesson, onComplete }) => {
   const videoRef = useRef(null);
 
   const [completing, setCompleting] = useState(false);
+  const [errorLessonId, setErrorLessonId] = useState(null);
 
   if (!lesson) {
     return (
@@ -32,6 +33,8 @@ const LearningVideo = ({ lesson, onComplete }) => {
   }
 
   const isCompleted = lesson.isCompleted;
+
+  const videoFailed = errorLessonId === lesson.id;
 
   const handleVideoEnded = async () => {
     if (isCompleted || completing) {
@@ -56,7 +59,7 @@ const LearningVideo = ({ lesson, onComplete }) => {
     <section className="overflow-hidden rounded-lg border border-[#E4E1F2] bg-white shadow-sm">
       {/* Video */}
       <div className="relative aspect-video bg-[#171522]">
-        {lesson.video ? (
+        {lesson.video && !videoFailed ? (
           <video
             ref={videoRef}
             key={lesson.id}
@@ -66,11 +69,12 @@ const LearningVideo = ({ lesson, onComplete }) => {
             disableRemotePlayback
             controlsList="nodownload noremoteplayback"
             onEnded={handleVideoEnded}
+            onError={() => setErrorLessonId(lesson.id)}
             className="h-full w-full object-contain"
           />
         ) : (
           <div className="flex h-full items-center justify-center">
-            <div className="text-center text-white/60">
+            <div className="text-center text-white/70">
               <CirclePlay
                 size={38}
                 strokeWidth={1.5}
@@ -78,7 +82,9 @@ const LearningVideo = ({ lesson, onComplete }) => {
               />
 
               <p className="text-sm">
-                Bài học chưa có video.
+                {videoFailed
+                  ? "Video đang được cập nhật. Vui lòng thử lại sau."
+                  : "Bài học chưa có video."}
               </p>
             </div>
           </div>

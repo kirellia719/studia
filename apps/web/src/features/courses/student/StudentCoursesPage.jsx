@@ -14,6 +14,7 @@ import StudentCourseCard from "@/features/courses/components/StudentCourseCard.j
 
 const StudentCoursesPage = () => {
   const [enrollments, setEnrollments] = useState([]);
+  const [expiredCount, setExpiredCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const StudentCoursesPage = () => {
       const response = await learningApi.getMyCourses();
 
       setEnrollments(response?.data || []);
+      setExpiredCount(response?.meta?.expiredCount ?? 0);
     } catch (error) {
       console.error("Get student courses error:", error);
 
@@ -63,7 +65,26 @@ const StudentCoursesPage = () => {
                     EMPTY STATE
                 ====================================================== */}
         {enrollments.length === 0 && (
-          <EmptyState onExplore={() => navigate("/student/explore")} />
+          <EmptyState
+            expiredCount={expiredCount}
+            onExplore={() => navigate("/student/explore")}
+          />
+        )}
+
+        {/* =====================================================
+                    EXPIRED NOTICE
+                ====================================================== */}
+        {enrollments.length > 0 && expiredCount > 0 && (
+          <div className="mb-4 rounded-lg border border-[#FDE68A] bg-[#FFFBEB] px-4 py-3">
+            <p className="text-sm font-medium text-[#92400E]">
+              {expiredCount} khóa học đã hết hạn truy cập
+            </p>
+
+            <p className="mt-1 text-sm text-[#A16207]">
+              Liên hệ giáo viên phụ trách để gia hạn thêm thời gian
+              học.
+            </p>
+          </div>
         )}
 
         {/* =====================================================
@@ -139,7 +160,9 @@ const LoadingState = () => {
    EMPTY STATE
 ========================================================= */
 
-const EmptyState = ({ onExplore }) => {
+const EmptyState = ({ expiredCount = 0, onExplore }) => {
+  const hasExpired = expiredCount > 0;
+
   return (
     <section className="flex min-h-[55vh] items-center justify-center bg-white rounded-lg px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
       <div className="w-full max-w-md text-center">
@@ -149,12 +172,15 @@ const EmptyState = ({ onExplore }) => {
 
         <div className="mt-5">
           <h2 className="text-base font-semibold text-[#18181B]">
-            Chưa có khóa học nào
+            {hasExpired
+              ? "Khóa học đã hết hạn truy cập"
+              : "Chưa có khóa học nào"}
           </h2>
 
           <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-[#71717A]">
-            Khám phá các khóa học phù hợp với bạn và bắt đầu xây
-            dựng kỹ năng mới.
+            {hasExpired
+              ? `Bạn có ${expiredCount} khóa học đã hết hạn. Liên hệ giáo viên phụ trách để gia hạn, hoặc khám phá khóa học mới.`
+              : "Khám phá các khóa học phù hợp với bạn và bắt đầu xây dựng kỹ năng mới."}
           </p>
         </div>
 
