@@ -1,9 +1,310 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-:root {
-  color-scheme: light only;
+/* ============================================================
+   Design tokens — mọi component dùng var(--*) thay vì mã màu.
+   Mỗi theme chỉ đổi giá trị, không đổi class.
+   ============================================================ */
+
+@theme {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-canvas: var(--bg);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+}
+
+/* ---------- Theme: Biển xanh (mặc định) ---------- */
+:root,
+[data-theme="bien"] {
+  color-scheme: light;
+
+  --bg: #eef3f8;
+  --surface: #ffffff;
+  --surface-2: #eff4f9;
+  --surface-3: #f8fafc;
+
+  --ink: #0d2136;
+  --ink-2: #2b4160;
+  --muted: #4f6072;
+  --faint: #64758a;
+
+  --line: #dbe4ee;
+  --line-strong: #c3d2e2;
+
+  --brand: #1f6fb2;
+  --brand-strong: #17578c;
+  --brand-solid: #1f6fb2;
+  --brand-solid-hover: #17578c;
+  --brand-soft: #e4eefa;
+  --brand-tint: #f0f7fd;
+
+  --accent: #8a6110;
+  --accent-soft: #fbf1dd;
+
+  --success: #136c4f;
+  --success-soft: #e3f3ec;
+  --danger: #b3261e;
+  --danger-solid: #b3261e;
+  --danger-soft: #fceceb;
+  --info: #17578c;
+  --info-soft: #e4eefa;
+
+  --solid: #0d2136;
+  --solid-hover: #17334f;
+  --on-brand: #ffffff;
+
+  --ring: rgba(31, 111, 178, 0.35);
+  --wash: radial-gradient(1100px 520px at 12% -8%, rgba(31, 111, 178, 0.16), transparent 62%),
+    radial-gradient(900px 480px at 92% 4%, rgba(169, 118, 28, 0.12), transparent 58%);
+}
+
+/* ---------- Theme: Tím Achan ---------- */
+[data-theme="tim"] {
+  color-scheme: light;
+
+  --bg: #f5f3ff;
+  --surface: #ffffff;
+  --surface-2: #f3f1fd;
+  --surface-3: #fbfaff;
+
+  --ink: #1a1730;
+  --ink-2: #322c56;
+  --muted: #554f75;
+  --faint: #736d92;
+
+  --line: #e5e0f7;
+  --line-strong: #d0c9ee;
+
+  --brand: #5b4bd6;
+  --brand-strong: #4a3ac0;
+  --brand-solid: #5b4bd6;
+  --brand-solid-hover: #4a3ac0;
+  --brand-soft: #eae5ff;
+  --brand-tint: #f4f1ff;
+
+  --accent: #8a6a12;
+  --accent-soft: #fbf3dd;
+
+  --success: #15694f;
+  --success-soft: #e4f3ed;
+  --danger: #b3261e;
+  --danger-solid: #b3261e;
+  --danger-soft: #fceceb;
+  --info: #3b5bdb;
+  --info-soft: #e8edfd;
+
+  --solid: #1a1730;
+  --solid-hover: #2d2850;
+  --on-brand: #ffffff;
+
+  --ring: rgba(91, 75, 214, 0.35);
+  --wash: radial-gradient(1100px 520px at 10% -10%, rgba(91, 75, 214, 0.18), transparent 60%),
+    radial-gradient(900px 460px at 94% 2%, rgba(214, 122, 76, 0.1), transparent 58%);
+}
+
+/* ---------- Theme: Rừng xanh ---------- */
+[data-theme="rung"] {
+  color-scheme: light;
+
+  --bg: #eff5f1;
+  --surface: #ffffff;
+  --surface-2: #eaf2ed;
+  --surface-3: #f7fbf8;
+
+  --ink: #0e241b;
+  --ink-2: #234234;
+  --muted: #47604f;
+  --faint: #5f7466;
+
+  --line: #d8e6dd;
+  --line-strong: #bed4c5;
+
+  --brand: #17795e;
+  --brand-strong: #10604a;
+  --brand-solid: #17795e;
+  --brand-solid-hover: #10604a;
+  --brand-soft: #dff1e8;
+  --brand-tint: #eef8f2;
+
+  --accent: #8a6a12;
+  --accent-soft: #faf1d8;
+
+  --success: #13664f;
+  --success-soft: #e0f2e9;
+  --danger: #b3261e;
+  --danger-solid: #b3261e;
+  --danger-soft: #fceceb;
+  --info: #1c6b86;
+  --info-soft: #e3f2f7;
+
+  --solid: #0e241b;
+  --solid-hover: #1c3a2c;
+  --on-brand: #ffffff;
+
+  --ring: rgba(23, 121, 94, 0.35);
+  --wash: radial-gradient(1100px 520px at 8% -8%, rgba(23, 121, 94, 0.16), transparent 60%),
+    radial-gradient(880px 460px at 94% 0%, rgba(138, 106, 18, 0.1), transparent 56%);
+}
+
+/* ---------- Theme: Đất ấm ---------- */
+[data-theme="dat"] {
+  color-scheme: light;
+
+  --bg: #fbf4ed;
+  --surface: #ffffff;
+  --surface-2: #f7ede4;
+  --surface-3: #fdf9f5;
+
+  --ink: #2a1a11;
+  --ink-2: #4a3021;
+  --muted: #6a4e3c;
+  --faint: #88715f;
+
+  --line: #eedfce;
+  --line-strong: #ddc6ae;
+
+  --brand: #a04d33;
+  --brand-strong: #8c4229;
+  --brand-solid: #a04d33;
+  --brand-solid-hover: #8c4229;
+  --brand-soft: #f7e6dc;
+  --brand-tint: #fdf3ec;
+
+  --accent: #8a6a12;
+  --accent-soft: #fbf0d6;
+
+  --success: #4f6b28;
+  --success-soft: #edf3e2;
+  --danger: #b3261e;
+  --danger-solid: #b3261e;
+  --danger-soft: #fceceb;
+  --info: #2f5a86;
+  --info-soft: #e9f1f8;
+
+  --solid: #2a1a11;
+  --solid-hover: #43291a;
+  --on-brand: #ffffff;
+
+  --ring: rgba(169, 85, 58, 0.35);
+  --wash: radial-gradient(1100px 520px at 10% -10%, rgba(169, 85, 58, 0.14), transparent 60%),
+    radial-gradient(900px 460px at 92% 0%, rgba(214, 168, 60, 0.14), transparent 58%);
+}
+
+/* ---------- Theme: Nền tối ---------- */
+[data-theme="toi"] {
+  color-scheme: dark;
+
+  --bg: #0d0e12;
+  --surface: #16171c;
+  --surface-2: #1f2128;
+  --surface-3: #121317;
+
+  --ink: #f1f2f5;
+  --ink-2: #d7d9e0;
+  --muted: #a4a9b6;
+  --faint: #8b909d;
+
+  --line: #2a2d36;
+  --line-strong: #3a3e4a;
+
+  --brand: #a99bff;
+  --brand-strong: #c2b8ff;
+  --brand-solid: #5b4bd6;
+  --brand-solid-hover: #6a59e8;
+  --brand-soft: #23223a;
+  --brand-tint: #1b1c26;
+
+  --accent: #e3bb62;
+  --accent-soft: #2a2519;
+
+  --success: #6fd6a3;
+  --success-soft: #17281f;
+  --danger: #ff8b84;
+  --danger-solid: #b3261e;
+  --danger-soft: #2a1a19;
+  --info: #8fb8ff;
+  --info-soft: #1a2030;
+
+  --solid: #2c2f39;
+  --solid-hover: #383c48;
+  --on-brand: #ffffff;
+
+  --ring: rgba(169, 155, 255, 0.45);
+  --wash: radial-gradient(1000px 520px at 10% -12%, rgba(122, 92, 255, 0.2), transparent 62%),
+    radial-gradient(820px 420px at 96% 0%, rgba(227, 187, 98, 0.08), transparent 58%);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
   font-family: "Inter", sans-serif;
+  background-color: var(--bg);
+  background-image: var(--wash);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--ink);
+}
+
+/* Logo là ảnh PNG nền trắng: trên nền tối cho nó thành "chip" bo góc để không lộ khung vuông. */
+[data-theme="toi"] img[alt="Achan - Học tiếng Lào"] {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+/* Nền có "wash" theo theme — dùng cho khung trang để trang trí không bị lớp bg phẳng che mất. */
+.app-canvas {
+  background-color: var(--bg);
+  background-image: var(--wash);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 @keyframes modalIn {

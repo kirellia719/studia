@@ -11,7 +11,7 @@ const CourseNavigation = ({ course }) => {
         <div
             className={[
                 "z-30",
-                "bg-white",
+                "bg-[var(--surface)]",
                 // Mobile
                 "sticky top-0",
                 // Desktop
@@ -21,7 +21,7 @@ const CourseNavigation = ({ course }) => {
             {/* =====================================================
                 DESKTOP
             ====================================================== */}
-            <div className="hidden border-b border-gray-100 px-5 py-3 lg:block">
+            <div className="hidden border-b border-[var(--line)] px-5 py-3 lg:block">
                 <Breadcrumb
                     items={[
                         {
@@ -42,7 +42,7 @@ const CourseNavigation = ({ course }) => {
             <div
                 className={[
                     "flex h-12 items-center",
-                    "border-b border-gray-100",
+                    "border-b border-[var(--line)]",
                     "px-3",
                     "lg:hidden",
                 ].join(" ")}
@@ -54,9 +54,9 @@ const CourseNavigation = ({ course }) => {
                     className={[
                         "flex h-9 w-9 shrink-0 items-center justify-center",
                         "rounded-lg",
-                        "text-[#52525B]",
+                        "text-[var(--muted)]",
                         "transition-colors",
-                        "active:bg-[#F4F4F5]",
+                        "active:bg-[var(--surface-2)]",
                     ].join(" ")}
                 >
                     <ArrowLeft
@@ -71,7 +71,7 @@ const CourseNavigation = ({ course }) => {
                         "truncate",
                         "px-2",
                         "text-[14px] font-semibold",
-                        "text-[#18181B]",
+                        "text-[var(--ink)]",
                     ].join(" ")}
                 >
                     {course.title}
@@ -83,9 +83,9 @@ const CourseNavigation = ({ course }) => {
                     className={[
                         "flex h-9 w-9 shrink-0 items-center justify-center",
                         "rounded-lg",
-                        "text-[#52525B]",
+                        "text-[var(--muted)]",
                         "transition-colors",
-                        "active:bg-[#F4F4F5]",
+                        "active:bg-[var(--surface-2)]",
                     ].join(" ")}
                 >
                     <MoreVertical

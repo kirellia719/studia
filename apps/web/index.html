@@ -1,11 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#eef3f8" />
   <title>Achan</title>
+  <script>
+    // Áp theme đã lưu trước khi vẽ để không bị nháy nền sáng khi người dùng chọn nền tối.
+    (function () {
+      try {
+        var saved = localStorage.getItem('achan-theme');
+        var allowed = ['bien', 'tim', 'rung', 'dat', 'toi'];
+        var theme = allowed.indexOf(saved) >= 0 ? saved : 'bien';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme === 'toi' ? 'dark' : 'light';
+      } catch (e) { }
+    })();
+  </script>
 </head>
 
 <body>

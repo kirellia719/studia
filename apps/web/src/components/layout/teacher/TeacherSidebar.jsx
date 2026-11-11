@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { LogOut, Menu, User, X } from "lucide-react";
 
 import Logo from "@/components/ui/Logo.jsx";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher.jsx";
 import useAuthStore from "@/stores/authStore";
 import teacherMenuItems from "@/components/layout/teacher/teacherMenuItems.js";
 
@@ -38,7 +39,7 @@ const TeacherSidebar = () => {
                         return (
                             <div key={section.section}>
                                 {/* SECTION TITLE */}
-                                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                                     {section.section}
                                 </p>
 
@@ -67,11 +68,11 @@ const TeacherSidebar = () => {
                                                         "transition-all duration-150",
 
                                                         isActive
-                                                            ? "bg-[#F1F2F4] text-[#18181B]"
+                                                            ? "bg-[var(--bg)] text-[var(--ink)]"
                                                             : [
-                                                                "text-[#52525B]",
-                                                                "hover:bg-[#F6F6F7]",
-                                                                "hover:text-[#18181B]",
+                                                                "text-[var(--muted)]",
+                                                                "hover:bg-[var(--surface-3)]",
+                                                                "hover:text-[var(--ink)]",
                                                             ].join(" "),
                                                     ].join(" ")
                                                 }
@@ -87,7 +88,7 @@ const TeacherSidebar = () => {
                                                                 "rounded-r-full",
                                                                 "transition-opacity duration-150",
                                                                 isActive
-                                                                    ? "bg-[#18181B] opacity-100"
+                                                                    ? "bg-[var(--solid)] opacity-100"
                                                                     : "opacity-0",
                                                             ].join(" ")}
                                                         />
@@ -102,8 +103,8 @@ const TeacherSidebar = () => {
                                                             className={[
                                                                 "transition-colors duration-150",
                                                                 isActive
-                                                                    ? "text-[#18181B]"
-                                                                    : "text-[#71717A] group-hover:text-[#18181B]",
+                                                                    ? "text-[var(--ink)]"
+                                                                    : "text-[var(--muted)] group-hover:text-[var(--ink)]",
                                                             ].join(" ")}
                                                         />
 
@@ -132,7 +133,7 @@ const TeacherSidebar = () => {
             user?.email || "Tài khoản giáo viên";
 
         return (
-            <div className="border-t border-[#E5E7EB] p-3">
+            <div className="border-t border-[var(--line)] p-3">
                 {/* PROFILE */}
                 <div className="flex items-center gap-3 px-2 py-2">
                     <div
@@ -140,23 +141,25 @@ const TeacherSidebar = () => {
                             "flex h-9 w-9 shrink-0",
                             "items-center justify-center",
                             "rounded-full",
-                            "bg-[#F0F0F1]",
-                            "text-[#52525B]",
+                            "bg-[var(--surface-2)]",
+                            "text-[var(--muted)]",
                         ].join(" ")}
                     >
                         <User size={17} strokeWidth={1.9} />
                     </div>
 
                     <div className="min-w-0">
-                        <p className="truncate text-[13px] font-semibold text-[#18181B]">
+                        <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
                             {displayName}
                         </p>
 
-                        <p className="truncate text-[12px] text-[#71717A]">
+                        <p className="truncate text-[12px] text-[var(--muted)]">
                             {email}
                         </p>
                     </div>
                 </div>
+
+                <ThemeSwitcher className="mt-2" />
 
                 {/* LOGOUT */}
                 <button
@@ -166,10 +169,10 @@ const TeacherSidebar = () => {
                         "mt-2 flex w-full items-center gap-3",
                         "rounded-lg px-3 py-2.5",
                         "text-[14px] font-medium",
-                        "text-[#71717A]",
+                        "text-[var(--muted)]",
                         "transition-colors duration-150",
-                        "hover:bg-[#FEF2F2]",
-                        "hover:text-[#DC2626]",
+                        "hover:bg-[var(--danger-soft)]",
+                        "hover:text-[var(--danger)]",
                     ].join(" ")}
                 >
                     <LogOut size={18} strokeWidth={1.9} />
@@ -191,8 +194,8 @@ const TeacherSidebar = () => {
                     "hidden lg:flex",
                     "w-64",
                     "flex-col",
-                    "border-r border-[#E5E7EB]",
-                    "bg-[#FAFAFA]",
+                    "border-r border-[var(--line)]",
+                    "bg-[var(--surface-3)]",
                 ].join(" ")}
             >
                 {/* LOGO */}
@@ -201,7 +204,7 @@ const TeacherSidebar = () => {
                 </div>
 
                 {/* DIVIDER */}
-                <div className="mx-4 h-px bg-[#E5E7EB]" />
+                <div className="mx-4 h-px bg-[var(--line)]" />
 
                 {/* NAVIGATION */}
                 {renderNavigation()}
@@ -217,8 +220,8 @@ const TeacherSidebar = () => {
                 className={[
                     "flex h-16 lg:hidden",
                     "items-center justify-between",
-                    "border-b border-[#E5E7EB]",
-                    "bg-white",
+                    "border-b border-[var(--line)]",
+                    "bg-[var(--surface)]",
                     "px-4",
                 ].join(" ")}
             >
@@ -231,10 +234,10 @@ const TeacherSidebar = () => {
                     className={[
                         "flex h-10 w-10 items-center justify-center",
                         "rounded-lg",
-                        "text-[#52525B]",
+                        "text-[var(--muted)]",
                         "transition-colors duration-150",
-                        "hover:bg-[#F0F0F1]",
-                        "hover:text-[#18181B]",
+                        "hover:bg-[var(--surface-2)]",
+                        "hover:text-[var(--ink)]",
                     ].join(" ")}
                 >
                     <Menu size={22} strokeWidth={2} />
@@ -251,7 +254,7 @@ const TeacherSidebar = () => {
                     onClick={closeMobileMenu}
                     className={[
                         "fixed inset-0 z-[60]",
-                        "bg-[#18181B]/30",
+                        "bg-[var(--solid)]/30",
                         "lg:hidden",
                     ].join(" ")}
                 />
@@ -266,7 +269,7 @@ const TeacherSidebar = () => {
                     "flex lg:hidden",
                     "w-[280px] max-w-[85vw]",
                     "flex-col",
-                    "bg-[#FAFAFA]",
+                    "bg-[var(--surface-3)]",
                     "shadow-xl",
                     "transition-transform duration-300 ease-out",
                     mobileOpen
@@ -285,10 +288,10 @@ const TeacherSidebar = () => {
                         className={[
                             "flex h-10 w-10 items-center justify-center",
                             "rounded-lg",
-                            "text-[#52525B]",
+                            "text-[var(--muted)]",
                             "transition-colors duration-150",
-                            "hover:bg-[#F0F0F1]",
-                            "hover:text-[#18181B]",
+                            "hover:bg-[var(--surface-2)]",
+                            "hover:text-[var(--ink)]",
                         ].join(" ")}
                     >
                         <X size={22} strokeWidth={2} />
@@ -296,7 +299,7 @@ const TeacherSidebar = () => {
                 </div>
 
                 {/* DIVIDER */}
-                <div className="mx-4 h-px bg-[#E5E7EB]" />
+                <div className="mx-4 h-px bg-[var(--line)]" />
 
                 {/* NAVIGATION */}
                 {renderNavigation(true)}

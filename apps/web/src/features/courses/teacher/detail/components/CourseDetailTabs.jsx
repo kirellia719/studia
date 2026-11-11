@@ -18,7 +18,7 @@ const TABS = [
 
 const CourseDetailTabs = ({ courseId }) => {
     return (
-        <div className="border-b border-gray-200 bg-white">
+        <div className="border-b border-[var(--line)] bg-[var(--surface)]">
             <nav
                 className={[
                     "flex",
@@ -60,10 +60,10 @@ const CourseDetailTabs = ({ courseId }) => {
 
                                 // Active / inactive
                                 isActive
-                                    ? "text-[#0A479D]"
+                                    ? "text-[var(--brand)]"
                                     : [
-                                        "text-[#71717A]",
-                                        "hover:text-[#3F3F46]",
+                                        "text-[var(--muted)]",
+                                        "hover:text-[var(--ink-2)]",
                                     ].join(" "),
 
                                 // Active underline
@@ -75,7 +75,7 @@ const CourseDetailTabs = ({ courseId }) => {
                                 "after:rounded-t-full",
                                 "after:transition-opacity",
                                 isActive
-                                    ? "after:bg-[#0A479D] after:opacity-100"
+                                    ? "after:bg-[var(--brand-solid)] after:opacity-100"
                                     : "after:bg-transparent after:opacity-0",
                             ].join(" ")
                         }

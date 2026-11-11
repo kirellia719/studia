@@ -49,11 +49,11 @@ const ExplorePage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#F8FAFC]">
+        <div className="min-h-full bg-[var(--bg)]">
             {/* HEADER */}
-            <header className="border-b border-[#E5E7EB] bg-white">
+            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
                 <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
-                    <h1 className="text-lg font-semibold tracking-tight text-[#18181B]">
+                    <h1 className="text-lg font-semibold tracking-tight text-[var(--ink)]">
                         Khám phá
                     </h1>
 
@@ -61,7 +61,7 @@ const ExplorePage = () => {
                         <span
                             className={[
                                 "flex h-7 min-w-7 items-center justify-center",
-                                "rounded-full bg-[#18181B] px-2",
+                                "rounded-full bg-[var(--solid)] px-2",
                                 "text-xs font-semibold text-white",
                             ].join(" ")}
                         >
@@ -80,8 +80,8 @@ const ExplorePage = () => {
                             "flex min-h-[280px]",
                             "items-center justify-center",
                             "rounded-2xl",
-                            "border border-[#E5E7EB]",
-                            "bg-white",
+                            "border border-[var(--line)]",
+                            "bg-[var(--surface)]",
                         ].join(" ")}
                     >
                         <Loading
@@ -128,19 +128,19 @@ const ExplorePage = () => {
                                     className={[
                                         "group flex h-full cursor-pointer flex-col",
                                         "overflow-hidden rounded-2xl",
-                                        "border border-[#E5E7EB]",
-                                        "bg-white",
+                                        "border border-[var(--line)]",
+                                        "bg-[var(--surface)]",
                                         "text-left",
                                         "transition-all duration-200",
                                         "hover:-translate-y-1",
-                                        "hover:border-[#D4D4D8]",
+                                        "hover:border-[var(--line-strong)]",
                                         "hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]",
                                         "focus:outline-none",
-                                        "focus:ring-2 focus:ring-[#2563EB]/20",
+                                        "focus:ring-2 focus:ring-[var(--brand)]/20",
                                     ].join(" ")}
                                 >
                                     {/* THUMBNAIL */}
-                                    <div className="relative aspect-[16/9] overflow-hidden bg-[#F1F2F4]">
+                                    <div className="relative aspect-[16/9] overflow-hidden bg-[var(--bg)]">
                                         {course.thumbnail ? (
                                             <img
                                                 src={getUrl(
@@ -154,7 +154,7 @@ const ExplorePage = () => {
                                                 ].join(" ")}
                                             />
                                         ) : (
-                                            <div className="flex h-full items-center justify-center text-[#A1A1AA]">
+                                            <div className="flex h-full items-center justify-center text-[var(--faint)]">
                                                 <BookOpen
                                                     size={32}
                                                     strokeWidth={1.5}
@@ -176,8 +176,8 @@ const ExplorePage = () => {
                                                     "shadow-[0_2px_8px_rgba(0,0,0,0.15)]",
                                                     "backdrop-blur-sm",
                                                     isFree
-                                                        ? "bg-white/95 text-[#15803D]"
-                                                        : "bg-[#18181B]/95 text-white",
+                                                        ? "bg-[var(--surface)]/95 text-[var(--success)]"
+                                                        : "bg-[var(--solid)]/95 text-white",
                                                 ].join(" ")}
                                             >
                                                 {isFree
@@ -192,19 +192,19 @@ const ExplorePage = () => {
                                     {/* CONTENT */}
                                     <div className="flex flex-1 flex-col p-4">
                                         {/* TITLE */}
-                                        <h2 className="line-clamp-2 text-[15px] font-semibold leading-[21px] text-[#18181B]">
+                                        <h2 className="line-clamp-2 text-[15px] font-semibold leading-[21px] text-[var(--ink)]">
                                             {course.title}
                                         </h2>
 
                                         {/* TEACHER */}
-                                        <p className="mt-2 truncate text-xs text-[#71717A]">
+                                        <p className="mt-2 truncate text-xs text-[var(--muted)]">
                                             {course.teacher?.name ||
                                                 "Giáo viên Stady"}
                                         </p>
 
                                         {/* META */}
-                                        <div className="mt-4 border-t border-[#F0F0F1] pt-3.5">
-                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-[#71717A]">
+                                        <div className="mt-4 border-t border-[var(--surface-2)] pt-3.5">
+                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-[var(--muted)]">
                                                 {/* LESSON COUNT */}
                                                 <span className="flex items-center gap-1.5">
                                                     <BookOpen
@@ -220,7 +220,7 @@ const ExplorePage = () => {
                                                 </span>
 
                                                 {/* DIVIDER */}
-                                                <span className="h-3.5 w-px bg-[#E5E7EB]" />
+                                                <span className="h-3.5 w-px bg-[var(--line)]" />
 
                                                 {/* DURATION */}
                                                 <span className="flex items-center gap-1.5">
@@ -240,7 +240,7 @@ const ExplorePage = () => {
                                                 {/* MONTHS */}
                                                 {durationMonths > 0 && (
                                                     <>
-                                                        <span className="h-3.5 w-px bg-[#E5E7EB]" />
+                                                        <span className="h-3.5 w-px bg-[var(--line)]" />
 
                                                         <span className="flex items-center gap-1.5">
                                                             <CalendarDays
@@ -264,7 +264,7 @@ const ExplorePage = () => {
 
                                         {/* VIEW BUTTON */}
                                         <div className="mt-4 flex items-center justify-between">
-                                            <span className="text-[11px] text-[#A1A1AA]">
+                                            <span className="text-[11px] text-[var(--faint)]">
                                                 Xem chi tiết
                                             </span>
 
@@ -272,13 +272,13 @@ const ExplorePage = () => {
                                                 className={[
                                                     "inline-flex items-center",
                                                     "rounded-full",
-                                                    "bg-[#2563EB]",
+                                                    "bg-[var(--brand-solid)]",
                                                     "px-3.5 py-1.5",
                                                     "text-[11px] font-semibold",
                                                     "text-white",
                                                     "shadow-sm",
                                                     "transition-all duration-200",
-                                                    "group-hover:bg-[#1D4ED8]",
+                                                    "group-hover:bg-[var(--brand-solid-hover)]",
                                                     "group-hover:shadow-md",
                                                 ].join(" ")}
                                             >
@@ -299,25 +299,25 @@ const ExplorePage = () => {
                             "mx-auto flex min-h-[280px] max-w-xl",
                             "flex-col items-center justify-center",
                             "rounded-2xl",
-                            "border border-[#E5E7EB]",
-                            "bg-white",
+                            "border border-[var(--line)]",
+                            "bg-[var(--surface)]",
                             "px-6",
                             "text-center",
                         ].join(" ")}
                     >
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F4F4F5]">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--surface-2)]">
                             <BookOpen
                                 size={22}
                                 strokeWidth={1.5}
-                                className="text-[#A1A1AA]"
+                                className="text-[var(--faint)]"
                             />
                         </div>
 
-                        <h2 className="mt-4 text-sm font-semibold text-[#18181B]">
+                        <h2 className="mt-4 text-sm font-semibold text-[var(--ink)]">
                             Chưa có khóa học
                         </h2>
 
-                        <p className="mt-1 text-xs text-[#71717A]">
+                        <p className="mt-1 text-xs text-[var(--muted)]">
                             Hiện tại chưa có khóa học nào để hiển thị.
                         </p>
                     </div>

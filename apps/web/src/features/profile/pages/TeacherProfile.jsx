@@ -46,7 +46,7 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="relative min-h-full overflow-hidden bg-[#F5F3FF]">
+        <div className="relative min-h-full overflow-hidden bg-[var(--brand-tint)]">
             {/* =========================
                 Decorative background
             ========================== */}
@@ -61,7 +61,7 @@ const ProfilePage = () => {
                     h-64
                     w-64
                     rounded-full
-                    bg-[#DCD5FF]
+                    bg-[var(--brand-soft)]
                     opacity-70
                     blur-3xl
                 "
@@ -93,7 +93,7 @@ const ProfilePage = () => {
                     h-52
                     w-52
                     rounded-full
-                    bg-[#FFE2F0]
+                    bg-[var(--accent-soft)]
                     opacity-50
                     blur-3xl
                 "
@@ -109,7 +109,7 @@ const ProfilePage = () => {
                     h-3
                     w-3
                     rounded-full
-                    bg-[#8B7CF6]
+                    bg-[var(--brand-solid)]
                     opacity-60
                 "
             />
@@ -123,7 +123,7 @@ const ProfilePage = () => {
                     h-2
                     w-2
                     rounded-full
-                    bg-[#5B8DEF]
+                    bg-[var(--brand-solid)]
                     opacity-70
                 "
             />
@@ -137,7 +137,7 @@ const ProfilePage = () => {
                     h-2
                     w-2
                     rounded-full
-                    bg-[#F59E0B]
+                    bg-[var(--accent)]
                     opacity-60
                 "
             />
@@ -150,7 +150,7 @@ const ProfilePage = () => {
 
                 {/* Header */}
                 <header className="mb-5 flex items-center justify-center">
-                    <h1 className="text-[18px] font-semibold text-[#211C4A]">
+                    <h1 className="text-[18px] font-semibold text-[var(--ink)]">
                         Hồ sơ
                     </h1>
                 </header>
@@ -171,8 +171,8 @@ const ProfilePage = () => {
                                 inset-[-8px]
                                 rounded-full
                                 bg-gradient-to-br
-                                from-[#CFC7FF]
-                                via-[#E9E5FF]
+                                from-[var(--brand-soft)]
+                                via-[var(--brand-soft)]
                                 to-[#DCEBFF]
                                 opacity-70
                                 blur-md
@@ -193,8 +193,8 @@ const ProfilePage = () => {
                                 border-4
                                 border-white
                                 bg-gradient-to-br
-                                from-[#DED8FF]
-                                via-[#ECEAFF]
+                                from-[var(--brand-soft)]
+                                via-[var(--brand-soft)]
                                 to-[#DDEBFF]
                                 shadow-[0_8px_25px_rgba(108,92,231,0.18)]
                             "
@@ -206,7 +206,7 @@ const ProfilePage = () => {
                                     className="h-full w-full object-cover"
                                 />
                             ) : (
-                                <span className="text-[34px] font-semibold text-[#6C5CE7]">
+                                <span className="text-[34px] font-semibold text-[var(--brand)]">
                                     {getInitial(user?.name)}
                                 </span>
                             )}
@@ -228,11 +228,11 @@ const ProfilePage = () => {
                                 rounded-full
                                 border-[3px]
                                 border-white
-                                bg-[#6C5CE7]
+                                bg-[var(--brand-solid)]
                                 text-white
                                 shadow-[0_4px_10px_rgba(108,92,231,0.35)]
                                 transition
-                                hover:bg-[#5B4BD6]
+                                hover:bg-[var(--brand-solid-hover)]
                                 active:scale-95
                             "
                         >
@@ -244,12 +244,12 @@ const ProfilePage = () => {
                     </div>
 
                     {/* Name */}
-                    <h2 className="mt-3 text-[19px] font-semibold text-[#211C4A]">
+                    <h2 className="mt-3 text-[19px] font-semibold text-[var(--ink)]">
                         {user?.name}
                     </h2>
 
                     {/* Email */}
-                    <p className="mt-0.5 text-[13px] text-[#77738F]">
+                    <p className="mt-0.5 text-[13px] text-[var(--faint)]">
                         {user?.email}
                     </p>
 
@@ -259,16 +259,16 @@ const ProfilePage = () => {
                             mt-2
                             rounded-full
                             bg-gradient-to-r
-                            from-[#EDE9FF]
-                            to-[#F1EEFF]
+                            from-[var(--brand-soft)]
+                            to-[var(--brand-soft)]
                             px-3.5
                             py-1
                             text-[11px]
                             font-semibold
-                            text-[#6C5CE7]
+                            text-[var(--brand)]
                             shadow-sm
                             ring-1
-                            ring-[#DDD7FF]
+                            ring-[var(--brand-soft)]
                         "
                     >
                         Giáo viên
@@ -286,7 +286,7 @@ const ProfilePage = () => {
         rounded-xl
         border
         border-white/80
-        bg-white/90
+        bg-[var(--surface)]/90
         shadow-[0_8px_30px_rgba(68,55,130,0.08)]
         backdrop-blur-sm
     "
@@ -308,8 +308,8 @@ const ProfilePage = () => {
                     py-[14px]
                     text-left
                     transition
-                    hover:bg-[#FAFAFF]
-                    active:bg-[#F4F1FF]
+                    hover:bg-[var(--brand-soft)]
+                    active:bg-[var(--brand-soft)]
                     ${index !== menuItems.length - 1
                                         ? "border-b border-[#F0EEF8]"
                                         : ""
@@ -326,8 +326,8 @@ const ProfilePage = () => {
                         items-center
                         justify-center
                         rounded-[11px]
-                        bg-[#F5F4FA]
-                        text-[#56516F]
+                        bg-[var(--brand-soft)]
+                        text-[var(--muted)]
                     "
                                 >
                                     <Icon
@@ -338,11 +338,11 @@ const ProfilePage = () => {
 
                                 {/* Text */}
                                 <div className="min-w-0 flex-1">
-                                    <p className="text-[13px] font-semibold text-[#211C4A]">
+                                    <p className="text-[13px] font-semibold text-[var(--ink)]">
                                         {item.label}
                                     </p>
 
-                                    <p className="mt-0.5 truncate text-[11px] text-[#9995AA]">
+                                    <p className="mt-0.5 truncate text-[11px] text-[var(--faint)]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -353,10 +353,10 @@ const ProfilePage = () => {
                                     strokeWidth={1.8}
                                     className="
                         shrink-0
-                        text-[#AAA6BB]
+                        text-[var(--faint)]
                         transition-all
                         group-hover:translate-x-0.5
-                        group-hover:text-[#6C5CE7]
+                        group-hover:text-[var(--brand)]
                     "
                                 />
                             </button>
@@ -380,16 +380,16 @@ const ProfilePage = () => {
             rounded-full
             border
             border-red-100
-            bg-white
+            bg-[var(--surface)]
             px-6
             py-3
             text-[13px]
             font-semibold
-            text-[#EF4444]
+            text-[var(--danger)]
             shadow-[0_6px_20px_rgba(239,68,68,0.08)]
             transition-all
             hover:border-red-200
-            hover:bg-[#FFF6F6]
+            hover:bg-[var(--danger-soft)]
             hover:shadow-[0_8px_24px_rgba(239,68,68,0.12)]
             active:scale-95
         "
@@ -409,9 +409,9 @@ const ProfilePage = () => {
                 ========================== */}
 
                 <div className="mt-6 text-center">
-                    <div className="mx-auto mb-2 h-1 w-8 rounded-full bg-gradient-to-r from-[#6C5CE7] to-[#8B7CF6]" />
+                    <div className="mx-auto mb-2 h-1 w-8 rounded-full bg-gradient-to-r from-[var(--brand-solid)] to-[var(--brand-solid)]" />
 
-                    <p className="text-[11px] font-semibold text-[#A39EBB]">
+                    <p className="text-[11px] font-semibold text-[var(--faint)]">
                         Stady
                     </p>
                 </div>

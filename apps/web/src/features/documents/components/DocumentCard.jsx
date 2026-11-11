@@ -50,7 +50,7 @@ const DocumentCard = ({
       {/* File information */}
       <div className="min-w-0 flex-1">
         <p
-          className="truncate text-xs font-medium text-[#3F3F46]"
+          className="truncate text-xs font-medium text-[var(--ink-2)]"
           title={fileName}
         >
           {fileName}
@@ -70,11 +70,11 @@ const DocumentCard = ({
 
           {document.size > 0 && (
             <>
-              <span className="text-[10px] text-[#D4D4D8]">
+              <span className="text-[10px] text-[var(--line-strong)]">
                 ·
               </span>
 
-              <span className="text-[10px] text-[#A1A1AA]">
+              <span className="text-[10px] text-[var(--faint)]">
                 {formatFileSize(document.size)}
               </span>
             </>
@@ -92,9 +92,9 @@ const DocumentCard = ({
         className={[
           "flex h-8 w-8 shrink-0 items-center justify-center",
           "rounded-lg",
-          "text-[#A1A1AA]",
+          "text-[var(--faint)]",
           "transition-colors",
-          "hover:bg-[#F4F4F5] hover:text-[#18181B]",
+          "hover:bg-[var(--surface-2)] hover:text-[var(--ink)]",
           "disabled:cursor-not-allowed disabled:opacity-50",
         ].join(" ")}
       >
@@ -102,8 +102,8 @@ const DocumentCard = ({
           <span
             className={[
               "h-4 w-4 animate-spin rounded-full",
-              "border-2 border-[#E4E4E7]",
-              "border-t-[#71717A]",
+              "border-2 border-[var(--line)]",
+              "border-t-[var(--muted)]",
             ].join(" ")}
           />
         ) : (

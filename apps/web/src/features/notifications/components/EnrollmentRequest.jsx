@@ -115,12 +115,12 @@ const EnrollmentRequest = ({
         <div
             className="
                 border
-                border-gray-100
-                bg-white
+                border-[var(--line)]
+                bg-[var(--surface)]
                 p-4
                 shadow-sm
                 transition
-                hover:border-gray-200
+                hover:border-[var(--line)]
             "
         >
             <div className="flex gap-3">
@@ -134,8 +134,8 @@ const EnrollmentRequest = ({
                         items-center
                         justify-center
                         rounded-lg
-                        bg-[#6C5CE7]/10
-                        text-[#6C5CE7]
+                        bg-[var(--brand-solid)]/10
+                        text-[var(--brand)]
                     "
                 >
                     <BookOpen size={18} />
@@ -144,12 +144,12 @@ const EnrollmentRequest = ({
                 {/* Content */}
                 <div className="min-w-0 flex-1">
                     {/* Message */}
-                    <p className="text-sm leading-6 text-gray-600">
-                        <span className="font-medium text-gray-800">
+                    <p className="text-sm leading-6 text-[var(--muted)]">
+                        <span className="font-medium text-[var(--ink)]">
                             {studentName}
                         </span>{" "}
                         muốn đăng ký khóa học{" "}
-                        <span className="font-medium text-[#6C5CE7]">
+                        <span className="font-medium text-[var(--brand)]">
                             "{courseTitle}"
                         </span>
                     </p>
@@ -162,7 +162,7 @@ const EnrollmentRequest = ({
                             items-center
                             gap-1.5
                             text-[11px]
-                            text-gray-400
+                            text-[var(--faint)]
                         "
                     >
                         <Clock size={12} />
@@ -187,14 +187,14 @@ const EnrollmentRequest = ({
                                 items-center
                                 gap-1.5
                                 rounded-lg
-                                bg-[#6C5CE7]
+                                bg-[var(--brand-solid)]
                                 px-3
                                 py-2
                                 text-xs
                                 font-semibold
                                 text-white
                                 transition
-                                hover:bg-[#5b4bd6]
+                                hover:bg-[var(--brand-solid-hover)]
                                 disabled:cursor-not-allowed
                                 disabled:opacity-50
                             "
@@ -217,17 +217,17 @@ const EnrollmentRequest = ({
                                 gap-1.5
                                 rounded-lg
                                 border
-                                border-gray-200
-                                bg-white
+                                border-[var(--line)]
+                                bg-[var(--surface)]
                                 px-3
                                 py-2
                                 text-xs
                                 font-medium
-                                text-gray-600
+                                text-[var(--muted)]
                                 transition
                                 hover:border-red-200
-                                hover:bg-red-50
-                                hover:text-red-500
+                                hover:bg-[var(--danger-soft)]
+                                hover:text-[var(--danger)]
                                 disabled:cursor-not-allowed
                                 disabled:opacity-50
                             "

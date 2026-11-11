@@ -116,14 +116,14 @@ const ChangePasswordPage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#FAFAFA] text-[#18181B]">
+        <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* HEADER */}
-            <header className="border-b border-[#E4E4E7] bg-white">
+            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
                 <div className="mx-auto flex h-14 w-full max-w-[720px] items-center gap-2 px-4 sm:px-6">
                     <button
                         type="button"
                         onClick={() => navigate(-1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-[#52525B] transition hover:bg-[#F4F4F5] hover:text-[#18181B]"
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         aria-label="Quay lại"
                     >
                         <ArrowLeft
@@ -132,14 +132,14 @@ const ChangePasswordPage = () => {
                         />
                     </button>
 
-                    <h1 className="text-[17px] font-semibold text-[#18181B]">
+                    <h1 className="text-[17px] font-semibold text-[var(--ink)]">
                         Đổi mật khẩu
                     </h1>
 
                     <LockKeyhole
                         size={16}
                         strokeWidth={2}
-                        className="text-[#52525B]"
+                        className="text-[var(--muted)]"
                     />
                 </div>
             </header>
@@ -147,13 +147,13 @@ const ChangePasswordPage = () => {
             <div className="mx-auto w-full max-w-[720px] px-4 pb-10 pt-5 sm:px-6">
                 <form
                     onSubmit={handleSubmit}
-                    className="mt-5 overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white"
+                    className="mt-5 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]"
                 >
                     {/* CURRENT PASSWORD */}
-                    <div className="border-b border-[#F0F0F1] p-4">
+                    <div className="border-b border-[var(--surface-2)] p-4">
                         <label
                             htmlFor="currentPassword"
-                            className="block text-[12px] font-medium text-[#18181B]"
+                            className="block text-[12px] font-medium text-[var(--ink)]"
                         >
                             Mật khẩu hiện tại
                         </label>
@@ -171,7 +171,7 @@ const ChangePasswordPage = () => {
                                 onChange={handleChange}
                                 placeholder="Nhập mật khẩu hiện tại"
                                 disabled={loading}
-                                className="h-10 w-full rounded-xl border border-[#E4E4E7] bg-white px-3 pr-10 text-[12px] text-[#18181B] outline-none transition placeholder:text-[#A1A1AA] focus:border-[#93C5FD] focus:ring-2 focus:ring-[#DBEAFE] disabled:bg-[#F4F4F5]"
+                                className="h-10 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 pr-10 text-[12px] text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand-soft)] focus:ring-2 focus:ring-[var(--brand-soft)] disabled:bg-[var(--surface-2)]"
                             />
 
                             <button
@@ -182,7 +182,7 @@ const ChangePasswordPage = () => {
                                     )
                                 }
                                 disabled={loading}
-                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[#A1A1AA] transition hover:text-[#52525B] disabled:cursor-not-allowed"
+                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[var(--faint)] transition hover:text-[var(--muted)] disabled:cursor-not-allowed"
                                 aria-label={
                                     showCurrentPassword
                                         ? "Ẩn mật khẩu"
@@ -199,10 +199,10 @@ const ChangePasswordPage = () => {
                     </div>
 
                     {/* NEW PASSWORD */}
-                    <div className="border-b border-[#F0F0F1] p-4">
+                    <div className="border-b border-[var(--surface-2)] p-4">
                         <label
                             htmlFor="newPassword"
-                            className="block text-[12px] font-medium text-[#18181B]"
+                            className="block text-[12px] font-medium text-[var(--ink)]"
                         >
                             Mật khẩu mới
                         </label>
@@ -220,7 +220,7 @@ const ChangePasswordPage = () => {
                                 onChange={handleChange}
                                 placeholder="Nhập mật khẩu mới"
                                 disabled={loading}
-                                className="h-10 w-full rounded-xl border border-[#E4E4E7] bg-white px-3 pr-10 text-[12px] text-[#18181B] outline-none transition placeholder:text-[#A1A1AA] focus:border-[#93C5FD] focus:ring-2 focus:ring-[#DBEAFE] disabled:bg-[#F4F4F5]"
+                                className="h-10 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 pr-10 text-[12px] text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand-soft)] focus:ring-2 focus:ring-[var(--brand-soft)] disabled:bg-[var(--surface-2)]"
                             />
 
                             <button
@@ -231,7 +231,7 @@ const ChangePasswordPage = () => {
                                     )
                                 }
                                 disabled={loading}
-                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[#A1A1AA] transition hover:text-[#52525B] disabled:cursor-not-allowed"
+                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[var(--faint)] transition hover:text-[var(--muted)] disabled:cursor-not-allowed"
                                 aria-label={
                                     showNewPassword
                                         ? "Ẩn mật khẩu"
@@ -246,7 +246,7 @@ const ChangePasswordPage = () => {
                             </button>
                         </div>
 
-                        <p className="mt-2 text-[10px] leading-4 text-[#A1A1AA]">
+                        <p className="mt-2 text-[10px] leading-4 text-[var(--faint)]">
                             Nên sử dụng ít nhất 8 ký tự, bao gồm chữ và số.
                         </p>
                     </div>
@@ -255,7 +255,7 @@ const ChangePasswordPage = () => {
                     <div className="p-4">
                         <label
                             htmlFor="confirmPassword"
-                            className="block text-[12px] font-medium text-[#18181B]"
+                            className="block text-[12px] font-medium text-[var(--ink)]"
                         >
                             Xác nhận mật khẩu mới
                         </label>
@@ -273,7 +273,7 @@ const ChangePasswordPage = () => {
                                 onChange={handleChange}
                                 placeholder="Nhập lại mật khẩu mới"
                                 disabled={loading}
-                                className="h-10 w-full rounded-xl border border-[#E4E4E7] bg-white px-3 pr-10 text-[12px] text-[#18181B] outline-none transition placeholder:text-[#A1A1AA] focus:border-[#93C5FD] focus:ring-2 focus:ring-[#DBEAFE] disabled:bg-[#F4F4F5]"
+                                className="h-10 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 pr-10 text-[12px] text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand-soft)] focus:ring-2 focus:ring-[var(--brand-soft)] disabled:bg-[var(--surface-2)]"
                             />
 
                             <button
@@ -284,7 +284,7 @@ const ChangePasswordPage = () => {
                                     )
                                 }
                                 disabled={loading}
-                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[#A1A1AA] transition hover:text-[#52525B] disabled:cursor-not-allowed"
+                                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center text-[var(--faint)] transition hover:text-[var(--muted)] disabled:cursor-not-allowed"
                                 aria-label={
                                     showNewPassword
                                         ? "Ẩn mật khẩu"
@@ -301,11 +301,11 @@ const ChangePasswordPage = () => {
                     </div>
 
                     {/* ACTION */}
-                    <div className="border-t border-[#F0F0F1] px-4 py-3 text-right">
+                    <div className="border-t border-[var(--surface-2)] px-4 py-3 text-right">
                         <button
                             type="submit"
                             disabled={loading}
-                            className="h-10 px-3 rounded-full bg-[#2563EB] text-[12px] font-medium text-white transition hover:bg-[#1D4ED8] active:bg-[#1E40AF] disabled:cursor-not-allowed disabled:opacity-60"
+                            className="h-10 px-3 rounded-full bg-[var(--brand-solid)] text-[12px] font-medium text-white transition hover:bg-[var(--brand-solid-hover)] active:bg-[#1E40AF] disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {loading
                                 ? "Đang cập nhật..."

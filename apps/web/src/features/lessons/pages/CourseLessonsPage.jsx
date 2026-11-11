@@ -161,12 +161,12 @@ const CourseLessonsPage = () => {
     if (loading) {
         return (
             <div className="space-y-3">
-                <div className="h-[76px] animate-pulse rounded-2xl bg-white" />
+                <div className="h-[76px] animate-pulse rounded-2xl bg-[var(--surface)]" />
 
                 {[1, 2, 3].map((item) => (
                     <div
                         key={item}
-                        className="h-[78px] animate-pulse rounded-2xl bg-white"
+                        className="h-[78px] animate-pulse rounded-2xl bg-[var(--surface)]"
                     />
                 ))}
             </div>
@@ -178,26 +178,26 @@ const CourseLessonsPage = () => {
     // ==========================================
 
     return (
-        <div className="min-h-full bg-[#F7F7F5]">
+        <div className="min-h-full bg-[var(--bg)]">
             <div className="mx-auto w-full max-w-6xl">
                 {/* ==================================
                     Header
                 ================================== */}
 
-                <div className="border-b border-black/[0.06] bg-white px-4 py-4 sm:px-6 sm:py-5">
+                <div className="border-b border-black/[0.06] bg-[var(--surface)] px-4 py-4 sm:px-6 sm:py-5">
                     <div className="flex items-center justify-between gap-4">
                         <div className="min-w-0">
                             <div className="flex items-center gap-2">
-                                <h1 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#18181B] sm:text-base">
+                                <h1 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[var(--ink)] sm:text-base">
                                     Nội dung
                                 </h1>
 
-                                <span className="rounded-full bg-[#F4F4F5] px-2 py-0.5 text-[10px] font-medium tabular-nums text-[#52525B]">
+                                <span className="rounded-full bg-[var(--surface-2)] px-2 py-0.5 text-[10px] font-medium tabular-nums text-[var(--muted)]">
                                     {lessons.length}
                                 </span>
                             </div>
 
-                            <p className="mt-1 text-[11px] text-[#71717A] sm:text-xs">
+                            <p className="mt-1 text-[11px] text-[var(--muted)] sm:text-xs">
                                 Quản lý và sắp xếp nội dung
                                 khóa học.
                             </p>
@@ -208,12 +208,12 @@ const CourseLessonsPage = () => {
                             className={[
                                 "group inline-flex shrink-0 items-center gap-1.5",
                                 "rounded-xl",
-                                "bg-[#18181B]",
+                                "bg-[var(--solid)]",
                                 "px-3 py-2",
                                 "text-[11px] font-semibold text-white",
                                 "shadow-sm",
                                 "transition-all duration-200",
-                                "hover:bg-[#27272A]",
+                                "hover:bg-[var(--solid-hover)]",
                                 "hover:shadow-md",
                                 "active:scale-[0.97]",
                                 "sm:px-3.5 sm:py-2.5 sm:text-xs",
@@ -241,19 +241,19 @@ const CourseLessonsPage = () => {
 
                 {lessons.length === 0 && (
                     <div className="px-2 py-3 sm:px-4">
-                        <div className="rounded-2xl border border-dashed border-[#D4D4D8] bg-white px-5 py-16 text-center">
-                            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-[#F4F4F5] text-[#52525B]">
+                        <div className="rounded-2xl border border-dashed border-[var(--line-strong)] bg-[var(--surface)] px-5 py-16 text-center">
+                            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--surface-2)] text-[var(--muted)]">
                                 <Plus
                                     size={19}
                                     strokeWidth={1.8}
                                 />
                             </div>
 
-                            <h3 className="mt-4 text-sm font-semibold text-[#18181B]">
+                            <h3 className="mt-4 text-sm font-semibold text-[var(--ink)]">
                                 Chưa có bài học
                             </h3>
 
-                            <p className="mx-auto mt-1.5 max-w-sm text-xs leading-5 text-[#71717A] sm:text-sm">
+                            <p className="mx-auto mt-1.5 max-w-sm text-xs leading-5 text-[var(--muted)] sm:text-sm">
                                 Thêm bài học đầu tiên để
                                 bắt đầu xây dựng nội dung
                                 cho khóa học.
@@ -264,11 +264,11 @@ const CourseLessonsPage = () => {
                                 className={[
                                     "mt-5 inline-flex items-center",
                                     "rounded-xl",
-                                    "bg-[#18181B]",
+                                    "bg-[var(--solid)]",
                                     "px-4 py-2.5",
                                     "text-xs font-semibold text-white",
                                     "transition-colors",
-                                    "hover:bg-[#27272A]",
+                                    "hover:bg-[var(--solid-hover)]",
                                 ].join(" ")}
                             >
                                 Thêm bài học
@@ -284,11 +284,11 @@ const CourseLessonsPage = () => {
                 {lessons.length > 0 && (
                     <div className="px-2 py-3 sm:px-4 sm:py-4">
                         <div className="mb-2 flex items-center justify-between px-1">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                                 Danh sách bài học
                             </p>
 
-                            <p className="text-[10px] text-[#71717A]">
+                            <p className="text-[10px] text-[var(--muted)]">
                                 Dùng ↑ ↓ để sắp xếp
                             </p>
                         </div>
@@ -321,7 +321,7 @@ const CourseLessonsPage = () => {
                                                     "group relative flex items-center gap-3",
                                                     "rounded-2xl",
                                                     "border border-black/[0.07]",
-                                                    "bg-white",
+                                                    "bg-[var(--surface)]",
                                                     "px-3 py-3",
                                                     "shadow-[0_1px_2px_rgba(0,0,0,0.03)]",
                                                     "transition-all duration-200",
@@ -339,12 +339,12 @@ const CourseLessonsPage = () => {
                                                     className={[
                                                         "flex h-8 w-8 shrink-0 items-center justify-center",
                                                         "rounded-xl",
-                                                        "bg-[#F4F4F5]",
+                                                        "bg-[var(--surface-2)]",
                                                         "text-[10px] font-semibold tabular-nums",
-                                                        "text-[#52525B]",
+                                                        "text-[var(--muted)]",
                                                         "ring-1 ring-inset ring-black/[0.04]",
                                                         "transition-all duration-200",
-                                                        "group-hover:bg-[#18181B]",
+                                                        "group-hover:bg-[var(--solid)]",
                                                         "group-hover:text-white",
                                                         "sm:h-9 sm:w-9 sm:text-[11px]",
                                                     ].join(" ")}
@@ -373,9 +373,9 @@ const CourseLessonsPage = () => {
                                                             "truncate",
                                                             "text-sm font-semibold leading-5",
                                                             "tracking-[-0.01em]",
-                                                            "text-[#27272A]",
+                                                            "text-[var(--ink-2)]",
                                                             "transition-colors",
-                                                            "group-hover:text-[#18181B]",
+                                                            "group-hover:text-[var(--ink)]",
                                                             "sm:text-[15px]",
                                                         ].join(" ")}
                                                     >
@@ -386,7 +386,7 @@ const CourseLessonsPage = () => {
 
                                                     <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                                                         {hasDuration && (
-                                                            <span className="inline-flex items-center gap-1 text-[10px] font-medium tabular-nums text-[#71717A] sm:text-[11px]">
+                                                            <span className="inline-flex items-center gap-1 text-[10px] font-medium tabular-nums text-[var(--muted)] sm:text-[11px]">
                                                                 <Clock3
                                                                     size={
                                                                         12
@@ -410,14 +410,14 @@ const CourseLessonsPage = () => {
                                                     {/* Free badge */}
 
                                                     {lesson.isFree && (
-                                                        <span className="rounded-full bg-[#ECFDF5] px-2 py-1 text-[9px] font-semibold whitespace-nowrap text-[#15803D] sm:text-[10px]">
+                                                        <span className="rounded-full bg-[var(--success-soft)] px-2 py-1 text-[9px] font-semibold whitespace-nowrap text-[var(--success)] sm:text-[10px]">
                                                             Miễn phí
                                                         </span>
                                                     )}
 
                                                     {/* Reorder */}
 
-                                                    <div className="flex flex-col items-center justify-center border-l border-[#F0F0F1] pl-2">
+                                                    <div className="flex flex-col items-center justify-center border-l border-[var(--surface-2)] pl-2">
                                                         <button
                                                             type="button"
                                                             disabled={
@@ -437,10 +437,10 @@ const CourseLessonsPage = () => {
                                                             aria-label="Đưa bài học lên"
                                                             className={[
                                                                 "flex h-7 w-7 items-center justify-center rounded-md",
-                                                                "text-[#71717A]",
+                                                                "text-[var(--muted)]",
                                                                 "transition-colors",
-                                                                "hover:bg-[#F4F4F5]",
-                                                                "hover:text-[#18181B]",
+                                                                "hover:bg-[var(--surface-2)]",
+                                                                "hover:text-[var(--ink)]",
                                                                 "active:scale-90",
                                                                 "disabled:cursor-not-allowed",
                                                                 "disabled:opacity-20",
@@ -476,10 +476,10 @@ const CourseLessonsPage = () => {
                                                             aria-label="Đưa bài học xuống"
                                                             className={[
                                                                 "flex h-7 w-7 items-center justify-center rounded-md",
-                                                                "text-[#71717A]",
+                                                                "text-[var(--muted)]",
                                                                 "transition-colors",
-                                                                "hover:bg-[#F4F4F5]",
-                                                                "hover:text-[#18181B]",
+                                                                "hover:bg-[var(--surface-2)]",
+                                                                "hover:text-[var(--ink)]",
                                                                 "active:scale-90",
                                                                 "disabled:cursor-not-allowed",
                                                                 "disabled:opacity-20",
@@ -500,8 +500,8 @@ const CourseLessonsPage = () => {
                                                 {/* Reordering overlay */}
 
                                                 {isReordering && (
-                                                    <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-white/70 backdrop-blur-[1px]">
-                                                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-[#18181B] border-t-transparent" />
+                                                    <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-[var(--surface)]/70 backdrop-blur-[1px]">
+                                                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--ink)] border-t-transparent" />
                                                     </div>
                                                 )}
                                             </motion.div>

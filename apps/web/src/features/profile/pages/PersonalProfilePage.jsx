@@ -125,22 +125,22 @@ const PersonalProfilePage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#FAFAFA] text-[#18181B]">
+        <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* ==================== HEADER ==================== */}
-            <header className="border-b border-[#E4E4E7] bg-white">
+            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
                 <div className="mx-auto flex h-14 max-w-[720px] items-center px-4 sm:px-6">
                     {/* Back */}
                     <button
                         type="button"
                         onClick={handleBack}
-                        className="flex h-8 w-8 items-center justify-center rounded-lg text-[#71717A] transition hover:bg-[#F4F4F5] hover:text-[#18181B]"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         aria-label="Quay lại"
                     >
                         <ChevronLeft size={18} />
                     </button>
 
                     {/* Title */}
-                    <h1 className="flex-1 text-center text-[15px] font-semibold text-[#18181B]">
+                    <h1 className="flex-1 text-center text-[15px] font-semibold text-[var(--ink)]">
                         Hồ sơ
                     </h1>
 
@@ -153,7 +153,7 @@ const PersonalProfilePage = () => {
             <main className="mx-auto max-w-[720px] p-3 sm:px-6">
                 <div className="space-y-4">
                     {/* ==================== AVATAR ==================== */}
-                    <section className="rounded-2xl border border-[#E4E4E7] bg-white p-5">
+                    <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
                         <div className="flex flex-col items-center">
                             {/* Avatar */}
                             <div className="relative">
@@ -162,7 +162,7 @@ const PersonalProfilePage = () => {
                                     onClick={() =>
                                         setIsAvatarModalOpen(true)
                                     }
-                                    className="group relative h-24 w-24 overflow-hidden rounded-full bg-[#EFF6FF] ring-4 ring-white shadow-sm"
+                                    className="group relative h-24 w-24 overflow-hidden rounded-full bg-[var(--brand-soft)] ring-4 ring-white shadow-sm"
                                     aria-label="Thay đổi avatar"
                                 >
                                     <img
@@ -185,7 +185,7 @@ const PersonalProfilePage = () => {
                                     onClick={() =>
                                         setIsAvatarModalOpen(true)
                                     }
-                                    className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#18181B] text-white shadow-sm transition hover:bg-[#27272A]"
+                                    className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--solid)] text-white shadow-sm transition hover:bg-[var(--solid-hover)]"
                                     aria-label="Chọn avatar"
                                 >
                                     <Camera
@@ -197,7 +197,7 @@ const PersonalProfilePage = () => {
 
                             {/* Name */}
                             <div className="mt-3 text-center">
-                                <p className="mt-1 text-[12px] text-[#71717A]">
+                                <p className="mt-1 text-[12px] text-[var(--muted)]">
                                     {getRoleLabel(user?.role)}
                                 </p>
                             </div>
@@ -205,15 +205,15 @@ const PersonalProfilePage = () => {
                     </section>
 
                     {/* ==================== PERSONAL INFO ==================== */}
-                    <section className="rounded-2xl border border-[#E4E4E7] bg-white">
+                    <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
                         <form onSubmit={handleSubmit}>
                             {/* Section header */}
-                            <div className="border-b border-[#E4E4E7] px-5 py-4">
-                                <h2 className="text-[13px] font-semibold text-[#18181B]">
+                            <div className="border-b border-[var(--line)] px-5 py-4">
+                                <h2 className="text-[13px] font-semibold text-[var(--ink)]">
                                     Thông tin cá nhân
                                 </h2>
 
-                                <p className="mt-1 text-[11px] text-[#71717A]">
+                                <p className="mt-1 text-[11px] text-[var(--muted)]">
                                     Cập nhật thông tin cá nhân của bạn.
                                 </p>
                             </div>
@@ -224,7 +224,7 @@ const PersonalProfilePage = () => {
                                 <div>
                                     <label
                                         htmlFor="name"
-                                        className="mb-1.5 block text-[11px] font-medium text-[#3F3F46]"
+                                        className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
                                     >
                                         Họ và tên
                                     </label>
@@ -237,7 +237,7 @@ const PersonalProfilePage = () => {
                                             setName(e.target.value)
                                         }
                                         placeholder="Nhập họ và tên"
-                                        className="h-10 w-full rounded-lg border border-[#E4E4E7] bg-white px-3 text-[12px] text-[#18181B] outline-none transition placeholder:text-[#A1A1AA] focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10"
+                                        className="h-10 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 text-[12px] text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/10"
                                     />
                                 </div>
 
@@ -245,7 +245,7 @@ const PersonalProfilePage = () => {
                                 <div>
                                     <label
                                         htmlFor="email"
-                                        className="mb-1.5 block text-[11px] font-medium text-[#3F3F46]"
+                                        className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
                                     >
                                         Email
                                     </label>
@@ -255,7 +255,7 @@ const PersonalProfilePage = () => {
                                         type="email"
                                         value={user?.email || ""}
                                         disabled
-                                        className="h-10 w-full cursor-not-allowed rounded-lg border border-[#E4E4E7] bg-[#F4F4F5] px-3 text-[12px] text-[#71717A] outline-none"
+                                        className="h-10 w-full cursor-not-allowed rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 text-[12px] text-[var(--muted)] outline-none"
                                     />
                                 </div>
 
@@ -264,7 +264,7 @@ const PersonalProfilePage = () => {
                                     <div>
                                         <label
                                             htmlFor="studentCode"
-                                            className="mb-1.5 block text-[11px] font-medium text-[#3F3F46]"
+                                            className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
                                         >
                                             Mã học viên
                                         </label>
@@ -276,13 +276,13 @@ const PersonalProfilePage = () => {
                                                 user?.studentCode || ""
                                             }
                                             disabled
-                                            className="h-10 w-full cursor-not-allowed rounded-lg border border-[#E4E4E7] bg-[#F4F4F5] px-3 text-[12px] text-[#71717A] outline-none"
+                                            className="h-10 w-full cursor-not-allowed rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 text-[12px] text-[var(--muted)] outline-none"
                                         />
                                     </div>
                                 )}
 
                                 {/* ==================== SAVE ==================== */}
-                                <div className="flex items-center justify-between border-t border-[#E4E4E7] pt-4">
+                                <div className="flex items-center justify-between border-t border-[var(--line)] pt-4">
                                     {/* Saved message */}
                                     <div>
                                         {isSaved && (
@@ -304,7 +304,7 @@ const PersonalProfilePage = () => {
                                             !name.trim() ||
                                             !hasChanges
                                         }
-                                        className="inline-flex h-9 items-center justify-center rounded-lg bg-[#18181B] px-4 text-[11px] font-medium text-white transition hover:bg-[#27272A] disabled:cursor-not-allowed disabled:opacity-40"
+                                        className="inline-flex h-9 items-center justify-center rounded-lg bg-[var(--solid)] px-4 text-[11px] font-medium text-white transition hover:bg-[var(--solid-hover)] disabled:cursor-not-allowed disabled:opacity-40"
                                     >
                                         {isSaving
                                             ? "Đang lưu..."
@@ -324,19 +324,19 @@ const PersonalProfilePage = () => {
                     }`}
             >
                 <div
-                    className={`flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-2xl bg-white shadow-xl transition-transform duration-200 sm:max-w-[520px] sm:rounded-2xl ${isAvatarModalOpen
+                    className={`flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-2xl bg-[var(--surface)] shadow-xl transition-transform duration-200 sm:max-w-[520px] sm:rounded-2xl ${isAvatarModalOpen
                         ? "translate-y-0"
                         : "translate-y-4 sm:translate-y-2"
                         }`}
                 >
                     {/* Header */}
-                    <div className="flex shrink-0 items-center justify-between border-b border-[#E4E4E7] px-5 py-4">
+                    <div className="flex shrink-0 items-center justify-between border-b border-[var(--line)] px-5 py-4">
                         <div>
-                            <h2 className="text-[14px] font-semibold text-[#18181B]">
+                            <h2 className="text-[14px] font-semibold text-[var(--ink)]">
                                 Chọn avatar
                             </h2>
 
-                            <p className="mt-0.5 text-[11px] text-[#71717A]">
+                            <p className="mt-0.5 text-[11px] text-[var(--muted)]">
                                 Chọn hình đại diện cho hồ sơ của bạn.
                             </p>
                         </div>
@@ -344,7 +344,7 @@ const PersonalProfilePage = () => {
                         <button
                             type="button"
                             onClick={() => setIsAvatarModalOpen(false)}
-                            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#71717A] transition hover:bg-[#F4F4F5] hover:text-[#18181B]"
+                            className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         >
                             <X size={17} />
                         </button>
@@ -368,9 +368,9 @@ const PersonalProfilePage = () => {
                                     >
                                         <div className="relative h-16 w-16 shrink-0">
                                             <div
-                                                className={`h-16 w-16 overflow-hidden rounded-full bg-[#F4F4F5] ${isSelected
-                                                    ? "ring-2 ring-[#2563EB] ring-offset-2"
-                                                    : "ring-1 ring-[#E4E4E7]"
+                                                className={`h-16 w-16 overflow-hidden rounded-full bg-[var(--surface-2)] ${isSelected
+                                                    ? "ring-2 ring-[var(--brand)] ring-offset-2"
+                                                    : "ring-1 ring-[var(--line)]"
                                                     }`}
                                             >
                                                 <img
@@ -385,7 +385,7 @@ const PersonalProfilePage = () => {
                                             </div>
 
                                             {isSelected && (
-                                                <span className="absolute -bottom-1 -right-1 z-10 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-[#2563EB] text-white shadow-sm">
+                                                <span className="absolute -bottom-1 -right-1 z-10 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-[var(--brand-solid)] text-white shadow-sm">
                                                     <Check
                                                         size={11}
                                                         strokeWidth={3}
@@ -394,7 +394,7 @@ const PersonalProfilePage = () => {
                                             )}
                                         </div>
 
-                                        <span className="w-full truncate px-1 text-center text-[10px] text-[#52525B]">
+                                        <span className="w-full truncate px-1 text-center text-[10px] text-[var(--muted)]">
                                             {avatar.name}
                                         </span>
                                     </button>
@@ -404,11 +404,11 @@ const PersonalProfilePage = () => {
                     </div>
 
                     {/* Footer */}
-                    <div className="flex shrink-0 justify-end border-t border-[#E4E4E7] bg-white px-5 py-4">
+                    <div className="flex shrink-0 justify-end border-t border-[var(--line)] bg-[var(--surface)] px-5 py-4">
                         <button
                             type="button"
                             onClick={() => setIsAvatarModalOpen(false)}
-                            className="h-9 rounded-lg bg-[#18181B] px-4 text-[11px] font-medium text-white transition hover:bg-[#27272A]"
+                            className="h-9 rounded-lg bg-[var(--solid)] px-4 text-[11px] font-medium text-white transition hover:bg-[var(--solid-hover)]"
                         >
                             Chọn avatar
                         </button>

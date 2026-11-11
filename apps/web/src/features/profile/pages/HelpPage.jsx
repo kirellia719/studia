@@ -23,14 +23,14 @@ const HelpPage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#FAFAFA] text-[#18181B]">
+        <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* HEADER */}
-            <header className="border-b border-[#E4E4E7] bg-white">
+            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
                 <div className="mx-auto flex h-14 w-full max-w-[720px] items-center gap-2 px-4 sm:px-6">
                     <button
                         type="button"
                         onClick={() => navigate(-1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-[#52525B] transition hover:bg-[#F4F4F5] hover:text-[#18181B]"
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         aria-label="Quay lại"
                     >
                         <ChevronLeft
@@ -39,7 +39,7 @@ const HelpPage = () => {
                         />
                     </button>
 
-                    <h1 className="text-[17px] font-semibold text-[#18181B]">
+                    <h1 className="text-[17px] font-semibold text-[var(--ink)]">
                         Trợ giúp
                     </h1>
                     <CircleHelp
@@ -53,12 +53,12 @@ const HelpPage = () => {
                 {/* FAQ */}
                 <section className="">
                     <div className="mb-2.5 flex items-center justify-between">
-                        <h3 className="text-[13px] font-semibold text-[#18181B]">
+                        <h3 className="text-[13px] font-semibold text-[var(--ink)]">
                             Câu hỏi thường gặp
                         </h3>
                     </div>
 
-                    <div className="overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white">
+                    <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
                         {faqs.map((item, index) => {
                             const isOpen = openIndex === index;
 
@@ -67,7 +67,7 @@ const HelpPage = () => {
                                     key={item.question}
                                     className={
                                         index !== faqs.length - 1
-                                            ? "border-b border-[#F0F0F1]"
+                                            ? "border-b border-[var(--surface-2)]"
                                             : ""
                                     }
                                 >
@@ -75,16 +75,16 @@ const HelpPage = () => {
                                     <button
                                         type="button"
                                         onClick={() => toggleFaq(index)}
-                                        className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-[#FAFAFA]"
+                                        className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--surface-3)]"
                                     >
-                                        <span className="min-w-0 flex-1 text-[12px] font-medium leading-5 text-[#18181B]">
+                                        <span className="min-w-0 flex-1 text-[12px] font-medium leading-5 text-[var(--ink)]">
                                             {item.question}
                                         </span>
 
                                         <ChevronDown
                                             size={16}
                                             strokeWidth={1.8}
-                                            className={`shrink-0 text-[#A1A1AA] transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                                            className={`shrink-0 text-[var(--faint)] transition-transform duration-300 ${isOpen ? "rotate-180" : ""
                                                 }`}
                                         />
                                     </button>
@@ -98,7 +98,7 @@ const HelpPage = () => {
                                     >
                                         <div className="overflow-hidden">
                                             <div className="px-4 pb-4 pr-10">
-                                                <p className="text-[11px] leading-5 text-[#71717A]">
+                                                <p className="text-[11px] leading-5 text-[var(--muted)]">
                                                     {item.answer}
                                                 </p>
                                             </div>
@@ -114,18 +114,18 @@ const HelpPage = () => {
 
                 <section className="mt-6">
                     <div className="mb-2.5">
-                        <h3 className="text-[13px] font-semibold text-[#18181B]">
+                        <h3 className="text-[13px] font-semibold text-[var(--ink)]">
                             Cần hỗ trợ thêm?
                         </h3>
-                        <p className="mt-0.5 text-[11px] text-[#71717A]">
+                        <p className="mt-0.5 text-[11px] text-[var(--muted)]">
                             Liên hệ trực tiếp với người phụ trách.
                         </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#E4E4E7] bg-white p-4">
+                    <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
                         <div className="flex items-center gap-3">
                             {/* Avatar */}
-                            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[#EFF6FF]">
+                            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[var(--brand-soft)]">
                                 <img
                                     src={Logo}
                                     alt="Achan Phương"
@@ -136,16 +136,16 @@ const HelpPage = () => {
                             {/* Info */}
                             <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2">
-                                    <p className="truncate text-[13px] font-semibold text-[#18181B]">
+                                    <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
                                         Achan Phương
                                     </p>
 
-                                    <span className="shrink-0 rounded-full bg-[#F0FDF4] px-1.5 py-0.5 text-[9px] font-medium text-[#16A34A]">
+                                    <span className="shrink-0 rounded-full bg-[var(--success-soft)] px-1.5 py-0.5 text-[9px] font-medium text-[var(--success)]">
                                         Giáo viên
                                     </span>
                                 </div>
 
-                                <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-[#94A3B8]">
+                                <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-[var(--faint)]">
                                     {/* <Facebook size={12} /> */}
                                     <span className="truncate">
                                         {FB_URL.replace("https://www.", "")}
@@ -162,11 +162,11 @@ const HelpPage = () => {
                                 className={[
                                     "flex h-9 w-9 shrink-0 items-center justify-center",
                                     "rounded-xl",
-                                    "bg-[#EFF6FF]",
-                                    "text-[#2563EB]",
+                                    "bg-[var(--brand-soft)]",
+                                    "text-[var(--brand)]",
                                     "transition-all duration-200",
-                                    "hover:bg-[#DBEAFE]",
-                                    "hover:text-[#1D4ED8]",
+                                    "hover:bg-[var(--brand-soft)]",
+                                    "hover:text-[var(--brand-strong)]",
                                 ].join(" ")}
                             >
                                 <ArrowUpRight size={16} strokeWidth={2} />

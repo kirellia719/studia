@@ -53,11 +53,11 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#FAFAFA] text-[#18181B]">
+        <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* HEADER */}
-            <header className="border-b border-[#E4E4E7] bg-white">
+            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
                 <div className="mx-auto flex h-14 w-full max-w-[720px] items-center px-4 sm:px-6">
-                    <h1 className="text-[17px] font-semibold text-[#18181B]">
+                    <h1 className="text-[17px] font-semibold text-[var(--ink)]">
                         Hồ sơ
                     </h1>
                 </div>
@@ -65,11 +65,11 @@ const ProfilePage = () => {
 
             <div className="mx-auto w-full max-w-[720px] px-4 pb-10 pt-5 sm:px-6">
                 {/* PROFILE CARD */}
-                <section className="rounded-2xl border border-[#E4E4E7] bg-white px-5 py-6 shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
+                <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-6 shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
                     <div className="flex flex-col items-center text-center sm:flex-row sm:text-left">
                         {/* AVATAR */}
                         <div className="relative shrink-0">
-                            <div className="flex h-[88px] w-[88px] items-center justify-center overflow-hidden rounded-full bg-[#EFF6FF] ring-1 ring-[#DBEAFE]">
+                            <div className="flex h-[88px] w-[88px] items-center justify-center overflow-hidden rounded-full bg-[var(--brand-soft)] ring-1 ring-[var(--brand-soft)]">
                                 {user?.avatar ? (
                                     <img
                                         src={user.avatar}
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                                         className="h-full w-full object-cover"
                                     />
                                 ) : (
-                                    <span className="text-2xl font-semibold text-[#2563EB]">
+                                    <span className="text-2xl font-semibold text-[var(--brand)]">
                                         {getInitial(user?.name)}
                                     </span>
                                 )}
@@ -89,7 +89,7 @@ const ProfilePage = () => {
                                 onClick={() =>
                                     navigate("/student/profile/personal")
                                 }
-                                className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#2563EB] text-white shadow-sm transition hover:bg-[#1D4ED8] active:scale-95"
+                                className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--brand-solid)] text-white shadow-sm transition hover:bg-[var(--brand-solid-hover)] active:scale-95"
                             >
                                 <UserRound
                                     size={13}
@@ -100,16 +100,16 @@ const ProfilePage = () => {
 
                         {/* USER INFO */}
                         <div className="mt-4 min-w-0 sm:ml-5 sm:mt-0">
-                            <h2 className="truncate text-[17px] font-semibold text-[#18181B]">
+                            <h2 className="truncate text-[17px] font-semibold text-[var(--ink)]">
                                 {user?.name || "Học sinh"}
                             </h2>
 
-                            <p className="mt-1 max-w-[280px] truncate text-[12px] text-[#71717A] sm:max-w-[360px]">
+                            <p className="mt-1 max-w-[280px] truncate text-[12px] text-[var(--muted)] sm:max-w-[360px]">
                                 {user?.email || "Chưa cập nhật email"}
                             </p>
 
                             <div className="mt-2.5 flex items-center justify-center gap-2 sm:justify-start">
-                                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[10px] font-medium text-[#2563EB]">
+                                <div className="inline-flex items-center gap-1.5 rounded-full bg-[var(--brand-soft)] px-2.5 py-1 text-[10px] font-medium text-[var(--brand)]">
                                     <GraduationCap
                                         size={13}
                                         strokeWidth={1.8}
@@ -118,7 +118,7 @@ const ProfilePage = () => {
                                 </div>
 
                                 {user?.studentCode && (
-                                    <span className="rounded-full bg-[#F4F4F5] px-2.5 py-1 text-[10px] font-medium text-[#52525B]">
+                                    <span className="rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-[10px] font-medium text-[var(--muted)]">
                                         {user.studentCode}
                                     </span>
                                 )}
@@ -128,7 +128,7 @@ const ProfilePage = () => {
                 </section>
 
                 {/* MENU */}
-                <section className="mt-5 overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
+                <section className="mt-5 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
                     {menuItems.map((item, index) => {
                         const Icon = item.icon;
 
@@ -137,12 +137,12 @@ const ProfilePage = () => {
                                 key={item.label}
                                 type="button"
                                 onClick={() => navigate(item.path)}
-                                className={`flex w-full items-center gap-3.5 px-4 py-3.5 text-left transition hover:bg-[#FAFAFA] active:bg-[#F4F4F5] ${index !== menuItems.length - 1
-                                    ? "border-b border-[#F0F0F1]"
+                                className={`flex w-full items-center gap-3.5 px-4 py-3.5 text-left transition hover:bg-[var(--surface-3)] active:bg-[var(--surface-2)] ${index !== menuItems.length - 1
+                                    ? "border-b border-[var(--surface-2)]"
                                     : ""
                                     }`}
                             >
-                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F4F4F5] text-[#52525B]">
+                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--surface-2)] text-[var(--muted)]">
                                     <Icon
                                         size={17}
                                         strokeWidth={1.8}
@@ -150,11 +150,11 @@ const ProfilePage = () => {
                                 </div>
 
                                 <div className="min-w-0 flex-1">
-                                    <p className="text-[13px] font-medium text-[#18181B]">
+                                    <p className="text-[13px] font-medium text-[var(--ink)]">
                                         {item.label}
                                     </p>
 
-                                    <p className="mt-0.5 truncate text-[11px] text-[#71717A]">
+                                    <p className="mt-0.5 truncate text-[11px] text-[var(--muted)]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -162,7 +162,7 @@ const ProfilePage = () => {
                                 <ChevronRight
                                     size={17}
                                     strokeWidth={1.7}
-                                    className="shrink-0 text-[#A1A1AA]"
+                                    className="shrink-0 text-[var(--faint)]"
                                 />
                             </button>
                         );
@@ -173,7 +173,7 @@ const ProfilePage = () => {
                 <button
                     type="button"
                     onClick={handleLogout}
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#FECACA] bg-white py-3 text-[13px] font-medium text-[#DC2626] transition hover:bg-[#FEF2F2] active:bg-[#FEE2E2]"
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--danger-soft)] bg-[var(--surface)] py-3 text-[13px] font-medium text-[var(--danger)] transition hover:bg-[var(--danger-soft)] active:bg-[var(--danger-soft)]"
                 >
                     <LogOut
                         size={16}

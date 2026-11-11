@@ -311,12 +311,12 @@ const LessonCreatePage = () => {
         <div className="space-y-2">
             {/* Header */}
 
-            <div className="border border-gray-100 bg-white p-4">
-                <h1 className="text-base font-semibold text-[#252238]">
+            <div className="border border-[var(--line)] bg-[var(--surface)] p-4">
+                <h1 className="text-base font-semibold text-[var(--ink)]">
                     Thêm bài học
                 </h1>
 
-                <p className="mt-0.5 text-xs text-gray-500">
+                <p className="mt-0.5 text-xs text-[var(--muted)]">
                     Thêm nội dung mới vào khóa học.
                 </p>
             </div>
@@ -333,9 +333,9 @@ const LessonCreatePage = () => {
                         gap-1.5
                         text-xs
                         font-medium
-                        text-gray-500
+                        text-[var(--muted)]
                         transition
-                        hover:text-[#6C5CE7]
+                        hover:text-[var(--brand)]
                     "
                 >
                     <ArrowLeft size={15} />
@@ -356,8 +356,8 @@ const LessonCreatePage = () => {
                 <section
                     className="
                         border
-                        border-gray-100
-                        bg-white
+                        border-[var(--line)]
+                        bg-[var(--surface)]
                         p-4
                         shadow-sm
                         sm:p-5
@@ -372,11 +372,11 @@ const LessonCreatePage = () => {
                                 block
                                 text-xs
                                 font-medium
-                                text-gray-700
+                                text-[var(--ink-2)]
                             "
                         >
                             Tên bài học
-                            <span className="ml-1 text-red-500">
+                            <span className="ml-1 text-[var(--danger)]">
                                 *
                             </span>
                         </label>
@@ -396,17 +396,17 @@ const LessonCreatePage = () => {
                                 w-full
                                 rounded-lg
                                 border
-                                border-gray-200
+                                border-[var(--line)]
                                 px-3
                                 py-2.5
                                 text-sm
                                 outline-none
                                 transition
                                 placeholder:text-gray-300
-                                focus:border-[#6C5CE7]
+                                focus:border-[var(--brand)]
                                 focus:ring-2
-                                focus:ring-[#6C5CE7]/10
-                                disabled:bg-gray-50
+                                focus:ring-[var(--brand)]/10
+                                disabled:bg-[var(--surface-3)]
                             "
                         />
                     </div>
@@ -420,7 +420,7 @@ const LessonCreatePage = () => {
                                 block
                                 text-xs
                                 font-medium
-                                text-gray-700
+                                text-[var(--ink-2)]
                             "
                         >
                             Mô tả
@@ -442,17 +442,17 @@ const LessonCreatePage = () => {
                                 resize-none
                                 rounded-lg
                                 border
-                                border-gray-200
+                                border-[var(--line)]
                                 px-3
                                 py-2.5
                                 text-sm
                                 outline-none
                                 transition
                                 placeholder:text-gray-300
-                                focus:border-[#6C5CE7]
+                                focus:border-[var(--brand)]
                                 focus:ring-2
-                                focus:ring-[#6C5CE7]/10
-                                disabled:bg-gray-50
+                                focus:ring-[var(--brand)]/10
+                                disabled:bg-[var(--surface-3)]
                             "
                         />
                     </div>
@@ -468,8 +468,8 @@ const LessonCreatePage = () => {
                             gap-4
                             rounded-lg
                             border
-                            border-gray-100
-                            bg-gray-50
+                            border-[var(--line)]
+                            bg-[var(--surface-3)]
                             p-3
                         "
                     >
@@ -483,19 +483,19 @@ const LessonCreatePage = () => {
                                     items-center
                                     justify-center
                                     rounded-lg
-                                    bg-[#6C5CE7]/10
-                                    text-[#6C5CE7]
+                                    bg-[var(--brand-solid)]/10
+                                    text-[var(--brand)]
                                 "
                             >
                                 <LockOpen size={16} />
                             </div>
 
                             <div>
-                                <p className="text-xs font-semibold text-gray-700">
+                                <p className="text-xs font-semibold text-[var(--ink-2)]">
                                     Bài học miễn phí
                                 </p>
 
-                                <p className="mt-0.5 text-[11px] leading-5 text-gray-400">
+                                <p className="mt-0.5 text-[11px] leading-5 text-[var(--faint)]">
                                     Cho phép người chưa tham gia
                                     khóa học xem bài học này.
                                 </p>
@@ -520,11 +520,11 @@ const LessonCreatePage = () => {
                                 duration-200
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#6C5CE7]/20
+                                focus:ring-[var(--brand)]/20
                                 disabled:cursor-not-allowed
                                 disabled:opacity-50
                                 ${form.isFree
-                                    ? "bg-[#6C5CE7]"
+                                    ? "bg-[var(--brand-solid)]"
                                     : "bg-gray-300"
                                 }
                             `}
@@ -535,7 +535,7 @@ const LessonCreatePage = () => {
                                     h-4
                                     w-4
                                     rounded-full
-                                    bg-white
+                                    bg-[var(--surface)]
                                     shadow-md
                                     transition-transform
                                     duration-200
@@ -556,8 +556,8 @@ const LessonCreatePage = () => {
                 <section
                     className="
                         border
-                        border-gray-100
-                        bg-white
+                        border-[var(--line)]
+                        bg-[var(--surface)]
                         p-4
                         shadow-sm
                         sm:p-5
@@ -571,26 +571,26 @@ const LessonCreatePage = () => {
                                 gap-2
                                 text-sm
                                 font-semibold
-                                text-[#252238]
+                                text-[var(--ink)]
                             "
                         >
                             <Video
                                 size={17}
-                                className="text-[#6C5CE7]"
+                                className="text-[var(--brand)]"
                             />
 
                             Video bài học
 
-                            <span className="text-red-500">
+                            <span className="text-[var(--danger)]">
                                 *
                             </span>
                         </h2>
 
-                        <p className="mt-1 text-xs text-gray-400">
+                        <p className="mt-1 text-xs text-[var(--faint)]">
                             MP4, WebM hoặc MOV. Tối đa 500MB.
                         </p>
 
-                        <p className="mt-1 text-xs text-gray-400">
+                        <p className="mt-1 text-xs text-[var(--faint)]">
                             Thời lượng video sẽ được hệ thống tự động xác định.
                         </p>
                     </div>
@@ -607,11 +607,11 @@ const LessonCreatePage = () => {
                                 rounded-lg
                                 border
                                 border-dashed
-                                border-gray-200
-                                bg-gray-50
+                                border-[var(--line)]
+                                bg-[var(--surface-3)]
                                 transition
-                                hover:border-[#6C5CE7]/40
-                                hover:bg-[#6C5CE7]/5
+                                hover:border-[var(--brand)]/40
+                                hover:bg-[var(--brand-solid)]/5
                             "
                         >
                             <div
@@ -622,8 +622,8 @@ const LessonCreatePage = () => {
                                     items-center
                                     justify-center
                                     rounded-full
-                                    bg-[#6C5CE7]/10
-                                    text-[#6C5CE7]
+                                    bg-[var(--brand-solid)]/10
+                                    text-[var(--brand)]
                                 "
                             >
                                 <Upload size={21} />
@@ -634,7 +634,7 @@ const LessonCreatePage = () => {
                                     mt-3
                                     text-sm
                                     font-medium
-                                    text-gray-600
+                                    text-[var(--muted)]
                                 "
                             >
                                 Chọn video
@@ -644,7 +644,7 @@ const LessonCreatePage = () => {
                                 className="
                                     mt-1
                                     text-xs
-                                    text-gray-400
+                                    text-[var(--faint)]
                                 "
                             >
                                 MP4, WebM, MOV · tối đa 500MB
@@ -664,7 +664,7 @@ const LessonCreatePage = () => {
                                 overflow-hidden
                                 rounded-xl
                                 border
-                                border-gray-100
+                                border-[var(--line)]
                             "
                         >
                             <video
@@ -692,7 +692,7 @@ const LessonCreatePage = () => {
                                                 truncate
                                                 text-xs
                                                 font-medium
-                                                text-gray-700
+                                                text-[var(--ink-2)]
                                             "
                                         >
                                             {form.videoFile?.name}
@@ -702,7 +702,7 @@ const LessonCreatePage = () => {
                                             className="
                                                 mt-0.5
                                                 text-[11px]
-                                                text-gray-400
+                                                text-[var(--faint)]
                                             "
                                         >
                                             {form.videoFile
@@ -732,10 +732,10 @@ const LessonCreatePage = () => {
                                                 items-center
                                                 justify-center
                                                 rounded-lg
-                                                text-gray-400
+                                                text-[var(--faint)]
                                                 transition
-                                                hover:bg-red-50
-                                                hover:text-red-500
+                                                hover:bg-[var(--danger-soft)]
+                                                hover:text-[var(--danger)]
                                             "
                                             title="Xóa video"
                                         >
@@ -759,7 +759,7 @@ const LessonCreatePage = () => {
                                             <span
                                                 className="
                                                     text-xs
-                                                    text-gray-500
+                                                    text-[var(--muted)]
                                                 "
                                             >
                                                 {uploadProgress >=
@@ -772,7 +772,7 @@ const LessonCreatePage = () => {
                                                 className="
                                                     text-xs
                                                     font-semibold
-                                                    text-[#6C5CE7]
+                                                    text-[var(--brand)]
                                                 "
                                             >
                                                 {uploadProgress}%
@@ -784,14 +784,14 @@ const LessonCreatePage = () => {
                                                 h-2
                                                 overflow-hidden
                                                 rounded-full
-                                                bg-gray-100
+                                                bg-[var(--surface-2)]
                                             "
                                         >
                                             <div
                                                 className="
                                                     h-full
                                                     rounded-full
-                                                    bg-[#6C5CE7]
+                                                    bg-[var(--brand-solid)]
                                                     transition-all
                                                     duration-200
                                                 "
@@ -828,15 +828,15 @@ const LessonCreatePage = () => {
                             justify-center
                             rounded-sm
                             border
-                            border-gray-200
-                            bg-white
+                            border-[var(--line)]
+                            bg-[var(--surface)]
                             px-4
                             py-2.5
                             text-xs
                             font-medium
-                            text-gray-600
+                            text-[var(--muted)]
                             transition
-                            hover:bg-gray-50
+                            hover:bg-[var(--surface-3)]
                         "
                     >
                         Hủy
@@ -850,14 +850,14 @@ const LessonCreatePage = () => {
                             items-center
                             justify-center
                             rounded-sm
-                            bg-[#6C5CE7]
+                            bg-[var(--brand-solid)]
                             px-5
                             py-2.5
                             text-xs
                             font-semibold
                             text-white
                             transition
-                            hover:bg-[#5b4bd6]
+                            hover:bg-[var(--brand-solid-hover)]
                             disabled:cursor-not-allowed
                             disabled:opacity-50
                         "

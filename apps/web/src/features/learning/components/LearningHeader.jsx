@@ -9,7 +9,7 @@ const LearningHeader = ({
   onOpenLessons,
 }) => {
   return (
-    <header className="sticky top-0 z-30 border-b border-gray-100 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--surface)]/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3 sm:px-5">
         {/* Back */}
 
@@ -24,10 +24,10 @@ const LearningHeader = ({
                         items-center
                         justify-center
                         rounded-md
-                        text-gray-500
+                        text-[var(--muted)]
                         transition
-                        hover:bg-gray-100
-                        hover:text-gray-700
+                        hover:bg-[var(--surface-2)]
+                        hover:text-[var(--ink-2)]
                     "
           aria-label="Quay lại"
         >
@@ -37,7 +37,7 @@ const LearningHeader = ({
         {/* Course title */}
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-[#252238]">
+          <p className="truncate text-sm font-semibold text-[var(--ink)]">
             {courseTitle}
           </p>
         </div>
@@ -55,14 +55,14 @@ const LearningHeader = ({
                         gap-1.5
                         rounded-md
                         border
-                        border-[#DED9FF]
-                        bg-[#F5F3FF]
+                        border-[var(--brand-soft)]
+                        bg-[var(--brand-tint)]
                         px-2.5
                         text-xs
                         font-medium
-                        text-[#5B4BD6]
+                        text-[var(--brand-strong)]
                         transition
-                        hover:bg-[#ECE9FF]
+                        hover:bg-[var(--brand-soft)]
                     "
           aria-label="Danh sách bài học"
         >
@@ -72,7 +72,7 @@ const LearningHeader = ({
             Bài học
           </span>
 
-          <span className="text-[11px] text-[#5B4BD6]">
+          <span className="text-[11px] text-[var(--brand-strong)]">
             {lessonCount}
           </span>
         </button>

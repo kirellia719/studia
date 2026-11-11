@@ -58,13 +58,13 @@ const StudentCourseCard = ({ enrollment }) => {
         "overflow-hidden",
         "rounded-xl",
         "border",
-        "border-[#E5E7EB]",
-        "bg-white",
+        "border-[var(--line)]",
+        "bg-[var(--surface)]",
         "shadow-[0_2px_12px_rgba(15,23,42,0.04)]",
         "transition-all",
         "duration-200",
         "hover:-translate-y-0.5",
-        "hover:border-[#BFDBFE]",
+        "hover:border-[var(--brand-soft)]",
         "hover:shadow-[0_8px_24px_rgba(37,99,235,0.08)]",
       ].join(" ")}
     >
@@ -85,7 +85,7 @@ const StudentCourseCard = ({ enrollment }) => {
           "aspect-[16/9]",
           "w-full",
           "overflow-hidden",
-          "bg-[#EFF6FF]",
+          "bg-[var(--brand-soft)]",
         ].join(" ")}
       >
         {course.thumbnail ? (
@@ -133,12 +133,12 @@ const StudentCourseCard = ({ enrollment }) => {
                     "items-center",
                     "gap-2",
                     "rounded-full",
-                    "bg-white/95",
+                    "bg-[var(--surface)]/95",
                     "px-3",
                     "py-1.5",
                     "text-xs",
                     "font-semibold",
-                    "text-[#475569]",
+                    "text-[var(--muted)]",
                     "shadow-sm",
                     "backdrop-blur-sm",
                   ].join(" ")}
@@ -162,8 +162,8 @@ const StudentCourseCard = ({ enrollment }) => {
               "items-center",
               "justify-center",
               isLocked
-                ? "bg-[#E5E7EB] text-[#64748B]"
-                : "bg-gradient-to-br from-[#EFF6FF] to-[#F1F5F9] text-[#2563EB]",
+                ? "bg-[var(--line)] text-[var(--muted)]"
+                : "bg-gradient-to-br from-[var(--brand-soft)] to-[var(--surface-2)] text-[var(--brand)]",
             ].join(" ")}
           >
             {isLocked ? (
@@ -203,9 +203,9 @@ const StudentCourseCard = ({ enrollment }) => {
               "font-bold",
               "leading-6",
               "tracking-tight",
-              "text-[#1E293B]",
+              "text-[var(--ink)]",
               !isLocked
-                ? "transition-colors duration-200 group-hover:text-[#2563EB]"
+                ? "transition-colors duration-200 group-hover:text-[var(--brand)]"
                 : "",
               "sm:text-[17px]",
             ].join(" ")}
@@ -221,7 +221,7 @@ const StudentCourseCard = ({ enrollment }) => {
 
         <div className="mt-5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-[#64748B]">
+            <span className="text-xs font-medium text-[var(--muted)]">
               Tiến độ học tập
             </span>
             <span
@@ -230,8 +230,8 @@ const StudentCourseCard = ({ enrollment }) => {
                 "font-bold",
                 "tabular-nums",
                 isCompleted
-                  ? "text-[#16A34A]"
-                  : "text-[#2563EB]",
+                  ? "text-[var(--success)]"
+                  : "text-[var(--brand)]",
               ].join(" ")}
             >
               {progress}%
@@ -246,7 +246,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "w-full",
               "overflow-hidden",
               "rounded-full",
-              "bg-[#E2E8F0]",
+              "bg-[var(--line)]",
             ].join(" ")}
           >
             <div
@@ -256,8 +256,8 @@ const StudentCourseCard = ({ enrollment }) => {
                 "transition-all",
                 "duration-500",
                 isCompleted
-                  ? "bg-[#16A34A]"
-                  : "bg-[#2563EB]",
+                  ? "bg-[var(--success)]"
+                  : "bg-[var(--brand-solid)]",
               ].join(" ")}
               style={{
                 width: `${progress}%`,
@@ -267,20 +267,20 @@ const StudentCourseCard = ({ enrollment }) => {
 
           {/* Progress detail */}
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-xs font-medium text-[#64748B]">
+            <span className="text-xs font-medium text-[var(--muted)]">
               {completedLessons}/{totalLessons} bài học
             </span>
 
             {isCompleted ? (
-              <span className="text-[11px] font-semibold text-[#16A34A]">
+              <span className="text-[11px] font-semibold text-[var(--success)]">
                 Hoàn thành
               </span>
             ) : hasStarted ? (
-              <span className="text-[11px] font-semibold text-[#2563EB]">
+              <span className="text-[11px] font-semibold text-[var(--brand)]">
                 Đang học
               </span>
             ) : (
-              <span className="text-[11px] font-semibold text-[#64748B]">
+              <span className="text-[11px] font-semibold text-[var(--muted)]">
                 Chưa bắt đầu
               </span>
             )}
@@ -315,16 +315,16 @@ const StudentCourseCard = ({ enrollment }) => {
               "active:scale-[0.98]",
               isCompleted
                 ? [
-                  "bg-[#ECFDF3]",
-                  "text-[#15803D]",
-                  "hover:bg-[#DCFCE7]",
+                  "bg-[var(--success-soft)]",
+                  "text-[var(--success)]",
+                  "hover:bg-[var(--success-soft)]",
                 ].join(" ")
                 : [
-                  "bg-[#2563EB]",
+                  "bg-[var(--brand-solid)]",
                   "text-white",
                   "shadow-sm",
-                  "shadow-[#2563EB]/20",
-                  "hover:bg-[#1D4ED8]",
+                  "shadow-[var(--brand)]/20",
+                  "hover:bg-[var(--brand-solid-hover)]",
                   "hover:shadow-md",
                 ].join(" "),
             ].join(" ")}

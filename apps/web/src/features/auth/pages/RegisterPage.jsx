@@ -79,36 +79,36 @@ const RegisterPage = () => {
   const inputClass = [
     "h-11 w-full",
     "rounded-xl",
-    "border border-[#E4E4E7]",
-    "bg-white",
+    "border border-[var(--line)]",
+    "bg-[var(--surface)]",
     "py-2.5",
-    "text-sm text-[#18181B]",
+    "text-sm text-[var(--ink)]",
     "outline-none",
     "transition-colors",
-    "placeholder:text-[#A1A1AA]",
-    "hover:border-[#D4D4D8]",
-    "focus:border-[#2563EB]",
-    "focus:ring-2 focus:ring-[#DBEAFE]",
+    "placeholder:text-[var(--faint)]",
+    "hover:border-[var(--line-strong)]",
+    "focus:border-[var(--brand)]",
+    "focus:ring-2 focus:ring-[var(--brand-soft)]",
     "disabled:cursor-not-allowed",
-    "disabled:bg-[#F8F8F7]",
-    "disabled:text-[#A1A1AA]",
+    "disabled:bg-[var(--surface-3)]",
+    "disabled:text-[var(--faint)]",
   ].join(" ");
 
   const labelClass =
-    "mb-1.5 block text-xs font-medium text-[#3F3F46]";
+    "mb-1.5 block text-xs font-medium text-[var(--ink-2)]";
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#F7F7F5] px-4 py-6 sm:px-6 sm:py-8">
+    <div className="relative min-h-screen overflow-hidden bg-[var(--bg)] px-4 py-6 sm:px-6 sm:py-8">
       {/* Background */}
-      <div className="pointer-events-none absolute left-1/2 top-[-120px] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#EFF6FF] blur-[100px] sm:h-[520px] sm:w-[520px]" />
+      <div className="pointer-events-none absolute left-1/2 top-[-120px] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[var(--brand-soft)] blur-[100px] sm:h-[520px] sm:w-[520px]" />
 
-      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[360px] w-[360px] rounded-full bg-[#F0FDF4] blur-[100px]" />
+      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[360px] w-[360px] rounded-full bg-[var(--success-soft)] blur-[100px]" />
 
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.18]"
         style={{
           backgroundImage:
-            "linear-gradient(#E4E4E7 1px, transparent 1px), linear-gradient(90deg, #E4E4E7 1px, transparent 1px)",
+            "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
           backgroundSize: "44px 44px",
           maskImage:
             "radial-gradient(circle at center, black 0%, transparent 70%)",
@@ -121,23 +121,23 @@ const RegisterPage = () => {
       <div className="relative z-10 flex min-h-[calc(100vh-3rem)] w-full items-center justify-center sm:min-h-[calc(100vh-4rem)]">
         <div className="w-full max-w-[430px]">
           {/* Card */}
-          <div className="relative overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white p-5 shadow-[0_16px_45px_rgba(24,24,27,0.06)] sm:rounded-3xl sm:p-8">
+          <div className="relative overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[0_16px_45px_rgba(24,24,27,0.06)] sm:rounded-3xl sm:p-8">
             {/* Top accent */}
-            <div className="absolute inset-x-0 top-0 h-0.5 bg-[#2563EB]" />
+            <div className="absolute inset-x-0 top-0 h-0.5 bg-[var(--brand-solid)]" />
 
             {/* Header */}
             <div className="text-center">
               <div className="mb-4 flex justify-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#E4E4E7] bg-[#FAFAF9]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--line)] bg-[var(--surface-3)]">
                   <Logo link="/" />
                 </div>
               </div>
 
-              <h1 className="text-xl font-semibold tracking-tight text-[#18181B] sm:text-2xl">
+              <h1 className="text-xl font-semibold tracking-tight text-[var(--ink)] sm:text-2xl">
                 Tạo tài khoản
               </h1>
 
-              <p className="mt-1.5 text-xs text-[#71717A]">
+              <p className="mt-1.5 text-xs text-[var(--muted)]">
                 Tạo tài khoản để bắt đầu học tập.
               </p>
             </div>
@@ -160,7 +160,7 @@ const RegisterPage = () => {
                   <User
                     size={17}
                     strokeWidth={1.8}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A1A1AA]"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                   />
 
                   <input
@@ -191,7 +191,7 @@ const RegisterPage = () => {
                   <Mail
                     size={17}
                     strokeWidth={1.8}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A1A1AA]"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                   />
 
                   <input
@@ -222,7 +222,7 @@ const RegisterPage = () => {
                   <LockKeyhole
                     size={17}
                     strokeWidth={1.8}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A1A1AA]"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                   />
 
                   <input
@@ -255,7 +255,7 @@ const RegisterPage = () => {
                         ? "Ẩn mật khẩu"
                         : "Hiển thị mật khẩu"
                     }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[#A1A1AA] transition-colors hover:text-[#3F3F46] disabled:cursor-not-allowed"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
                   >
                     {showPassword ? (
                       <EyeOff size={17} />
@@ -279,7 +279,7 @@ const RegisterPage = () => {
                   <LockKeyhole
                     size={17}
                     strokeWidth={1.8}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A1A1AA]"
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                   />
 
                   <input
@@ -314,7 +314,7 @@ const RegisterPage = () => {
                         ? "Ẩn mật khẩu"
                         : "Hiển thị mật khẩu"
                     }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[#A1A1AA] transition-colors hover:text-[#3F3F46] disabled:cursor-not-allowed"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={17} />
@@ -333,13 +333,13 @@ const RegisterPage = () => {
                   "mt-1 flex h-11 w-full",
                   "items-center justify-center",
                   "rounded-xl",
-                  "bg-[#18181B]",
+                  "bg-[var(--solid)]",
                   "px-4",
                   "text-sm font-semibold text-white",
                   "transition-colors",
-                  "hover:bg-[#27272A]",
+                  "hover:bg-[var(--solid-hover)]",
                   "focus:outline-none",
-                  "focus:ring-2 focus:ring-[#D4D4D8]",
+                  "focus:ring-2 focus:ring-[var(--line-strong)]",
                   "disabled:cursor-not-allowed",
                   "disabled:opacity-60",
                 ].join(" ")}
@@ -351,11 +351,11 @@ const RegisterPage = () => {
             </form>
 
             {/* Login */}
-            <div className="mt-5 text-center text-xs text-[#71717A]">
+            <div className="mt-5 text-center text-xs text-[var(--muted)]">
               Đã có tài khoản?{" "}
               <Link
                 to="/login"
-                className="font-semibold text-[#2563EB] transition-colors hover:text-[#1D4ED8] hover:underline"
+                className="font-semibold text-[var(--brand)] transition-colors hover:text-[var(--brand-strong)] hover:underline"
               >
                 Đăng nhập
               </Link>
@@ -363,7 +363,7 @@ const RegisterPage = () => {
           </div>
 
           {/* Footer */}
-          <div className="mt-5 text-center text-[10px] text-[#A1A1AA]">
+          <div className="mt-5 text-center text-[10px] text-[var(--faint)]">
             Achan
           </div>
         </div>

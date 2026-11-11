@@ -40,16 +40,16 @@ const CourseDetailPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-full bg-[#F7F7FF]">
+            <div className="min-h-full bg-[var(--bg)]">
                 <div className="space-y-4 p-4 lg:p-5">
                     {/* Navigation skeleton */}
-                    <div className="h-5 w-64 animate-pulse rounded bg-gray-200" />
+                    <div className="h-5 w-64 animate-pulse rounded bg-[var(--line)]" />
 
                     {/* Tabs skeleton */}
-                    <div className="h-10 animate-pulse rounded bg-gray-200" />
+                    <div className="h-10 animate-pulse rounded bg-[var(--line)]" />
 
                     {/* Content skeleton */}
-                    <div className="h-64 animate-pulse rounded bg-gray-200" />
+                    <div className="h-64 animate-pulse rounded bg-[var(--line)]" />
                 </div>
             </div>
         );
@@ -57,14 +57,14 @@ const CourseDetailPage = () => {
 
     if (error) {
         return (
-            <div className="min-h-full bg-[#F7F7FF] p-4 lg:p-5">
+            <div className="min-h-full bg-[var(--bg)] p-4 lg:p-5">
                 <div
                     className={[
                         "rounded-lg",
                         "border border-red-100",
-                        "bg-red-50",
+                        "bg-[var(--danger-soft)]",
                         "px-4 py-5",
-                        "text-sm text-red-600",
+                        "text-sm text-[var(--danger)]",
                     ].join(" ")}
                 >
                     {error}
@@ -78,7 +78,7 @@ const CourseDetailPage = () => {
     }
 
     return (
-        <div className="min-h-full bg-[#F7F7FF] relative">
+        <div className="min-h-full bg-[var(--bg)] relative">
             <CourseNavigation
                 course={course}
             />

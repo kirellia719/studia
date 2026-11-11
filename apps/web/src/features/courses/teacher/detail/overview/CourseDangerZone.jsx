@@ -10,7 +10,7 @@ const CourseDangerZone = ({
             className="
                 border
                 border-red-100
-                bg-white
+                bg-[var(--surface)]
                 shadow-sm
 
                 sm:rounded-md
@@ -21,7 +21,7 @@ const CourseDangerZone = ({
                     className="
                         text-sm
                         font-semibold
-                        text-red-600
+                        text-[var(--danger)]
                         sm:text-base
                     "
                 >
@@ -44,7 +44,7 @@ const CourseDangerZone = ({
                             className="
                                 text-[11px]
                                 leading-4
-                                text-gray-400
+                                text-[var(--faint)]
 
                                 sm:text-xs
                                 sm:leading-5
@@ -75,9 +75,9 @@ const CourseDangerZone = ({
                             py-2
                             text-xs
                             font-medium
-                            text-red-500
+                            text-[var(--danger)]
                             transition
-                            hover:bg-red-50
+                            hover:bg-[var(--danger-soft)]
                             disabled:cursor-not-allowed
                             disabled:opacity-50
 

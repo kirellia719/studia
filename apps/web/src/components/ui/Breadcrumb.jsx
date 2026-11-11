@@ -47,8 +47,8 @@ const Breadcrumb = ({
                                     min-w-0
                                     truncate
                                     ${isLast
-                                        ? "font-medium text-[#252238]"
-                                        : "text-gray-500"
+                                        ? "font-medium text-[var(--ink)]"
+                                        : "text-[var(--muted)]"
                                     }
                                 `}
                                 title={item.label}
@@ -74,9 +74,9 @@ const Breadcrumb = ({
                                     min-w-0
                                     shrink-0
                                     items-center
-                                    text-gray-500
+                                    text-[var(--muted)]
                                     transition
-                                    hover:text-[#6C5CE7]
+                                    hover:text-[var(--brand)]
                                 "
                                 title={item.label}
                             >

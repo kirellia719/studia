@@ -19,10 +19,10 @@ const CourseCard = ({ course }) => {
     const status = {
         label: isOpen ? "Mở" : "Khoá",
         className: isOpen
-            ? "border border-emerald-300/40 bg-emerald-500/10 text-emerald-700"
+            ? "border border-emerald-300/40 bg-[var(--success)]/10 text-[var(--success)]"
             : "border border-amber-300/40 bg-amber-500/10 text-amber-700",
         dotClassName: isOpen
-            ? "bg-emerald-500"
+            ? "bg-[var(--success)]"
             : "bg-amber-500",
     };
 
@@ -79,13 +79,13 @@ const CourseCard = ({ course }) => {
                 overflow-hidden
                 rounded-lg
                 border
-                border-slate-200/80
-                bg-white
+                border-[var(--line)]/80
+                bg-[var(--surface)]
                 shadow-[0_4px_20px_-4px_rgba(36,77,168,0.06)]
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-[#244DA8]/30
+                hover:border-[var(--brand)]/30
                 hover:shadow-[0_12px_28px_-6px_rgba(36,77,168,0.15)]
             "
         >
@@ -99,12 +99,12 @@ const CourseCard = ({ course }) => {
                     h-32
                     w-32
                     rounded-full
-                    bg-[#244DA8]/5
+                    bg-[var(--brand-solid)]/5
                     blur-2xl
                     transition-all
                     duration-500
                     group-hover:scale-150
-                    group-hover:bg-[#244DA8]/10
+                    group-hover:bg-[var(--brand-solid)]/10
                 "
             />
 
@@ -115,7 +115,7 @@ const CourseCard = ({ course }) => {
                     aspect-video
                     w-full
                     overflow-hidden
-                    bg-slate-100
+                    bg-[var(--surface-2)]
                 "
             >
                 <img
@@ -170,10 +170,10 @@ const CourseCard = ({ course }) => {
                             text-sm
                             font-bold
                             leading-5
-                            text-[#082f63]
+                            text-[var(--brand-strong)]
                             transition-colors
                             duration-200
-                            group-hover:text-[#244DA8]
+                            group-hover:text-[var(--brand)]
                             sm:text-base
                         "
                     >
@@ -192,17 +192,17 @@ const CourseCard = ({ course }) => {
                             justify-center
                             rounded-xl
                             border
-                            border-slate-100
-                            bg-white/80
-                            text-slate-400
+                            border-[var(--line)]
+                            bg-[var(--surface)]/80
+                            text-[var(--faint)]
                             shadow-sm
                             transition-all
                             duration-300
-                            group-hover:border-[#244DA8]
-                            group-hover:bg-[#244DA8]
+                            group-hover:border-[var(--brand)]
+                            group-hover:bg-[var(--brand-solid)]
                             group-hover:text-white
                             group-hover:shadow-md
-                            group-hover:shadow-[#244DA8]/20
+                            group-hover:shadow-[var(--brand)]/20
                         "
                     >
                         <ArrowRight
@@ -223,7 +223,7 @@ const CourseCard = ({ course }) => {
                         line-clamp-2
                         text-xs
                         leading-5
-                        text-slate-500
+                        text-[var(--muted)]
                         sm:text-sm
                     "
                 >
@@ -245,7 +245,7 @@ const CourseCard = ({ course }) => {
                         items-center
                         gap-3
                         text-xs
-                        text-slate-500
+                        text-[var(--muted)]
                     ">
                         <span
                             className="
@@ -253,17 +253,17 @@ const CourseCard = ({ course }) => {
                             items-center
                             gap-1.5
                             font-medium
-                            text-slate-600
+                            text-[var(--muted)]
                         "
                         >
                             <BookOpen
                                 size={14}
-                                className="text-[#244DA8]"
+                                className="text-[var(--brand)]"
                             />
                             {lessonCount} bài học
                         </span>
 
-                        <span className="h-3.5 w-px bg-slate-200/80" />
+                        <span className="h-3.5 w-px bg-[var(--line)]/80" />
 
                         <span
                             className="
@@ -271,12 +271,12 @@ const CourseCard = ({ course }) => {
                             items-center
                             gap-1.5
                             font-medium
-                            text-slate-600
+                            text-[var(--muted)]
                         "
                         >
                             <Users
                                 size={14}
-                                className="text-[#244DA8]/80"
+                                className="text-[var(--brand)]/80"
                             />
                             {studentCount} học viên
                         </span>
@@ -286,7 +286,7 @@ const CourseCard = ({ course }) => {
                         <span
                             className="
                                 text-[10px]
-                                text-slate-400
+                                text-[var(--faint)]
                             "
                         >
                             Cập nhật {updatedDate}
@@ -303,7 +303,7 @@ const CourseCard = ({ course }) => {
                         justify-between
                         gap-3
                         border-t
-                        border-slate-100/80
+                        border-[var(--line)]/80
                         pt-3
                     "
                 >
@@ -321,7 +321,7 @@ const CourseCard = ({ course }) => {
                                 truncate
                                 text-xs
                                 font-bold
-                                text-[#244DA8]
+                                text-[var(--brand)]
                             "
                         >
                             {priceLabel}
@@ -331,7 +331,7 @@ const CourseCard = ({ course }) => {
                             className="
                                 shrink-0
                                 text-[11px]
-                                text-slate-400
+                                text-[var(--faint)]
                             "
                         >
                             /
@@ -341,7 +341,7 @@ const CourseCard = ({ course }) => {
                             className="
                                 truncate
                                 text-xs
-                                text-slate-500
+                                text-[var(--muted)]
                             "
                         >
                             {durationLabel}

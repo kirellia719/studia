@@ -63,12 +63,12 @@ const StudentBottomNav = () => {
         <nav
             ref={navRef}
             aria-label="Điều hướng chính"
-            className="fixed inset-x-0 bottom-0 z-50 flex h-16 border-t border-[#E5E7EB] bg-white lg:hidden"
+            className="fixed inset-x-0 bottom-0 z-50 flex h-16 border-t border-[var(--line)] bg-[var(--surface)] lg:hidden"
         >
             {/* Một thanh duy nhất — thanh này sẽ di chuyển */}
             <span
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 top-0 h-[3px] w-10 rounded-b-full bg-[#18181B] transition-transform duration-300 ease-out"
+                className="pointer-events-none absolute left-0 top-0 h-[3px] w-10 rounded-b-full bg-[var(--solid)] transition-transform duration-300 ease-out"
                 style={{
                     transform: `translate3d(${indicatorX}px, 0, 0)`,
                     opacity: indicatorVisible ? 1 : 0,
@@ -95,8 +95,8 @@ const StudentBottomNav = () => {
                                     "text-[11px] font-medium",
                                     "transition-colors duration-200",
                                     isActive
-                                        ? "text-[#18181B]"
-                                        : "text-[#71717A]",
+                                        ? "text-[var(--ink)]"
+                                        : "text-[var(--muted)]",
                                 ].join(" ")
                             }
                         >

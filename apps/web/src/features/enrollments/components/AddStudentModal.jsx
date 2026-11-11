@@ -7,15 +7,15 @@ import enrollmentApi from "@/features/enrollments/api.js";
 const STATUS_CONFIG = {
     NOT_ENROLLED: {
         label: "Chưa tham gia",
-        className: "border-blue-100 bg-blue-50 text-blue-700",
+        className: "border-blue-100 bg-[var(--brand-soft)] text-[var(--brand)]",
     },
     ACTIVE: {
         label: "Đang tham gia",
-        className: "border-emerald-100 bg-emerald-50 text-emerald-700",
+        className: "border-emerald-100 bg-[var(--success-soft)] text-[var(--success)]",
     },
     EXPIRED: {
         label: "Đã hết hạn",
-        className: "border-red-100 bg-red-50 text-red-700",
+        className: "border-red-100 bg-[var(--danger-soft)] text-[var(--danger)]",
     },
 };
 
@@ -209,12 +209,12 @@ const AddStudentModal = ({
             }}
         >
             <div
-                className="w-full max-w-[400px] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl"
+                className="w-full max-w-[400px] overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface)] shadow-xl"
                 onMouseDown={(e) => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-                    <h2 className="text-sm font-semibold text-slate-900">
+                <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
+                    <h2 className="text-sm font-semibold text-[var(--ink)]">
                         Thêm học sinh
                     </h2>
 
@@ -222,7 +222,7 @@ const AddStudentModal = ({
                         type="button"
                         onClick={handleClose}
                         disabled={isProcessing}
-                        className="flex h-7 w-7 items-center justify-center rounded-md text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-7 w-7 items-center justify-center rounded-md text-[var(--faint)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink-2)] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         <X size={16} />
                     </button>
@@ -234,7 +234,7 @@ const AddStudentModal = ({
                         <div>
                             <label
                                 htmlFor="studentCode"
-                                className="mb-1.5 block text-[11px] font-medium text-slate-700"
+                                className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
                             >
                                 Mã học sinh
                             </label>
@@ -243,7 +243,7 @@ const AddStudentModal = ({
                                 <div className="relative min-w-0 flex-1">
                                     <Search
                                         size={14}
-                                        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                                        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                                     />
 
                                     <input
@@ -263,7 +263,7 @@ const AddStudentModal = ({
                                         placeholder="Nhập mã học sinh"
                                         autoFocus
                                         disabled={isProcessing}
-                                        className="h-9 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-xs text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-slate-50"
+                                        className="h-9 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] pl-9 pr-3 text-xs text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
                                     />
                                 </div>
 
@@ -273,7 +273,7 @@ const AddStudentModal = ({
                                         isProcessing ||
                                         !studentCode.trim()
                                     }
-                                    className="flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-blue-600 px-3 text-xs font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-[var(--brand-solid)] px-3 text-xs font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     <Search size={14} />
 
@@ -286,21 +286,21 @@ const AddStudentModal = ({
 
                         {/* Result */}
                         {checkResult && (
-                            <div className="mt-4 overflow-hidden rounded-lg border border-slate-200">
+                            <div className="mt-4 overflow-hidden rounded-lg border border-[var(--line)]">
                                 {/* Student */}
                                 <div className="flex items-center gap-3 px-3 py-3">
-                                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-semibold text-blue-600">
+                                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-xs font-semibold text-[var(--brand)]">
                                         {student?.name
                                             ?.charAt(0)
                                             ?.toUpperCase() || "?"}
                                     </div>
 
                                     <div className="min-w-0">
-                                        <p className="truncate text-[13px] font-semibold text-slate-900">
+                                        <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
                                             {student?.name || "--"}
                                         </p>
 
-                                        <p className="mt-0.5 truncate text-[11px] text-slate-500">
+                                        <p className="mt-0.5 truncate text-[11px] text-[var(--muted)]">
                                             {student?.studentCode}
 
                                             {student?.email
@@ -336,14 +336,14 @@ const AddStudentModal = ({
 
                                 {/* Enrollment duration */}
                                 {canAdd && (
-                                    <div className="border-t border-slate-100 px-3 py-3">
+                                    <div className="border-t border-[var(--line)] px-3 py-3">
                                         {/* Duration */}
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[11px] font-medium text-slate-700">
+                                            <span className="text-[11px] font-medium text-[var(--ink-2)]">
                                                 Thời gian
                                             </span>
 
-                                            <span className="text-[11px] font-semibold text-slate-900">
+                                            <span className="text-[11px] font-semibold text-[var(--ink)]">
                                                 {prediction?.durationMonths
                                                     ? `${prediction.durationMonths} tháng`
                                                     : "--"}
@@ -351,12 +351,12 @@ const AddStudentModal = ({
                                         </div>
 
                                         {/* Dates */}
-                                        <div className="mt-3 pt-3 flex justify-between gap-2 border-t border-slate-100">
+                                        <div className="mt-3 pt-3 flex justify-between gap-2 border-t border-[var(--line)]">
                                             {/* Start date */}
                                             <div>
                                                 <label
                                                     htmlFor="startDate"
-                                                    className="mb-1.5 block text-[10px] font-medium text-slate-500"
+                                                    className="mb-1.5 block text-[10px] font-medium text-[var(--muted)]"
                                                 >
                                                     Bắt đầu
                                                 </label>
@@ -374,7 +374,7 @@ const AddStudentModal = ({
                                                             )
                                                     }
                                                     disabled
-                                                    className="h-9 rounded-lg border border-slate-200 bg-slate-50 px-2.5 text-[11px] text-slate-600 outline-none disabled:cursor-default"
+                                                    className="h-9 rounded-lg border border-[var(--line)] bg-[var(--surface-3)] px-2.5 text-[11px] text-[var(--muted)] outline-none disabled:cursor-default"
                                                 />
                                             </div>
 
@@ -387,7 +387,7 @@ const AddStudentModal = ({
                                             <div>
                                                 <label
                                                     htmlFor="expiresAt"
-                                                    className="mb-1.5 block text-[10px] font-medium text-slate-500"
+                                                    className="mb-1.5 block text-[10px] font-medium text-[var(--muted)]"
                                                 >
                                                     Hết hạn
                                                 </label>
@@ -395,7 +395,7 @@ const AddStudentModal = ({
                                                 <div className="relative">
                                                     <CalendarDays
                                                         size={13}
-                                                        className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400"
+                                                        className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-[var(--faint)]"
                                                     />
 
                                                     <input
@@ -413,14 +413,14 @@ const AddStudentModal = ({
                                                         disabled={
                                                             isProcessing
                                                         }
-                                                        className="h-9 w-full rounded-lg border border-slate-200 bg-white pl-8 pr-2 text-[11px] text-slate-700 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-slate-50"
+                                                        className="h-9 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] pl-8 pr-2 text-[11px] text-[var(--ink-2)] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
                                                     />
                                                 </div>
                                             </div>
                                         </div>
 
                                         {prediction?.nextExpiresAt && (
-                                            <p className="mt-1.5 text-right text-[10px] text-slate-400">
+                                            <p className="mt-1.5 text-right text-[10px] text-[var(--faint)]">
                                                 Ngày hết hạn được hệ thống đề xuất
                                             </p>
                                         )}
@@ -431,12 +431,12 @@ const AddStudentModal = ({
                     </div>
 
                     {/* Footer */}
-                    <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-3">
+                    <div className="flex justify-end gap-2 border-t border-[var(--line)] px-4 py-3">
                         <button
                             type="button"
                             onClick={handleClose}
                             disabled={isProcessing}
-                            className="h-8 rounded-lg border border-slate-200 bg-white px-3 text-[11px] font-medium text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="h-8 rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 text-[11px] font-medium text-[var(--muted)] transition hover:bg-[var(--surface-3)] disabled:cursor-not-allowed disabled:opacity-50"
                         >
                             Hủy
                         </button>
@@ -448,7 +448,7 @@ const AddStudentModal = ({
                                 disabled={
                                     isProcessing || !expiresAt
                                 }
-                                className="h-8 rounded-lg bg-blue-600 px-3 text-[11px] font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="h-8 rounded-lg bg-[var(--brand-solid)] px-3 text-[11px] font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 {adding
                                     ? "Đang thêm..."

@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react";
 
 import Logo from "@/components/ui/Logo.jsx";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher.jsx";
 import useAuthStore from "@/stores/authStore";
 import studentMenuItems from "@/components/layout/student/studentMenuItems.js";
 
@@ -22,15 +23,15 @@ const StudentSidebar = () => {
                 "fixed inset-y-0 left-0 z-40",
                 "hidden lg:flex",
                 "w-64 flex-col",
-                "border-r border-[#E5E7EB]",
-                "bg-white",
+                "border-r border-[var(--line)]",
+                "bg-[var(--surface)]",
             ].join(" ")}
         >
             <div className="flex h-16 shrink-0 items-center px-5">
                 <Logo />
             </div>
 
-            <div className="mx-4 h-px bg-[#E5E7EB]" />
+            <div className="mx-4 h-px bg-[var(--line)]" />
 
             <nav
                 aria-label="Điều hướng chính"
@@ -51,8 +52,8 @@ const StudentSidebar = () => {
                                         "rounded-lg px-3 py-2.5 pl-4",
                                         "text-[14px] font-medium",
                                         isActive
-                                            ? "bg-[#F1F2F4] text-[#18181B]"
-                                            : "text-[#52525B] hover:bg-[#F6F6F7] hover:text-[#18181B]",
+                                            ? "bg-[var(--bg)] text-[var(--ink)]"
+                                            : "text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--ink)]",
                                     ].join(" ")
                                 }
                             >
@@ -65,7 +66,7 @@ const StudentSidebar = () => {
                                                 "h-5 w-[3px]",
                                                 "rounded-r-full",
                                                 isActive
-                                                    ? "bg-[#18181B]"
+                                                    ? "bg-[var(--solid)]"
                                                     : "opacity-0",
                                             ].join(" ")}
                                         />
@@ -79,8 +80,8 @@ const StudentSidebar = () => {
                                             }
                                             className={
                                                 isActive
-                                                    ? "text-[#18181B]"
-                                                    : "text-[#71717A] group-hover:text-[#18181B]"
+                                                    ? "text-[var(--ink)]"
+                                                    : "text-[var(--muted)] group-hover:text-[var(--ink)]"
                                             }
                                         />
 
@@ -95,9 +96,9 @@ const StudentSidebar = () => {
                 </div>
             </nav>
 
-            <div className="border-t border-[#E5E7EB] p-3">
+            <div className="border-t border-[var(--line)] p-3">
                 <div className="flex items-center gap-3 px-2 py-2">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F0F0F1] text-[#52525B]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--muted)]">
                         {user?.avatar ? (
                             <img
                                 src={user.avatar}
@@ -110,18 +111,20 @@ const StudentSidebar = () => {
                     </div>
 
                     <div className="min-w-0">
-                        <p className="truncate text-[13px] font-semibold text-[#18181B]">
+                        <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
                             {user?.fullName ||
                                 user?.name ||
                                 "Học viên"}
                         </p>
 
-                        <p className="truncate text-[12px] text-[#71717A]">
+                        <p className="truncate text-[12px] text-[var(--muted)]">
                             {user?.email ||
                                 "Tài khoản học viên"}
                         </p>
                     </div>
                 </div>
+
+                <ThemeSwitcher className="mt-2" />
 
                 <button
                     type="button"
@@ -129,10 +132,10 @@ const StudentSidebar = () => {
                     className={[
                         "mt-2 flex w-full items-center gap-3",
                         "rounded-lg px-3 py-2.5",
-                        "text-[14px] font-medium text-[#71717A]",
+                        "text-[14px] font-medium text-[var(--muted)]",
                         "transition-colors duration-150",
-                        "hover:bg-[#FEF2F2]",
-                        "hover:text-[#DC2626]",
+                        "hover:bg-[var(--danger-soft)]",
+                        "hover:text-[var(--danger)]",
                     ].join(" ")}
                 >
                     <LogOut size={18} strokeWidth={1.9} />

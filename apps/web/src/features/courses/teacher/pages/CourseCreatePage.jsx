@@ -186,12 +186,12 @@ const CourseCreatePage = () => {
      */
 
     return (
-        <div className="min-h-full bg-[#F7F7FF] pb-6">
+        <div className="min-h-full bg-[var(--bg)] pb-6">
             {/* ==========================================
                 Breadcrumb
             ========================================== */}
 
-            <div className="sticky top-0 z-30 border-b border-gray-100 bg-white px-4 py-3">
+            <div className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--surface)] px-4 py-3">
                 <Breadcrumb
                     items={[
                         {
@@ -215,7 +215,7 @@ const CourseCreatePage = () => {
 
                 <form
                     onSubmit={handleSubmit}
-                    className="rounded-md border border-gray-100 bg-white p-4 shadow-sm"
+                    className="rounded-md border border-[var(--line)] bg-[var(--surface)] p-4 shadow-sm"
                 >
                     <div className="space-y-4">
                         {/* Title */}
@@ -223,10 +223,10 @@ const CourseCreatePage = () => {
                         <div>
                             <label
                                 htmlFor="course-title"
-                                className="mb-2 block text-sm font-semibold text-gray-700"
+                                className="mb-2 block text-sm font-semibold text-[var(--ink-2)]"
                             >
                                 Tên khóa học
-                                <span className="ml-1 text-red-500">
+                                <span className="ml-1 text-[var(--danger)]">
                                     *
                                 </span>
                             </label>
@@ -241,7 +241,7 @@ const CourseCreatePage = () => {
                                 placeholder="Ví dụ: React cơ bản"
                                 disabled={loading}
                                 maxLength={150}
-                                className="w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#6C5CE7] focus:ring-2 focus:ring-[#6C5CE7]/20 disabled:bg-gray-100"
+                                className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                             />
                         </div>
 
@@ -250,7 +250,7 @@ const CourseCreatePage = () => {
                         <div>
                             <label
                                 htmlFor="course-description"
-                                className="mb-2 block text-sm font-semibold text-gray-700"
+                                className="mb-2 block text-sm font-semibold text-[var(--ink-2)]"
                             >
                                 Mô tả
                             </label>
@@ -267,7 +267,7 @@ const CourseCreatePage = () => {
                                 disabled={loading}
                                 rows={5}
                                 maxLength={1000}
-                                className="w-full resize-none rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#6C5CE7] focus:ring-2 focus:ring-[#6C5CE7]/20 disabled:bg-gray-100"
+                                className="w-full resize-none rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                             />
                         </div>
 
@@ -281,7 +281,7 @@ const CourseCreatePage = () => {
                             <div>
                                 <label
                                     htmlFor="course-price"
-                                    className="mb-2 block text-sm font-semibold text-gray-700"
+                                    className="mb-2 block text-sm font-semibold text-[var(--ink-2)]"
                                 >
                                     Giá khóa học
                                 </label>
@@ -300,15 +300,15 @@ const CourseCreatePage = () => {
                                         }
                                         placeholder="0"
                                         disabled={loading}
-                                        className="w-full rounded-md border border-gray-200 bg-white px-4 py-3 pr-16 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#6C5CE7] focus:ring-2 focus:ring-[#6C5CE7]/20 disabled:bg-gray-100"
+                                        className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                                     />
 
-                                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-400">
+                                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-[var(--faint)]">
                                         nghìn
                                     </span>
                                 </div>
 
-                                <p className="mt-1.5 text-xs text-gray-400">
+                                <p className="mt-1.5 text-xs text-[var(--faint)]">
                                     Nhập 0 nếu khóa học miễn phí.
                                 </p>
                             </div>
@@ -318,7 +318,7 @@ const CourseCreatePage = () => {
                             <div>
                                 <label
                                     htmlFor="course-duration"
-                                    className="mb-2 block text-sm font-semibold text-gray-700"
+                                    className="mb-2 block text-sm font-semibold text-[var(--ink-2)]"
                                 >
                                     Thời hạn khóa học
                                 </label>
@@ -337,15 +337,15 @@ const CourseCreatePage = () => {
                                         }
                                         placeholder="Ví dụ: 3"
                                         disabled={loading}
-                                        className="w-full rounded-md border border-gray-200 bg-white px-4 py-3 pr-16 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#6C5CE7] focus:ring-2 focus:ring-[#6C5CE7]/20 disabled:bg-gray-100"
+                                        className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                                     />
 
-                                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-400">
+                                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-[var(--faint)]">
                                         tháng
                                     </span>
                                 </div>
 
-                                <p className="mt-1.5 text-xs text-gray-400">
+                                <p className="mt-1.5 text-xs text-[var(--faint)]">
                                     Có thể để trống nếu không
                                     giới hạn thời hạn.
                                 </p>
@@ -357,7 +357,7 @@ const CourseCreatePage = () => {
                         ========================================== */}
 
                         <div>
-                            <label className="mb-2 block text-sm font-semibold text-gray-700">
+                            <label className="mb-2 block text-sm font-semibold text-[var(--ink-2)]">
                                 Ảnh khóa học
                             </label>
 
@@ -371,7 +371,7 @@ const CourseCreatePage = () => {
                             />
 
                             {thumbnailPreview ? (
-                                <div className="relative overflow-hidden rounded-xl border border-gray-200">
+                                <div className="relative overflow-hidden rounded-xl border border-[var(--line)]">
                                     <img
                                         src={thumbnailPreview}
                                         alt="Xem trước ảnh khóa học"
@@ -396,7 +396,7 @@ const CourseCreatePage = () => {
                                         fileInputRef.current?.click()
                                     }
                                     disabled={loading}
-                                    className="flex aspect-video w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 text-gray-400 transition hover:border-[#6C5CE7]/50 hover:bg-[#6C5CE7]/5 hover:text-[#6C5CE7] disabled:cursor-not-allowed disabled:opacity-60"
+                                    className="flex aspect-video w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-3)] text-[var(--faint)] transition hover:border-[var(--brand)]/50 hover:bg-[var(--brand-solid)]/5 hover:text-[var(--brand)] disabled:cursor-not-allowed disabled:opacity-60"
                                 >
                                     <ImagePlus size={32} />
 
@@ -417,25 +417,25 @@ const CourseCreatePage = () => {
                         Actions
                     ========================================== */}
 
-                    <div className="mt-8 flex items-center justify-end gap-3 border-t border-[#E4E1F2] pt-6">
+                    <div className="mt-8 flex items-center justify-end gap-3 border-t border-[var(--line)] pt-6">
                         <button
                             type="button"
                             onClick={handleBack}
                             disabled={loading}
                             className="
             rounded-sm
-            border border-[#E4E1F2]
-            bg-white
+            border border-[var(--line)]
+            bg-[var(--surface)]
             px-5 py-2.5
             text-sm font-semibold
-            text-[#5F5A78]
+            text-[var(--muted)]
             transition
-            hover:border-[#244DA8]/30
-            hover:bg-[#F5F8FF]
-            hover:text-[#244DA8]
+            hover:border-[var(--brand)]/30
+            hover:bg-[var(--surface-3)]
+            hover:text-[var(--brand)]
             focus:outline-none
             focus:ring-2
-            focus:ring-[#244DA8]/20
+            focus:ring-[var(--brand)]/20
             disabled:cursor-not-allowed
             disabled:opacity-60
         "
@@ -448,17 +448,17 @@ const CourseCreatePage = () => {
                             disabled={loading}
                             className="
             rounded-sm
-            bg-[#244DA8]
+            bg-[var(--brand-solid)]
             px-5 py-2.5
             text-sm font-semibold
             text-white
             shadow-sm
             transition
-            hover:bg-[#1D408F]
+            hover:bg-[var(--brand-solid)]
             hover:shadow-md
             focus:outline-none
             focus:ring-2
-            focus:ring-[#244DA8]/30
+            focus:ring-[var(--brand)]/30
             disabled:cursor-not-allowed
             disabled:opacity-60
             disabled:shadow-none

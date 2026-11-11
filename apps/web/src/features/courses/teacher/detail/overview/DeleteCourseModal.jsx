@@ -50,7 +50,7 @@ const DeleteCourseModal = ({
                     w-full
                     max-w-md
                     rounded-md
-                    bg-white
+                    bg-[var(--surface)]
                     shadow-xl
                 "
                 onMouseDown={(event) =>
@@ -66,7 +66,7 @@ const DeleteCourseModal = ({
                         justify-between
                         gap-4
                         border-b
-                        border-gray-100
+                        border-[var(--line)]
                         px-5
                         py-4
                     "
@@ -87,8 +87,8 @@ const DeleteCourseModal = ({
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-red-50
-                                text-red-500
+                                bg-[var(--danger-soft)]
+                                text-[var(--danger)]
                             "
                         >
                             <AlertTriangle
@@ -100,7 +100,7 @@ const DeleteCourseModal = ({
                             className="
                                     text-base
                                     font-semibold
-                                    text-gray-900
+                                    text-[var(--ink)]
                                 "
                         >
                             Xóa khóa học
@@ -119,10 +119,10 @@ const DeleteCourseModal = ({
                             items-center
                             justify-center
                             rounded-md
-                            text-gray-400
+                            text-[var(--faint)]
                             transition
-                            hover:bg-gray-100
-                            hover:text-gray-600
+                            hover:bg-[var(--surface-2)]
+                            hover:text-[var(--muted)]
                             disabled:cursor-not-allowed
                             disabled:opacity-50
                         "
@@ -139,7 +139,7 @@ const DeleteCourseModal = ({
                         className="
                             text-sm
                             leading-6
-                            text-gray-600
+                            text-[var(--muted)]
                         "
                     >
                         Để xác nhận, hãy nhập chính xác
@@ -162,18 +162,18 @@ const DeleteCourseModal = ({
                             w-full
                             rounded-md
                             border
-                            border-gray-200
+                            border-[var(--line)]
                             px-3
                             py-2.5
                             text-sm
-                            text-gray-900
+                            text-[var(--ink)]
                             outline-none
                             transition
-                            placeholder:text-gray-400
+                            placeholder:text-[var(--faint)]
                             focus:border-red-400
                             focus:ring-2
                             focus:ring-red-100
-                            disabled:bg-gray-100
+                            disabled:bg-[var(--surface-2)]
                         "
                     />
                 </div>
@@ -187,7 +187,7 @@ const DeleteCourseModal = ({
                         justify-end
                         gap-2
                         border-t
-                        border-gray-100
+                        border-[var(--line)]
                         px-5
                         py-4
                     "
@@ -199,14 +199,14 @@ const DeleteCourseModal = ({
                         className="
                             rounded-md
                             border
-                            border-gray-200
+                            border-[var(--line)]
                             px-4
                             py-2.5
                             text-sm
                             font-medium
-                            text-gray-600
+                            text-[var(--muted)]
                             transition
-                            hover:bg-gray-50
+                            hover:bg-[var(--surface-3)]
                             disabled:cursor-not-allowed
                             disabled:opacity-50
                         "
@@ -223,14 +223,14 @@ const DeleteCourseModal = ({
                         }
                         className="
                             rounded-md
-                            bg-red-500
+                            bg-[var(--danger-solid)]
                             px-4
                             py-2.5
                             text-sm
                             font-semibold
                             text-white
                             transition
-                            hover:bg-red-600
+                            hover:bg-[var(--danger-solid)]
                             disabled:cursor-not-allowed
                             disabled:opacity-40
                         "

@@ -10,7 +10,7 @@ const StudentLayout = () => {
     const mainRef = useRef(null);
 
     return (
-        <div className="min-h-dvh bg-[#F8FAFC]">
+        <div className="app-canvas min-h-dvh">
             <ScrollToTop scrollRef={mainRef} />
 
             <StudentSidebar />
@@ -21,7 +21,7 @@ const StudentLayout = () => {
                 className={[
                     "min-h-dvh",
                     "overflow-y-auto",
-                    "bg-[#F8FAFC]",
+                    "app-canvas",
                     "pb-16",
                     "lg:ml-64",
                     "lg:h-dvh",

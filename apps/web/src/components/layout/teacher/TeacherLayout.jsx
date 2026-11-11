@@ -4,7 +4,7 @@ import TeacherSidebar from "@/components/layout/teacher/TeacherSidebar.jsx";
 
 const TeacherLayout = () => {
     return (
-        <div className="min-h-dvh bg-[#F7F7FF]">
+        <div className="app-canvas min-h-dvh">
             <TeacherSidebar />
 
             <main

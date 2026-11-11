@@ -167,18 +167,18 @@ const LessonDocuments = ({
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#F4F4F5] text-[#52525B]">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--surface-2)] text-[var(--muted)]">
           <FileText
             size={16}
             strokeWidth={1.8}
           />
         </div>
         <div className="min-w-0">
-          <h2 className="text-sm font-semibold text-[#18181B]">
+          <h2 className="text-sm font-semibold text-[var(--ink)]">
             Tài liệu
           </h2>
 
-          <p className="mt-0.5 text-[11px] text-[#A1A1AA]">
+          <p className="mt-0.5 text-[11px] text-[var(--faint)]">
             {documents.length > 0
               ? `${documents.length} tài liệu`
               : "Chưa có tài liệu"}
@@ -193,13 +193,13 @@ const LessonDocuments = ({
             "text-[11px] font-medium",
             "transition-colors",
             uploading
-              ? "pointer-events-none border-[#E4E4E7] text-[#A1A1AA]"
+              ? "pointer-events-none border-[var(--line)] text-[var(--faint)]"
               : [
-                "border-[#E4E4E7]",
-                "bg-white text-[#52525B]",
-                "hover:border-[#D4D4D8]",
-                "hover:bg-[#FAFAFA]",
-                "hover:text-[#18181B]",
+                "border-[var(--line)]",
+                "bg-[var(--surface)] text-[var(--muted)]",
+                "hover:border-[var(--line-strong)]",
+                "hover:bg-[var(--surface-3)]",
+                "hover:text-[var(--ink)]",
               ].join(" "),
           ].join(" ")}
         >
@@ -219,7 +219,7 @@ const LessonDocuments = ({
 
       {/* Documents */}
       {documents.length > 0 ? (
-        <div className="divide-y divide-[#F4F4F5] rounded-xl border border-[#E4E4E7]">
+        <div className="divide-y divide-[var(--surface-2)] rounded-xl border border-[var(--line)]">
           {documents.map((document, index) => {
             const fileName = getDocumentName(
               document,
@@ -244,7 +244,7 @@ const LessonDocuments = ({
                   "flex items-center gap-3",
                   "px-3 py-3",
                   "transition-colors",
-                  "hover:bg-[#FAFAFA]",
+                  "hover:bg-[var(--surface-3)]",
                 ].join(" ")}
               >
                 {/* Icon */}
@@ -270,13 +270,13 @@ const LessonDocuments = ({
                 {/* Info */}
                 <div className="min-w-0 flex-1">
                   <p
-                    className="truncate text-xs font-medium text-[#3F3F46]"
+                    className="truncate text-xs font-medium text-[var(--ink-2)]"
                     title={fileName}
                   >
                     {fileName}
                   </p>
 
-                  <p className="mt-0.5 text-[10px] text-[#A1A1AA]">
+                  <p className="mt-0.5 text-[10px] text-[var(--faint)]">
                     {fileType}
                     {document.size
                       ? ` · ${formatFileSize(
@@ -299,10 +299,10 @@ const LessonDocuments = ({
                       "flex h-8 w-8",
                       "items-center justify-center",
                       "rounded-lg",
-                      "text-[#A1A1AA]",
+                      "text-[var(--faint)]",
                       "transition-colors",
-                      "hover:bg-[#EFF6FF]",
-                      "hover:text-[#2563EB]",
+                      "hover:bg-[var(--brand-soft)]",
+                      "hover:text-[var(--brand)]",
                       "disabled:cursor-not-allowed",
                       "disabled:opacity-40",
                     ].join(" ")}
@@ -326,17 +326,17 @@ const LessonDocuments = ({
                       "flex h-8 w-8",
                       "items-center justify-center",
                       "rounded-lg",
-                      "text-[#A1A1AA]",
+                      "text-[var(--faint)]",
                       "transition-colors",
-                      "hover:bg-[#FEF2F2]",
-                      "hover:text-[#DC2626]",
+                      "hover:bg-[var(--danger-soft)]",
+                      "hover:text-[var(--danger)]",
                       "disabled:cursor-not-allowed",
                       "disabled:opacity-40",
                     ].join(" ")}
                     title="Xóa"
                   >
                     {isDeleting ? (
-                      <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-[#E4E4E7] border-t-[#DC2626]" />
+                      <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-[var(--line)] border-t-[var(--danger)]" />
                     ) : (
                       <Trash2 size={14} />
                     )}
@@ -352,24 +352,24 @@ const LessonDocuments = ({
             "flex min-h-32 cursor-pointer",
             "flex-col items-center justify-center",
             "rounded-xl border border-dashed",
-            "border-[#D4D4D8]",
-            "bg-[#FAFAFA]",
+            "border-[var(--line-strong)]",
+            "bg-[var(--surface-3)]",
             "px-4 text-center",
             "transition-colors",
-            "hover:border-[#A1A1AA]",
-            "hover:bg-white",
+            "hover:border-[var(--faint)]",
+            "hover:bg-[var(--surface)]",
           ].join(" ")}
         >
           <Upload
             size={18}
-            className="text-[#A1A1AA]"
+            className="text-[var(--faint)]"
           />
 
-          <p className="mt-2 text-xs font-medium text-[#52525B]">
+          <p className="mt-2 text-xs font-medium text-[var(--muted)]">
             Thêm tài liệu
           </p>
 
-          <p className="mt-1 text-[10px] text-[#A1A1AA]">
+          <p className="mt-1 text-[10px] text-[var(--faint)]">
             PDF, Word, PowerPoint, Excel
           </p>
 
@@ -383,7 +383,7 @@ const LessonDocuments = ({
         </label>
       )}
 
-      <p className="text-[10px] leading-4 text-[#A1A1AA]">
+      <p className="text-[10px] leading-4 text-[var(--faint)]">
         PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX · tối đa
         20MB/file
       </p>

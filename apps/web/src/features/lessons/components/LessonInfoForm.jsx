@@ -273,10 +273,10 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                 <div>
                     <label
                         htmlFor="lesson-title"
-                        className="mb-1.5 block text-xs font-medium text-[#3F3F46]"
+                        className="mb-1.5 block text-xs font-medium text-[var(--ink-2)]"
                     >
                         Tên bài học
-                        <span className="ml-1 text-[#DC2626]">
+                        <span className="ml-1 text-[var(--danger)]">
                             *
                         </span>
                     </label>
@@ -295,14 +295,14 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         placeholder="Nhập tên bài học..."
                         className={[
                             "w-full rounded-lg",
-                            "border border-[#E4E4E7]",
-                            "bg-white px-3 py-2.5",
-                            "text-sm text-[#18181B]",
+                            "border border-[var(--line)]",
+                            "bg-[var(--surface)] px-3 py-2.5",
+                            "text-sm text-[var(--ink)]",
                             "outline-none",
-                            "placeholder:text-[#A1A1AA]",
-                            "focus:border-[#18181B]",
+                            "placeholder:text-[var(--faint)]",
+                            "focus:border-[var(--ink)]",
                             "focus:ring-2 focus:ring-black/[0.04]",
-                            "disabled:bg-[#F4F4F5]",
+                            "disabled:bg-[var(--surface-2)]",
                         ].join(" ")}
                     />
                 </div>
@@ -311,12 +311,12 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                     <div className="mb-1.5 flex items-center justify-between">
                         <label
                             htmlFor="lesson-description"
-                            className="text-xs font-medium text-[#3F3F46]"
+                            className="text-xs font-medium text-[var(--ink-2)]"
                         >
                             Mô tả
                         </label>
 
-                        <span className="text-[10px] text-[#A1A1AA]">
+                        <span className="text-[10px] text-[var(--faint)]">
                             Không bắt buộc
                         </span>
                     </div>
@@ -335,21 +335,21 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         placeholder="Mô tả ngắn về bài học..."
                         className={[
                             "w-full resize-y rounded-lg",
-                            "border border-[#E4E4E7]",
-                            "bg-white px-3 py-2.5",
-                            "text-sm leading-6 text-[#18181B]",
+                            "border border-[var(--line)]",
+                            "bg-[var(--surface)] px-3 py-2.5",
+                            "text-sm leading-6 text-[var(--ink)]",
                             "outline-none",
-                            "placeholder:text-[#A1A1AA]",
-                            "focus:border-[#18181B]",
+                            "placeholder:text-[var(--faint)]",
+                            "focus:border-[var(--ink)]",
                             "focus:ring-2 focus:ring-black/[0.04]",
-                            "disabled:bg-[#F4F4F5]",
+                            "disabled:bg-[var(--surface-2)]",
                         ].join(" ")}
                     />
                 </div>
 
                 <div>
                     <div className="mb-2">
-                        <p className="text-xs font-medium text-[#3F3F46]">
+                        <p className="text-xs font-medium text-[var(--ink-2)]">
                             Quyền truy cập
                         </p>
                     </div>
@@ -365,8 +365,8 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                             "rounded-lg border px-3 py-2.5",
                             "text-left transition-colors",
                             form.isFree
-                                ? "border-[#BBF7D0] bg-[#F0FDF4]"
-                                : "border-[#E4E4E7] bg-white hover:bg-[#FAFAFA]",
+                                ? "border-[var(--success-soft)] bg-[var(--success-soft)]"
+                                : "border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-3)]",
                             saving
                                 ? "cursor-not-allowed opacity-60"
                                 : "",
@@ -377,14 +377,14 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                                 className={[
                                     "text-xs font-medium",
                                     form.isFree
-                                        ? "text-[#15803D]"
-                                        : "text-[#3F3F46]",
+                                        ? "text-[var(--success)]"
+                                        : "text-[var(--ink-2)]",
                                 ].join(" ")}
                             >
                                 Bài học miễn phí
                             </p>
 
-                            <p className="mt-0.5 text-[10px] text-[#A1A1AA]">
+                            <p className="mt-0.5 text-[10px] text-[var(--faint)]">
                                 {form.isFree
                                     ? "Học viên có thể xem miễn phí."
                                     : "Chỉ dành cho học viên của khóa học."}
@@ -396,14 +396,14 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                                 "relative h-5 w-9 shrink-0 rounded-full",
                                 "transition-colors",
                                 form.isFree
-                                    ? "bg-[#16A34A]"
-                                    : "bg-[#D4D4D8]",
+                                    ? "bg-[var(--success)]"
+                                    : "bg-[var(--line-strong)]",
                             ].join(" ")}
                         >
                             <span
                                 className={[
                                     "absolute top-0.5 h-4 w-4 rounded-full",
-                                    "bg-white shadow-sm",
+                                    "bg-[var(--surface)] shadow-sm",
                                     "transition-transform",
                                     form.isFree
                                         ? "translate-x-4"
@@ -416,20 +416,20 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
             </section>
 
             {/* Video */}
-            <section className="border-t border-[#F4F4F5] pt-5">
+            <section className="border-t border-[var(--surface-2)] pt-5">
                 <div className="mb-3 flex items-center justify-between gap-3">
                     <div>
-                        <p className="text-xs font-medium text-[#3F3F46]">
+                        <p className="text-xs font-medium text-[var(--ink-2)]">
                             Video bài học
                         </p>
 
-                        <p className="mt-1 text-[10px] text-[#A1A1AA]">
+                        <p className="mt-1 text-[10px] text-[var(--faint)]">
                             MP4, WebM, MOV · tối đa 500MB
                         </p>
                     </div>
 
                     {lesson.duration > 0 && (
-                        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#F4F4F5] px-2 py-1 text-[10px] text-[#71717A]">
+                        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[var(--surface-2)] px-2 py-1 text-[10px] text-[var(--muted)]">
                             <Clock3 size={11} />
                             {formatDuration(
                                 lesson.duration
@@ -439,7 +439,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                 </div>
 
                 {form.videoFile ? (
-                    <div className="overflow-hidden rounded-lg border border-[#E4E4E7]">
+                    <div className="overflow-hidden rounded-lg border border-[var(--line)]">
                         <video
                             src={videoPreview}
                             controls
@@ -448,11 +448,11 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
 
                         <div className="flex items-center justify-between gap-3 p-3">
                             <div className="min-w-0">
-                                <p className="truncate text-xs font-medium text-[#3F3F46]">
+                                <p className="truncate text-xs font-medium text-[var(--ink-2)]">
                                     {form.videoFile.name}
                                 </p>
 
-                                <p className="mt-0.5 text-[10px] text-[#A1A1AA]">
+                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
                                     {formatFileSize(
                                         form.videoFile.size
                                     )}
@@ -465,7 +465,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                                     onClick={
                                         handleRemoveNewVideo
                                     }
-                                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#A1A1AA] hover:bg-[#FEF2F2] hover:text-[#DC2626]"
+                                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[var(--faint)] hover:bg-[var(--danger-soft)] hover:text-[var(--danger)]"
                                 >
                                     <Trash2 size={15} />
                                 </button>
@@ -474,7 +474,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
 
                         {saving && (
                             <div className="px-3 pb-3">
-                                <div className="mb-1 flex justify-between text-[10px] text-[#71717A]">
+                                <div className="mb-1 flex justify-between text-[10px] text-[var(--muted)]">
                                     <span>
                                         {uploadProgress >=
                                             100
@@ -487,9 +487,9 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                                     </span>
                                 </div>
 
-                                <div className="h-1 overflow-hidden rounded-full bg-[#E4E4E7]">
+                                <div className="h-1 overflow-hidden rounded-full bg-[var(--line)]">
                                     <div
-                                        className="h-full rounded-full bg-[#18181B] transition-all"
+                                        className="h-full rounded-full bg-[var(--solid)] transition-all"
                                         style={{
                                             width: `${uploadProgress}%`,
                                         }}
@@ -499,7 +499,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         )}
                     </div>
                 ) : lesson.video ? (
-                    <div className="overflow-hidden rounded-lg border border-[#E4E4E7]">
+                    <div className="overflow-hidden rounded-lg border border-[var(--line)]">
                         <video
                             src={getUrl(lesson.video)}
                             controls
@@ -508,7 +508,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
 
                         <div className="flex flex-col gap-2.5 p-3 sm:flex-row sm:items-center sm:justify-between">
 
-                            <label className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-[#E4E4E7] bg-white px-3 py-2 text-[11px] font-medium text-[#52525B] hover:bg-[#FAFAFA] hover:text-[#18181B]">
+                            <label className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-2 text-[11px] font-medium text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--ink)]">
                                 <Upload size={13} />
                                 Thay video
 
@@ -525,17 +525,17 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         </div>
                     </div>
                 ) : (
-                    <label className="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#D4D4D8] bg-[#FAFAFA] px-4 text-center hover:border-[#A1A1AA] hover:bg-white">
+                    <label className="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[var(--line-strong)] bg-[var(--surface-3)] px-4 text-center hover:border-[var(--faint)] hover:bg-[var(--surface)]">
                         <Upload
                             size={20}
-                            className="text-[#71717A]"
+                            className="text-[var(--muted)]"
                         />
 
-                        <span className="mt-2 text-xs font-medium text-[#3F3F46]">
+                        <span className="mt-2 text-xs font-medium text-[var(--ink-2)]">
                             Chọn video
                         </span>
 
-                        <span className="mt-1 text-[10px] text-[#A1A1AA]">
+                        <span className="mt-1 text-[10px] text-[var(--faint)]">
                             MP4, WebM, MOV · tối đa 500MB
                         </span>
 
@@ -551,16 +551,16 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
             </section>
 
             {/* Save */}
-            <div className="flex justify-end border-t border-[#F4F4F5] pt-4">
+            <div className="flex justify-end border-t border-[var(--surface-2)] pt-4">
                 <button
                     type="submit"
                     disabled={saving}
                     className={[
                         "inline-flex w-full items-center justify-center gap-2",
-                        "rounded-lg bg-[#18181B]",
+                        "rounded-lg bg-[var(--solid)]",
                         "px-4 py-2.5",
                         "text-xs font-semibold text-white",
-                        "hover:bg-[#27272A]",
+                        "hover:bg-[var(--solid-hover)]",
                         "disabled:cursor-not-allowed disabled:opacity-50",
                         "sm:w-auto",
                     ].join(" ")}

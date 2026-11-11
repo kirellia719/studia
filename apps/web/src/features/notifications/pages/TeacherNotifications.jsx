@@ -64,19 +64,19 @@ const TeacherNotifications = () => {
                 Header
             ================================== */}
 
-            <div className="border border-gray-100 bg-white p-4">
+            <div className="border border-[var(--line)] bg-[var(--surface)] p-4">
                 <div className="flex items-center gap-2">
                     <Bell
                         size={18}
-                        className="text-[#6C5CE7]"
+                        className="text-[var(--brand)]"
                     />
 
-                    <h1 className="text-base font-semibold text-[#252238]">
+                    <h1 className="text-base font-semibold text-[var(--ink)]">
                         Thông báo
                     </h1>
                 </div>
 
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-[var(--muted)]">
                     Các thông báo và yêu cầu cần bạn
                     xử lý.
                 </p>
@@ -87,7 +87,7 @@ const TeacherNotifications = () => {
             ================================== */}
 
             {notifications.length === 0 ? (
-                <div className="border border-gray-100 bg-white px-4 py-12 text-center">
+                <div className="border border-[var(--line)] bg-[var(--surface)] px-4 py-12 text-center">
                     <div
                         className="
                             mx-auto
@@ -97,18 +97,18 @@ const TeacherNotifications = () => {
                             items-center
                             justify-center
                             rounded-full
-                            bg-gray-50
-                            text-gray-400
+                            bg-[var(--surface-3)]
+                            text-[var(--faint)]
                         "
                     >
                         <Bell size={21} />
                     </div>
 
-                    <p className="mt-3 text-sm font-medium text-gray-600">
+                    <p className="mt-3 text-sm font-medium text-[var(--muted)]">
                         Không có thông báo mới
                     </p>
 
-                    <p className="mt-1 text-xs text-gray-400">
+                    <p className="mt-1 text-xs text-[var(--faint)]">
                         Hiện tại bạn không có thông báo
                         nào cần xử lý.
                     </p>

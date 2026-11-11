@@ -16,7 +16,7 @@ const LearningVideo = ({ lesson, onComplete }) => {
 
   if (!lesson) {
     return (
-      <section className="flex aspect-video w-full items-center justify-center rounded-lg border border-[#E4E1F2] bg-white shadow-sm">
+      <section className="flex aspect-video w-full items-center justify-center rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-sm">
         <div className="text-center">
           <CirclePlay
             size={36}
@@ -24,7 +24,7 @@ const LearningVideo = ({ lesson, onComplete }) => {
             className="mx-auto mb-3 text-gray-300"
           />
 
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-sm font-medium text-[var(--muted)]">
             Chưa có bài học để hiển thị.
           </p>
         </div>
@@ -56,9 +56,9 @@ const LearningVideo = ({ lesson, onComplete }) => {
   };
 
   return (
-    <section className="overflow-hidden rounded-lg border border-[#E4E1F2] bg-white shadow-sm">
+    <section className="overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-sm">
       {/* Video */}
-      <div className="relative aspect-video bg-[#171522]">
+      <div className="relative aspect-video bg-[var(--solid)]">
         {lesson.video && !videoFailed ? (
           <video
             ref={videoRef}

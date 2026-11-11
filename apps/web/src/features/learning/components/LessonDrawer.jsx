@@ -63,7 +63,7 @@ const LessonDrawer = ({
                     w-full
                     max-w-2xl
                     rounded-t-xl
-                    bg-white
+                    bg-[var(--surface)]
                     shadow-2xl
                     transition-transform
                     duration-300
@@ -75,16 +75,16 @@ const LessonDrawer = ({
                 `}
             >
                 {/* Header */}
-                <div className="border-b border-gray-100 px-4 py-3.5">
+                <div className="border-b border-[var(--line)] px-4 py-3.5">
                     <div className="flex items-center gap-3">
                         <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
-                                <h2 className="text-sm font-semibold text-[#252238]">
+                                <h2 className="text-sm font-semibold text-[var(--ink)]">
                                     Danh sách bài học
                                 </h2>
 
                                 {isCourseCompleted && (
-                                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E9F8F0] text-[#15803D]">
+                                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--success-soft)] text-[var(--success)]">
                                         <Check
                                             size={12}
                                             strokeWidth={2.5}
@@ -93,7 +93,7 @@ const LessonDrawer = ({
                                 )}
                             </div>
 
-                            <p className="mt-0.5 text-[11px] text-gray-400">
+                            <p className="mt-0.5 text-[11px] text-[var(--faint)]">
                                 {isCourseCompleted
                                     ? "Đã hoàn thành toàn bộ khóa học"
                                     : `${completedCount} / ${totalLessons} bài đã hoàn thành`}
@@ -111,10 +111,10 @@ const LessonDrawer = ({
                                 items-center
                                 justify-center
                                 rounded-md
-                                text-gray-400
+                                text-[var(--faint)]
                                 transition
-                                hover:bg-gray-100
-                                hover:text-gray-600
+                                hover:bg-[var(--surface-2)]
+                                hover:text-[var(--muted)]
                             "
                             aria-label="Đóng"
                         >
@@ -126,7 +126,7 @@ const LessonDrawer = ({
                     {totalLessons > 0 && (
                         <div className="mt-3">
                             <div className="mb-1.5 flex items-center justify-between">
-                                <span className="text-[10px] font-medium text-gray-400">
+                                <span className="text-[10px] font-medium text-[var(--faint)]">
                                     Tiến độ
                                 </span>
 
@@ -135,8 +135,8 @@ const LessonDrawer = ({
                                         text-[10px]
                                         font-semibold
                                         ${isCourseCompleted
-                                            ? "text-[#15803D]"
-                                            : "text-[#5B4BD6]"
+                                            ? "text-[var(--success)]"
+                                            : "text-[var(--brand-strong)]"
                                         }
                                     `}
                                 >
@@ -144,7 +144,7 @@ const LessonDrawer = ({
                                 </span>
                             </div>
 
-                            <div className="h-1.5 overflow-hidden rounded-full bg-[#EEEAFB]">
+                            <div className="h-1.5 overflow-hidden rounded-full bg-[var(--brand-soft)]">
                                 <div
                                     className={`
                                         h-full
@@ -152,8 +152,8 @@ const LessonDrawer = ({
                                         transition-all
                                         duration-300
                                         ${isCourseCompleted
-                                            ? "bg-[#2E9B61]"
-                                            : "bg-[#6C5CE7]"
+                                            ? "bg-[var(--success)]"
+                                            : "bg-[var(--brand-solid)]"
                                         }
                                     `}
                                     style={{
@@ -174,7 +174,7 @@ const LessonDrawer = ({
                                 className="mx-auto mb-2 text-gray-300"
                             />
 
-                            <p className="text-xs text-gray-400">
+                            <p className="text-xs text-[var(--faint)]">
                                 Khóa học chưa có bài học.
                             </p>
                         </div>
@@ -218,8 +218,8 @@ const LessonDrawer = ({
                                         last:mb-0
 
                                         ${isSelected
-                                            ? "cursor-default bg-[#F0EEFF]"
-                                            : "hover:bg-gray-50"
+                                            ? "cursor-default bg-[var(--brand-soft)]"
+                                            : "hover:bg-[var(--surface-3)]"
                                         }
 
                                         ${isLocked
@@ -242,10 +242,10 @@ const LessonDrawer = ({
                                             font-semibold
 
                                             ${isCompleted
-                                                ? "bg-[#E9F8F0] text-[#15803D]"
+                                                ? "bg-[var(--success-soft)] text-[var(--success)]"
                                                 : isSelected
-                                                    ? "bg-[#6C5CE7] text-white"
-                                                    : "bg-gray-100 text-gray-500"
+                                                    ? "bg-[var(--brand-solid)] text-white"
+                                                    : "bg-[var(--surface-2)] text-[var(--muted)]"
                                             }
                                         `}
                                     >
@@ -268,8 +268,8 @@ const LessonDrawer = ({
                                                 text-sm
                                                 font-medium
                                                 ${isSelected
-                                                    ? "text-[#5B4BD6]"
-                                                    : "text-[#252238]"
+                                                    ? "text-[var(--brand-strong)]"
+                                                    : "text-[var(--ink)]"
                                                 }
                                             `}
                                         >
@@ -279,7 +279,7 @@ const LessonDrawer = ({
                                         <div className="mt-0.5 flex items-center gap-2">
                                             {lesson.duration !=
                                                 null && (
-                                                    <span className="text-[10px] text-gray-400">
+                                                    <span className="text-[10px] text-[var(--faint)]">
                                                         {formatDuration(
                                                             lesson.duration
                                                         )}
@@ -287,19 +287,19 @@ const LessonDrawer = ({
                                                 )}
 
                                             {isCompleted && (
-                                                <span className="text-[11px] font-medium text-[#15803D]">
+                                                <span className="text-[11px] font-medium text-[var(--success)]">
                                                     Đã hoàn thành
                                                 </span>
                                             )}
 
                                             {isLocked && (
-                                                <span className="text-[10px] text-gray-400">
+                                                <span className="text-[10px] text-[var(--faint)]">
                                                     Đã khóa
                                                 </span>
                                             )}
 
                                             {!isCompleted && isSelected && (
-                                                <span className="text-[10px] font-medium text-[#5B4BD6]">
+                                                <span className="text-[10px] font-medium text-[var(--brand-strong)]">
                                                     Đang học
                                                 </span>
                                             )}

@@ -40,34 +40,34 @@ const CourseBasicInfo = ({
     };
 
     const inputClass = [
-        "w-full rounded-xl border border-[#E4E4E7]",
-        "bg-white px-3.5 py-2.5",
-        "text-sm text-[#18181B]",
-        "placeholder:text-[#A1A1AA]",
+        "w-full rounded-xl border border-[var(--line)]",
+        "bg-[var(--surface)] px-3.5 py-2.5",
+        "text-sm text-[var(--ink)]",
+        "placeholder:text-[var(--faint)]",
         "transition-colors",
-        "focus:border-[#2563EB]",
+        "focus:border-[var(--brand)]",
         "focus:outline-none",
-        "focus:ring-2 focus:ring-[#DBEAFE]",
+        "focus:ring-2 focus:ring-[var(--brand-soft)]",
         "disabled:cursor-not-allowed",
-        "disabled:bg-[#F8F8F7]",
-        "disabled:text-[#A1A1AA]",
+        "disabled:bg-[var(--surface-3)]",
+        "disabled:text-[var(--faint)]",
     ].join(" ");
 
     const labelClass =
-        "mb-1.5 block text-xs font-medium text-[#3F3F46]";
+        "mb-1.5 block text-xs font-medium text-[var(--ink-2)]";
 
     return (
         <form
             onSubmit={onSave}
-            className="overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white"
+            className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]"
         >
             {/* Header */}
-            <div className="border-b border-[#F4F4F5] px-4 py-4 sm:px-5">
-                <h2 className="text-sm font-semibold text-[#18181B]">
+            <div className="border-b border-[var(--surface-2)] px-4 py-4 sm:px-5">
+                <h2 className="text-sm font-semibold text-[var(--ink)]">
                     Thông tin khóa học
                 </h2>
 
-                <p className="mt-0.5 text-[11px] text-[#A1A1AA]">
+                <p className="mt-0.5 text-[11px] text-[var(--faint)]">
                     Cập nhật nội dung, giá và trạng thái khóa học.
                 </p>
             </div>
@@ -96,10 +96,10 @@ const CourseBasicInfo = ({
                             className={[
                                 "group relative block aspect-video w-full",
                                 "overflow-hidden rounded-xl",
-                                "border border-[#E4E4E7]",
-                                "bg-[#F8F8F7]",
+                                "border border-[var(--line)]",
+                                "bg-[var(--surface-3)]",
                                 "transition-colors",
-                                "hover:border-[#BFDBFE]",
+                                "hover:border-[var(--brand-soft)]",
                                 "disabled:cursor-not-allowed",
                                 "disabled:opacity-60",
                             ].join(" ")}
@@ -116,10 +116,10 @@ const CourseBasicInfo = ({
                                     />
 
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
-                                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-[#3F3F46] shadow-sm">
+                                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--surface)] px-3 py-1.5 text-xs font-medium text-[var(--ink-2)] shadow-sm">
                                             <Upload
                                                 size={14}
-                                                className="text-[#2563EB]"
+                                                className="text-[var(--brand)]"
                                             />
                                             Đổi ảnh
                                         </span>
@@ -127,15 +127,15 @@ const CourseBasicInfo = ({
                                 </>
                             ) : (
                                 <div className="flex h-full flex-col items-center justify-center">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#A1A1AA] shadow-sm">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--surface)] text-[var(--faint)] shadow-sm">
                                         <ImagePlus size={19} />
                                     </div>
 
-                                    <p className="mt-2 text-xs font-medium text-[#3F3F46]">
+                                    <p className="mt-2 text-xs font-medium text-[var(--ink-2)]">
                                         Tải ảnh lên
                                     </p>
 
-                                    <p className="mt-0.5 text-[10px] text-[#A1A1AA]">
+                                    <p className="mt-0.5 text-[10px] text-[var(--faint)]">
                                         PNG, JPG hoặc WEBP
                                     </p>
                                 </div>
@@ -198,7 +198,7 @@ const CourseBasicInfo = ({
                                         className={`${inputClass} pr-20`}
                                     />
 
-                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[#A1A1AA]">
+                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[var(--faint)]">
                                         nghìn VNĐ
                                     </span>
                                 </div>
@@ -232,26 +232,26 @@ const CourseBasicInfo = ({
                                         className={`${inputClass} pr-16`}
                                     />
 
-                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[#A1A1AA]">
+                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[var(--faint)]">
                                         Tháng
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-[10px] leading-4 text-[#A1A1AA]">
+                        <p className="text-[10px] leading-4 text-[var(--faint)]">
                             Giá = 0 nếu miễn phí. Thời hạn = 0 hoặc
                             để trống nếu học trọn đời.
                         </p>
 
                         {/* Status */}
-                        <div className="flex items-center justify-between border-t border-[#F4F4F5] pt-5">
+                        <div className="flex items-center justify-between border-t border-[var(--surface-2)] pt-5">
                             <div>
-                                <p className="text-xs font-medium text-[#3F3F46]">
+                                <p className="text-xs font-medium text-[var(--ink-2)]">
                                     Trạng thái khóa học
                                 </p>
 
-                                <p className="mt-0.5 text-[10px] text-[#A1A1AA]">
+                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
                                     {isPublished
                                         ? "Khóa học đang công khai"
                                         : "Khóa học đang tạm đóng"}
@@ -268,18 +268,18 @@ const CourseBasicInfo = ({
                                     "relative h-5 w-9 shrink-0 rounded-full",
                                     "transition-colors",
                                     "focus:outline-none",
-                                    "focus:ring-2 focus:ring-[#DBEAFE]",
+                                    "focus:ring-2 focus:ring-[var(--brand-soft)]",
                                     "disabled:cursor-not-allowed",
                                     "disabled:opacity-50",
                                     isPublished
-                                        ? "bg-[#2563EB]"
-                                        : "bg-[#D4D4D8]",
+                                        ? "bg-[var(--brand-solid)]"
+                                        : "bg-[var(--line-strong)]",
                                 ].join(" ")}
                             >
                                 <span
                                     className={[
                                         "absolute top-0.5 h-4 w-4 rounded-full",
-                                        "bg-white shadow-sm",
+                                        "bg-[var(--surface)] shadow-sm",
                                         "transition-transform",
                                         isPublished
                                             ? "translate-x-4"
@@ -321,19 +321,19 @@ const CourseBasicInfo = ({
             </div>
 
             {/* Footer */}
-            <div className="flex justify-end border-t border-[#F4F4F5] px-4 py-3 sm:px-5">
+            <div className="flex justify-end border-t border-[var(--surface-2)] px-4 py-3 sm:px-5">
                 <button
                     type="submit"
                     disabled={saving}
                     className={[
                         "inline-flex w-full items-center justify-center gap-2",
-                        "rounded-xl bg-[#18181B]",
+                        "rounded-xl bg-[var(--solid)]",
                         "px-4 py-2.5",
                         "text-xs font-semibold text-white",
                         "transition-colors",
-                        "hover:bg-[#27272A]",
+                        "hover:bg-[var(--solid-hover)]",
                         "focus:outline-none",
-                        "focus:ring-2 focus:ring-[#D4D4D8]",
+                        "focus:ring-2 focus:ring-[var(--line-strong)]",
                         "disabled:cursor-not-allowed",
                         "disabled:opacity-60",
                         "sm:w-auto",

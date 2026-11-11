@@ -21,7 +21,7 @@ const getDocumentIcon = (
   ) {
     return {
       Icon: FileText,
-      className: "bg-[#FEF2F2] text-[#DC2626]",
+      className: "bg-[var(--danger-soft)] text-[var(--danger)]",
     };
   }
 
@@ -29,7 +29,7 @@ const getDocumentIcon = (
   if (["doc", "docx"].includes(extension)) {
     return {
       Icon: FileType,
-      className: "bg-[#EFF6FF] text-[#2563EB]",
+      className: "bg-[var(--brand-soft)] text-[var(--brand)]",
     };
   }
 
@@ -37,7 +37,7 @@ const getDocumentIcon = (
   if (["ppt", "pptx"].includes(extension)) {
     return {
       Icon: Presentation,
-      className: "bg-[#FFF7ED] text-[#EA580C]",
+      className: "bg-[var(--accent-soft)] text-[var(--accent)]",
     };
   }
 
@@ -45,14 +45,14 @@ const getDocumentIcon = (
   if (["xls", "xlsx"].includes(extension)) {
     return {
       Icon: FileSpreadsheet,
-      className: "bg-[#F0FDF4] text-[#16A34A]",
+      className: "bg-[var(--success-soft)] text-[var(--success)]",
     };
   }
 
   // Default
   return {
     Icon: FileText,
-    className: "bg-[#F4F4F5] text-[#71717A]",
+    className: "bg-[var(--surface-2)] text-[var(--muted)]",
   };
 };
 

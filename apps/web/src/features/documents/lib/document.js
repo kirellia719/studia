@@ -74,10 +74,10 @@ export const getDocumentIconClass = (
 
   switch (type) {
     case "PDF":
-      return "bg-red-50 text-red-500";
+      return "bg-[var(--danger-soft)] text-[var(--danger)]";
 
     case "WORD":
-      return "bg-blue-50 text-blue-600";
+      return "bg-[var(--brand-soft)] text-[var(--brand)]";
 
     case "POWERPOINT":
       return "bg-orange-50 text-orange-500";
@@ -86,7 +86,7 @@ export const getDocumentIconClass = (
       return "bg-green-50 text-green-600";
 
     default:
-      return "bg-gray-100 text-gray-500";
+      return "bg-[var(--surface-2)] text-[var(--muted)]";
   }
 };
 

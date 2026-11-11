@@ -220,7 +220,7 @@ const StudentCourseDetailPage = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-full items-center justify-center bg-[#F7F7F5] p-4">
+      <div className="flex min-h-full items-center justify-center bg-[var(--bg)] p-4">
         <Loading text="Đang tải khóa học..." />
       </div>
     );
@@ -232,20 +232,20 @@ const StudentCourseDetailPage = () => {
 
   if (!course) {
     return (
-      <div className="flex min-h-full items-center justify-center bg-[#F7F7F5] p-4">
-        <div className="w-full max-w-sm rounded-2xl border border-[#E4E4E7] bg-white p-6 text-center">
-          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#F4F4F5] text-[#71717A]">
+      <div className="flex min-h-full items-center justify-center bg-[var(--bg)] p-4">
+        <div className="w-full max-w-sm rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-center">
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--muted)]">
             <BookOpen
               size={20}
               strokeWidth={1.8}
             />
           </div>
 
-          <p className="mt-4 text-sm font-semibold text-[#18181B]">
+          <p className="mt-4 text-sm font-semibold text-[var(--ink)]">
             Không tìm thấy khóa học
           </p>
 
-          <p className="mt-1.5 text-xs leading-5 text-[#71717A]">
+          <p className="mt-1.5 text-xs leading-5 text-[var(--muted)]">
             Khóa học không tồn tại hoặc
             bạn không có quyền truy cập.
           </p>
@@ -255,7 +255,7 @@ const StudentCourseDetailPage = () => {
   }
 
   return (
-    <div className="min-h-full bg-[#F7F7F5]">
+    <div className="min-h-full bg-[var(--bg)]">
       {/* Header */}
 
       <LearningHeader
@@ -281,14 +281,14 @@ const StudentCourseDetailPage = () => {
           <div className="mt-4 space-y-4">
             {/* Lesson info */}
 
-            <section className="overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white">
+            <section className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
               <div className="p-3 sm:p-5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EFF6FF] text-xs font-semibold tabular-nums text-[#2563EB]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-xs font-semibold tabular-nums text-[var(--brand)]">
                     {String(selectedLesson.order).padStart(2, "0")}
                   </div>
 
-                  <h1 className="min-w-0 flex-1 truncate text-sm font-semibold leading-6 tracking-tight text-slate-700 sm:text-lg">
+                  <h1 className="min-w-0 flex-1 truncate text-sm font-semibold leading-6 tracking-tight text-[var(--ink-2)] sm:text-lg">
                     {selectedLesson.title}
                   </h1>
 
@@ -296,15 +296,15 @@ const StudentCourseDetailPage = () => {
                     <CheckCircle2
                       size={20}
                       strokeWidth={2.2}
-                      className="shrink-0 text-[#16A34A]"
+                      className="shrink-0 text-[var(--success)]"
                       aria-label="Đã hoàn thành"
                     />
                   )}
                 </div>
 
                 {selectedLesson.description && (
-                  <div className="mt-3 border-t border-[#F4F4F5] pt-3">
-                    <p className="whitespace-pre-line text-sm leading-6 text-[#52525B]">
+                  <div className="mt-3 border-t border-[var(--surface-2)] pt-3">
+                    <p className="whitespace-pre-line text-sm leading-6 text-[var(--muted)]">
                       {
                         selectedLesson.description
                       }
@@ -317,20 +317,20 @@ const StudentCourseDetailPage = () => {
             {/* Documents */}
 
             {selectedLesson.documents?.length > 0 && (
-              <section className="mt-4 overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white">
-                <div className="flex items-center justify-between border-b border-[#F4F4F5] px-4 py-3.5 sm:px-5">
+              <section className="mt-4 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                <div className="flex items-center justify-between border-b border-[var(--surface-2)] px-4 py-3.5 sm:px-5">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-sm font-semibold text-[#18181B]">
+                    <h2 className="text-sm font-semibold text-[var(--ink)]">
                       Tài liệu
                     </h2>
 
-                    <span className="rounded-md bg-[#EFF6FF] px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-[#2563EB]">
+                    <span className="rounded-md bg-[var(--brand-soft)] px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-[var(--brand)]">
                       {selectedLesson.documents.length}
                     </span>
                   </div>
                 </div>
 
-                <div className="divide-y divide-[#F4F4F5]">
+                <div className="divide-y divide-[var(--surface-2)]">
                   {selectedLesson.documents.map((document) => (
                     <DocumentCard
                       key={document.id}

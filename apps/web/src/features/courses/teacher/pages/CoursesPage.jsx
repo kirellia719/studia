@@ -44,16 +44,16 @@ const CoursesPage = () => {
     };
 
     return (
-        <div className="min-h-full bg-[#F5F7FA]">
+        <div className="min-h-full bg-[var(--surface-3)]">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 {/* PAGE HEADER */}
                 <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1 className="text-xl font-semibold tracking-tight text-[#18181B] sm:text-2xl">
+                        <h1 className="text-xl font-semibold tracking-tight text-[var(--ink)] sm:text-2xl">
                             Khóa học
                         </h1>
 
-                        <p className="mt-1 text-sm text-[#71717A]">
+                        <p className="mt-1 text-sm text-[var(--muted)]">
                             Quản lý các khóa học của bạn.
                         </p>
                     </div>
@@ -64,10 +64,10 @@ const CoursesPage = () => {
                         className={[
                             "inline-flex shrink-0 items-center justify-center gap-2",
                             "rounded-lg px-4 py-2.5",
-                            "bg-[#18181B] text-sm font-medium text-white",
+                            "bg-[var(--solid)] text-sm font-medium text-white",
                             "transition-colors duration-150",
-                            "hover:bg-[#27272A]",
-                            "active:bg-[#09090B]",
+                            "hover:bg-[var(--solid-hover)]",
+                            "active:bg-[var(--solid)]",
                         ].join(" ")}
                     >
                         <Plus size={18} strokeWidth={2} />
@@ -93,8 +93,8 @@ const CoursesPage = () => {
 
                 {/* ERROR */}
                 {!loading && error && (
-                    <div className="flex flex-col items-center justify-center rounded-xl border border-[#E5E7EB] bg-white px-6 py-16 text-center">
-                        <p className="text-sm font-medium text-[#52525B]">
+                    <div className="flex flex-col items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface)] px-6 py-16 text-center">
+                        <p className="text-sm font-medium text-[var(--muted)]">
                             {error}
                         </p>
 
@@ -103,11 +103,11 @@ const CoursesPage = () => {
                             onClick={fetchCourses}
                             className={[
                                 "mt-4 rounded-lg",
-                                "border border-[#E5E7EB]",
-                                "bg-white px-4 py-2",
-                                "text-sm font-medium text-[#18181B]",
+                                "border border-[var(--line)]",
+                                "bg-[var(--surface)] px-4 py-2",
+                                "text-sm font-medium text-[var(--ink)]",
                                 "transition-colors duration-150",
-                                "hover:bg-[#F6F6F7]",
+                                "hover:bg-[var(--surface-3)]",
                             ].join(" ")}
                         >
                             Thử lại
