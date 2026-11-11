@@ -1,232 +1,286 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import ProtectedRoute from "@/app/routes/ProtectedRoute.jsx";
 import GuestRoute from "@/app/routes/GuestRoute.jsx";
 import RoleRoute from "@/app/routes/RoleRoute.jsx";
 
-import StudentLayout from "@/components/layout/student/StudentLayout.jsx";
-import TeacherLayout from "@/components/layout/teacher/TeacherLayout.jsx";
+import Loading from "@/components/ui/Loading.jsx";
 
-import LoginPage from "@/features/auth/pages/LoginPage.jsx";
-import RegisterPage from "@/features/auth/pages/RegisterPage.jsx";
-import LandingPage from "@/features/landing/LandingPage.jsx";
+const StudentLayout = lazy(
+    () => import("@/components/layout/student/StudentLayout.jsx")
+);
+const TeacherLayout = lazy(
+    () => import("@/components/layout/teacher/TeacherLayout.jsx")
+);
 
-import StudentCoursesPage from "@/features/courses/student/StudentCoursesPage.jsx";
-import StudentCourseDetailPage from "@/features/courses/student/StudentCourseDetailPage.jsx";
-import ExplorePage from "@/features/courses/explore/ExplorePage.jsx";
-import ExploreCourseDetailPage from "@/features/courses/explore/ExploreCourseDetailPage.jsx";
-import CoursesPage from "@/features/courses/teacher/pages/CoursesPage.jsx";
-import CourseCreatePage from "@/features/courses/teacher/pages/CourseCreatePage.jsx";
-import CourseDetailPage from "@/features/courses/teacher/detail/CourseDetailPage.jsx";
-import CourseOverviewPage from "@/features/courses/teacher/detail/overview/CourseOverviewPage.jsx";
+const LoginPage = lazy(
+    () => import("@/features/auth/pages/LoginPage.jsx")
+);
+const RegisterPage = lazy(
+    () => import("@/features/auth/pages/RegisterPage.jsx")
+);
+const LandingPage = lazy(
+    () => import("@/features/landing/LandingPage.jsx")
+);
 
-import CourseLessonsPage from "@/features/lessons/pages/CourseLessonsPage.jsx";
-import LessonCreatePage from "@/features/lessons/pages/LessonCreatePage.jsx";
-import LessonDetailPage from "@/features/lessons/pages/LessonDetailPage.jsx";
+const StudentCoursesPage = lazy(
+    () => import("@/features/courses/student/StudentCoursesPage.jsx")
+);
+const StudentCourseDetailPage = lazy(
+    () => import("@/features/courses/student/StudentCourseDetailPage.jsx")
+);
+const ExplorePage = lazy(
+    () => import("@/features/courses/explore/ExplorePage.jsx")
+);
+const ExploreCourseDetailPage = lazy(
+    () => import("@/features/courses/explore/ExploreCourseDetailPage.jsx")
+);
+const CoursesPage = lazy(
+    () => import("@/features/courses/teacher/pages/CoursesPage.jsx")
+);
+const CourseCreatePage = lazy(
+    () => import("@/features/courses/teacher/pages/CourseCreatePage.jsx")
+);
+const CourseDetailPage = lazy(
+    () => import("@/features/courses/teacher/detail/CourseDetailPage.jsx")
+);
+const CourseOverviewPage = lazy(
+    () =>
+        import(
+            "@/features/courses/teacher/detail/overview/CourseOverviewPage.jsx"
+        )
+);
 
-import CourseEnrollmentsPage from "@/features/enrollments/pages/CourseEnrollmentsPage.jsx";
+const CourseLessonsPage = lazy(
+    () => import("@/features/lessons/pages/CourseLessonsPage.jsx")
+);
+const LessonCreatePage = lazy(
+    () => import("@/features/lessons/pages/LessonCreatePage.jsx")
+);
+const LessonDetailPage = lazy(
+    () => import("@/features/lessons/pages/LessonDetailPage.jsx")
+);
 
-import TeacherNotifications from "@/features/notifications/pages/TeacherNotifications.jsx";
+const CourseEnrollmentsPage = lazy(
+    () => import("@/features/enrollments/pages/CourseEnrollmentsPage.jsx")
+);
 
-import StudentProfile from "@/features/profile/pages/StudentProfile.jsx";
-import PersonalProfilePage from "@/features/profile/pages/PersonalProfilePage.jsx";
-import ChangePasswordPage from "@/features/profile/pages/ChangePasswordPage.jsx";
-import HelpPage from "@/features/profile/pages/HelpPage.jsx";
-import TeacherProfile from "@/features/profile/pages/TeacherProfile.jsx";
+const TeacherNotifications = lazy(
+    () => import("@/features/notifications/pages/TeacherNotifications.jsx")
+);
+
+const StudentProfile = lazy(
+    () => import("@/features/profile/pages/StudentProfile.jsx")
+);
+const PersonalProfilePage = lazy(
+    () => import("@/features/profile/pages/PersonalProfilePage.jsx")
+);
+const ChangePasswordPage = lazy(
+    () => import("@/features/profile/pages/ChangePasswordPage.jsx")
+);
+const HelpPage = lazy(
+    () => import("@/features/profile/pages/HelpPage.jsx")
+);
+const TeacherProfile = lazy(
+    () => import("@/features/profile/pages/TeacherProfile.jsx")
+);
 
 const AppRoute = () => {
     return (
-        <Routes>
-            <Route
-                path="/"
-                element={<LandingPage />}
-            />
-
-            <Route
-                element={<GuestRoute />}
-            >
+        <Suspense
+            fallback={<Loading text="Đang tải trang..." />}
+        >
+            <Routes>
                 <Route
-                    path="/login"
-                    element={<LoginPage />}
+                    path="/"
+                    element={<LandingPage />}
                 />
 
-                <Route
-                    path="/register"
-                    element={<RegisterPage />}
-                />
-            </Route>
-
-            <Route element={<ProtectedRoute />}>
-                <Route
-                    element={
-                        <RoleRoute
-                            allowedRoles={["STUDENT"]}
-                        />
-                    }
-                >
+                <Route element={<GuestRoute />}>
                     <Route
-                        path="/student"
-                        element={<StudentLayout />}
-                    >
-                        <Route
-                            index
-                            element={
-                                <Navigate
-                                    to="courses"
-                                    replace
-                                />
-                            }
-                        />
+                        path="/login"
+                        element={<LoginPage />}
+                    />
 
-                        <Route
-                            path="courses"
-                            element={<StudentCoursesPage />}
-                        />
-
-                        <Route
-                            path="courses/:courseId"
-                            element={<StudentCourseDetailPage />}
-                        />
-
-                        <Route
-                            path="explore"
-                            element={<ExplorePage />}
-                        />
-
-                        <Route
-                            path="explore/:courseId"
-                            element={<ExploreCourseDetailPage />}
-                        />
-
-                        <Route
-                            path="profile"
-                            element={<StudentProfile />}
-                        />
-
-                        <Route
-                            path="profile/personal"
-                            element={<PersonalProfilePage />}
-                        />
-
-                        <Route
-                            path="profile/password"
-                            element={<ChangePasswordPage />}
-                        />
-
-                        <Route
-                            path="profile/help"
-                            element={<HelpPage />}
-                        />
-
-                        <Route
-                            path="*"
-                            element={
-                                <Navigate
-                                    to="courses"
-                                    replace
-                                />
-                            }
-                        />
-                    </Route>
+                    <Route
+                        path="/register"
+                        element={<RegisterPage />}
+                    />
                 </Route>
 
-                <Route
-                    element={
-                        <RoleRoute
-                            allowedRoles={["TEACHER"]}
-                        />
-                    }
-                >
+                <Route element={<ProtectedRoute />}>
                     <Route
-                        path="/teacher"
-                        element={<TeacherLayout />}
+                        element={
+                            <RoleRoute
+                                allowedRoles={["STUDENT"]}
+                            />
+                        }
                     >
                         <Route
-                            index
-                            element={
-                                <Navigate
-                                    to="courses"
-                                    replace
-                                />
-                            }
-                        />
-
-                        <Route
-                            path="courses"
-                            element={<CoursesPage />}
-                        />
-
-                        <Route
-                            path="courses/create"
-                            element={<CourseCreatePage />}
-                        />
-
-                        <Route
-                            path="courses/:courseId"
-                            element={<CourseDetailPage />}
+                            path="/student"
+                            element={<StudentLayout />}
                         >
                             <Route
                                 index
-                                element={<CourseOverviewPage />}
+                                element={
+                                    <Navigate
+                                        to="courses"
+                                        replace
+                                    />
+                                }
                             />
 
                             <Route
-                                path="lessons"
-                                element={<CourseLessonsPage />}
+                                path="courses"
+                                element={<StudentCoursesPage />}
                             />
 
                             <Route
-                                path="lessons/create"
-                                element={<LessonCreatePage />}
+                                path="courses/:courseId"
+                                element={<StudentCourseDetailPage />}
                             />
 
                             <Route
-                                path="lessons/:lessonId"
-                                element={<LessonDetailPage />}
+                                path="explore"
+                                element={<ExplorePage />}
                             />
 
                             <Route
-                                path="students"
-                                element={<CourseEnrollmentsPage />}
+                                path="explore/:courseId"
+                                element={<ExploreCourseDetailPage />}
+                            />
+
+                            <Route
+                                path="profile"
+                                element={<StudentProfile />}
+                            />
+
+                            <Route
+                                path="profile/personal"
+                                element={<PersonalProfilePage />}
+                            />
+
+                            <Route
+                                path="profile/password"
+                                element={<ChangePasswordPage />}
+                            />
+
+                            <Route
+                                path="profile/help"
+                                element={<HelpPage />}
+                            />
+
+                            <Route
+                                path="*"
+                                element={
+                                    <Navigate
+                                        to="courses"
+                                        replace
+                                    />
+                                }
                             />
                         </Route>
+                    </Route>
 
+                    <Route
+                        element={
+                            <RoleRoute
+                                allowedRoles={["TEACHER"]}
+                            />
+                        }
+                    >
                         <Route
-                            path="notifications"
-                            element={<TeacherNotifications />}
-                        />
+                            path="/teacher"
+                            element={<TeacherLayout />}
+                        >
+                            <Route
+                                index
+                                element={
+                                    <Navigate
+                                        to="courses"
+                                        replace
+                                    />
+                                }
+                            />
 
-                        <Route
-                            path="profile"
-                            element={<TeacherProfile />}
-                        />
+                            <Route
+                                path="courses"
+                                element={<CoursesPage />}
+                            />
 
-                        <Route
-                            path="*"
-                            element={
-                                <Navigate
-                                    to="courses"
-                                    replace
+                            <Route
+                                path="courses/create"
+                                element={<CourseCreatePage />}
+                            />
+
+                            <Route
+                                path="courses/:courseId"
+                                element={<CourseDetailPage />}
+                            >
+                                <Route
+                                    index
+                                    element={<CourseOverviewPage />}
                                 />
-                            }
+
+                                <Route
+                                    path="lessons"
+                                    element={<CourseLessonsPage />}
+                                />
+
+                                <Route
+                                    path="lessons/create"
+                                    element={<LessonCreatePage />}
+                                />
+
+                                <Route
+                                    path="lessons/:lessonId"
+                                    element={<LessonDetailPage />}
+                                />
+
+                                <Route
+                                    path="students"
+                                    element={<CourseEnrollmentsPage />}
+                                />
+                            </Route>
+
+                            <Route
+                                path="notifications"
+                                element={<TeacherNotifications />}
+                            />
+
+                            <Route
+                                path="profile"
+                                element={<TeacherProfile />}
+                            />
+
+                            <Route
+                                path="*"
+                                element={
+                                    <Navigate
+                                        to="courses"
+                                        replace
+                                    />
+                                }
+                            />
+                        </Route>
+                    </Route>
+
+                    <Route
+                        element={
+                            <RoleRoute
+                                allowedRoles={["ADMIN"]}
+                            />
+                        }
+                    >
+                        <Route
+                            path="/admin/*"
+                            element={<div>AdminPage</div>}
                         />
                     </Route>
                 </Route>
-
-                <Route
-                    element={
-                        <RoleRoute
-                            allowedRoles={["ADMIN"]}
-                        />
-                    }
-                >
-                    <Route
-                        path="/admin/*"
-                        element={<div>AdminPage</div>}
-                    />
-                </Route>
-            </Route>
-        </Routes>
+            </Routes>
+        </Suspense>
     );
 };
 

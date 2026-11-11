@@ -27,8 +27,6 @@ const videoStorage = multer.diskStorage({
     },
 
     filename: (req, file, cb) => {
-        console.log("select video storage");
-
         const ext = path.extname(
             file.originalname
         );

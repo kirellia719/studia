@@ -20,6 +20,12 @@ const authApi = {
             .getState()
             .setAccessToken(data.accessToken);
 
+        if (data.user) {
+            useAuthStore
+                .getState()
+                .setUser(data.user);
+        }
+
         return {
             message,
             data,

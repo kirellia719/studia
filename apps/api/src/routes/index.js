@@ -21,15 +21,8 @@ router.get('/', (req, res) => {
 });
 
 // ==========================================
-// Health check
+// Health check chung nằm ở app.js (/health)
 // ==========================================
-
-router.get('/health', (req, res) => {
-    res.json({
-        success: true,
-        message: 'API is healthy',
-    });
-});
 
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);

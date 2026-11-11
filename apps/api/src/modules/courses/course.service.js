@@ -201,9 +201,6 @@ const courseService = {
                 courseId
             );
 
-        console.log(course);
-
-
         if (!course) {
             throw new AppError(
                 "Không tìm thấy khóa học.",

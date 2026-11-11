@@ -38,21 +38,11 @@ apiClient.interceptors.response.use(
             error?.response?.status;
 
         if (status === 401) {
-            const authStore =
-                useAuthStore.getState();
-
-            authStore.logout();
-
-            // Chỉ redirect nếu hiện tại
-            // chưa ở trang login
-            if (
-                window.location.pathname !==
-                "/login"
-            ) {
-                window.location.replace(
-                    "/login"
-                );
-            }
+            // ProtectedRoute thấy token rỗng sẽ tự đưa về /login,
+            // không reload cả trang như trước
+            useAuthStore
+                .getState()
+                .logout();
         }
 
         return Promise.reject(error);
