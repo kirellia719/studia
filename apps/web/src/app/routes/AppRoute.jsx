@@ -43,9 +43,7 @@ const AppRoute = () => {
             />
 
             <Route
-                element={
-                    <GuestRoute redirectTo="/student" />
-                }
+                element={<GuestRoute />}
             >
                 <Route
                     path="/login"
