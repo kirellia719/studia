@@ -1,4 +1,6 @@
-// src/utils/getUrl.js
+import useAuthStore from "@/stores/authStore";
+
+const PRIVATE_MEDIA = /^\/uploads\/(lessons|documents)\//;
 
 const getUrl = (url) => {
     if (!url) {
@@ -19,7 +21,19 @@ const getUrl = (url) => {
     }
 
     // URL tương đối từ BE
-    return `${import.meta.env.VITE_API_URL}${url}`;
+    const fullUrl = `${import.meta.env.VITE_API_URL}${url}`;
+
+    // Học liệu nằm sau middleware auth, thẻ media không gắn được header
+    if (!PRIVATE_MEDIA.test(url)) {
+        return fullUrl;
+    }
+
+    const token =
+        useAuthStore.getState().accessToken;
+
+    return token
+        ? `${fullUrl}?token=${encodeURIComponent(token)}`
+        : fullUrl;
 };
 
 export default getUrl;

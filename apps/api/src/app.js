@@ -10,6 +10,7 @@ import routes from './routes/index.js';
 import notFound from './middlewares/notFound.js';
 import { globalLimiter } from './middlewares/rateLimiter.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
+import mediaAuth from './middlewares/mediaAuth.js';
 
 const app = express();
 
@@ -57,7 +58,12 @@ app.use(
 // Logger
 // ==========================================
 
-app.use(morgan('dev'));
+app.use(
+    morgan('dev', {
+        // Không log query vì media dùng ?token=
+        skip: (req) => req.path.startsWith('/uploads'),
+    })
+);
 
 // ==========================================
 // Body parser
@@ -74,10 +80,30 @@ app.use(
 // Static files
 // ==========================================
 
+const uploadsDir = path.join(process.cwd(), 'uploads');
+
+// Ảnh khóa học: công khai để landing/card dùng trực tiếp
 app.use(
-    '/uploads',
+    '/uploads/courses',
     express.static(
-        path.join(process.cwd(), 'uploads')
+        path.join(uploadsDir, 'courses')
+    )
+);
+
+// Học liệu: chỉ người đã đăng nhập mới tải được
+app.use(
+    '/uploads/lessons',
+    mediaAuth,
+    express.static(
+        path.join(uploadsDir, 'lessons')
+    )
+);
+
+app.use(
+    '/uploads/documents',
+    mediaAuth,
+    express.static(
+        path.join(uploadsDir, 'documents')
     )
 );
 
