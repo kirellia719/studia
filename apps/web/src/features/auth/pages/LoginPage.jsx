@@ -17,6 +17,7 @@ import {
 import Logo from "@/components/ui/Logo.jsx";
 import authApi from "@/features/auth/api.js";
 import toast from "@/lib/toast.js";
+import { getRoleHome } from "@/lib/roles.js";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -34,12 +35,14 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      await authApi.login({
+      const { data } = await authApi.login({
         email: email.trim(),
         password,
       });
 
-      navigate("/student");
+      const role = data?.user?.role;
+
+      navigate(role ? getRoleHome(role) : "/student");
     } catch (error) {
       toast.error(
         error?.response?.data?.message ||

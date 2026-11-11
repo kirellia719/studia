@@ -1,15 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import useAuthStore from "@/stores/authStore";
-
-const ROLE_ROUTES = {
-    STUDENT: "/student",
-    TEACHER: "/teacher",
-    ADMIN: "/admin",
-};
-
-const getRoleRoute = (role) => {
-    return ROLE_ROUTES[role] || "/login";
-};
+import { getRoleHome } from "@/lib/roles.js";
 
 const RoleRoute = ({ allowedRoles }) => {
     const user = useAuthStore(
@@ -20,13 +11,13 @@ const RoleRoute = ({ allowedRoles }) => {
         return <Navigate
             to={"/login"}
             replace
-        />
+        />;
     }
 
     if (!allowedRoles.includes(user.role)) {
         return (
             <Navigate
-                to={getRoleRoute(user.role)}
+                to={getRoleHome(user.role)}
                 replace
             />
         );
