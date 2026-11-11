@@ -188,9 +188,9 @@ const CourseLessonsPage = () => {
                     <div className="flex items-center justify-between gap-4">
                         <div className="min-w-0">
                             <div className="flex items-center gap-2">
-                                <h2 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#18181B] sm:text-base">
+                                <h1 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[#18181B] sm:text-base">
                                     Nội dung
-                                </h2>
+                                </h1>
 
                                 <span className="rounded-full bg-[#F4F4F5] px-2 py-0.5 text-[10px] font-medium tabular-nums text-[#52525B]">
                                     {lessons.length}
@@ -284,11 +284,11 @@ const CourseLessonsPage = () => {
                 {lessons.length > 0 && (
                     <div className="px-2 py-3 sm:px-4 sm:py-4">
                         <div className="mb-2 flex items-center justify-between px-1">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#A1A1AA]">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
                                 Danh sách bài học
                             </p>
 
-                            <p className="text-[10px] text-[#A1A1AA]">
+                            <p className="text-[10px] text-[#71717A]">
                                 Dùng ↑ ↓ để sắp xếp
                             </p>
                         </div>
@@ -363,9 +363,9 @@ const CourseLessonsPage = () => {
                                                     to={
                                                         lesson.id
                                                     }
-                                                    className="min-w-0 flex-1 focus:outline-none"
+                                                    className="min-w-0 flex-1 py-1 focus:outline-none"
                                                 >
-                                                    <h3
+                                                    <h2
                                                         title={
                                                             lesson.title
                                                         }
@@ -382,11 +382,11 @@ const CourseLessonsPage = () => {
                                                         {
                                                             lesson.title
                                                         }
-                                                    </h3>
+                                                    </h2>
 
                                                     <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                                                         {hasDuration && (
-                                                            <span className="inline-flex items-center gap-1 text-[10px] font-medium tabular-nums text-[#A1A1AA] sm:text-[11px]">
+                                                            <span className="inline-flex items-center gap-1 text-[10px] font-medium tabular-nums text-[#71717A] sm:text-[11px]">
                                                                 <Clock3
                                                                     size={
                                                                         12
@@ -436,8 +436,8 @@ const CourseLessonsPage = () => {
                                                             title="Đưa bài học lên"
                                                             aria-label="Đưa bài học lên"
                                                             className={[
-                                                                "flex h-5 w-5 items-center justify-center rounded-md",
-                                                                "text-[#A1A1AA]",
+                                                                "flex h-7 w-7 items-center justify-center rounded-md",
+                                                                "text-[#71717A]",
                                                                 "transition-colors",
                                                                 "hover:bg-[#F4F4F5]",
                                                                 "hover:text-[#18181B]",
@@ -475,8 +475,8 @@ const CourseLessonsPage = () => {
                                                             title="Đưa bài học xuống"
                                                             aria-label="Đưa bài học xuống"
                                                             className={[
-                                                                "flex h-5 w-5 items-center justify-center rounded-md",
-                                                                "text-[#A1A1AA]",
+                                                                "flex h-7 w-7 items-center justify-center rounded-md",
+                                                                "text-[#71717A]",
                                                                 "transition-colors",
                                                                 "hover:bg-[#F4F4F5]",
                                                                 "hover:text-[#18181B]",

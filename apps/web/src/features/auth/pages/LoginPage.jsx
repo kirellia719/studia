@@ -230,7 +230,7 @@ const LoginPage = () => {
                         ? "Ẩn mật khẩu"
                         : "Hiển thị mật khẩu"
                     }
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded-md p-1 text-[#9BAEB7] transition-colors hover:text-[#3D82AC] disabled:cursor-not-allowed"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded-md p-1 text-[#9BAEB7] transition-colors hover:text-[#2F6B8F] disabled:cursor-not-allowed"
                   >
                     {showPassword ? (
                       <EyeOff size={18} />
@@ -261,7 +261,7 @@ const LoginPage = () => {
               Chưa có tài khoản?{" "}
               <Link
                 to="/register"
-                className="font-semibold text-[#3D82AC] transition-colors hover:text-[#286585] hover:underline"
+                className="font-semibold text-[#2F6B8F] transition-colors hover:text-[#286585] hover:underline"
               >
                 Đăng ký
               </Link>

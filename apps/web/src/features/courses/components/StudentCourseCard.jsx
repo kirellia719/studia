@@ -162,7 +162,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "items-center",
               "justify-center",
               isLocked
-                ? "bg-[#E5E7EB] text-[#94A3B8]"
+                ? "bg-[#E5E7EB] text-[#64748B]"
                 : "bg-gradient-to-br from-[#EFF6FF] to-[#F1F5F9] text-[#2563EB]",
             ].join(" ")}
           >
@@ -221,10 +221,9 @@ const StudentCourseCard = ({ enrollment }) => {
 
         <div className="mt-5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-[#94A3B8]">
+            <span className="text-xs font-medium text-[#64748B]">
               Tiến độ học tập
             </span>
-
             <span
               className={[
                 "text-xs",
@@ -268,7 +267,7 @@ const StudentCourseCard = ({ enrollment }) => {
 
           {/* Progress detail */}
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-[11px] font-medium text-[#94A3B8]">
+            <span className="text-xs font-medium text-[#64748B]">
               {completedLessons}/{totalLessons} bài học
             </span>
 
@@ -281,7 +280,7 @@ const StudentCourseCard = ({ enrollment }) => {
                 Đang học
               </span>
             ) : (
-              <span className="text-[11px] font-semibold text-[#94A3B8]">
+              <span className="text-[11px] font-semibold text-[#64748B]">
                 Chưa bắt đầu
               </span>
             )}

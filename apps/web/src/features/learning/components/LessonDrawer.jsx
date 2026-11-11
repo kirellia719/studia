@@ -84,7 +84,7 @@ const LessonDrawer = ({
                                 </h2>
 
                                 {isCourseCompleted && (
-                                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E9F8F0] text-[#2E9B61]">
+                                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E9F8F0] text-[#15803D]">
                                         <Check
                                             size={12}
                                             strokeWidth={2.5}
@@ -135,8 +135,8 @@ const LessonDrawer = ({
                                         text-[10px]
                                         font-semibold
                                         ${isCourseCompleted
-                                            ? "text-[#2E9B61]"
-                                            : "text-[#6C5CE7]"
+                                            ? "text-[#15803D]"
+                                            : "text-[#5B4BD6]"
                                         }
                                     `}
                                 >
@@ -242,7 +242,7 @@ const LessonDrawer = ({
                                             font-semibold
 
                                             ${isCompleted
-                                                ? "bg-[#E9F8F0] text-[#2E9B61]"
+                                                ? "bg-[#E9F8F0] text-[#15803D]"
                                                 : isSelected
                                                     ? "bg-[#6C5CE7] text-white"
                                                     : "bg-gray-100 text-gray-500"
@@ -268,7 +268,7 @@ const LessonDrawer = ({
                                                 text-sm
                                                 font-medium
                                                 ${isSelected
-                                                    ? "text-[#6C5CE7]"
+                                                    ? "text-[#5B4BD6]"
                                                     : "text-[#252238]"
                                                 }
                                             `}
@@ -287,7 +287,7 @@ const LessonDrawer = ({
                                                 )}
 
                                             {isCompleted && (
-                                                <span className="text-[10px] font-medium text-[#2E9B61]">
+                                                <span className="text-[11px] font-medium text-[#15803D]">
                                                     Đã hoàn thành
                                                 </span>
                                             )}
@@ -299,7 +299,7 @@ const LessonDrawer = ({
                                             )}
 
                                             {!isCompleted && isSelected && (
-                                                <span className="text-[10px] font-medium text-[#6C5CE7]">
+                                                <span className="text-[10px] font-medium text-[#5B4BD6]">
                                                     Đang học
                                                 </span>
                                             )}

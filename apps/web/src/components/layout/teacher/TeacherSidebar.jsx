@@ -38,7 +38,7 @@ const TeacherSidebar = () => {
                         return (
                             <div key={section.section}>
                                 {/* SECTION TITLE */}
-                                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#A1A1AA]">
+                                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#71717A]">
                                     {section.section}
                                 </p>
 
@@ -152,7 +152,7 @@ const TeacherSidebar = () => {
                             {displayName}
                         </p>
 
-                        <p className="truncate text-[12px] text-[#A1A1AA]">
+                        <p className="truncate text-[12px] text-[#71717A]">
                             {email}
                         </p>
                     </div>

@@ -161,7 +161,7 @@ const CourseCard = ({ course }) => {
             >
                 {/* Title + Manage */}
                 <div className="flex items-center gap-2">
-                    <h3
+                    <h2
                         title={course.title}
                         className="
                             line-clamp-2
@@ -178,7 +178,7 @@ const CourseCard = ({ course }) => {
                         "
                     >
                         {course.title}
-                    </h3>
+                    </h2>
 
                     <button
                         type="button"

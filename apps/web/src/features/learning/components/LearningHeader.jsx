@@ -60,7 +60,7 @@ const LearningHeader = ({
                         px-2.5
                         text-xs
                         font-medium
-                        text-[#6C5CE7]
+                        text-[#5B4BD6]
                         transition
                         hover:bg-[#ECE9FF]
                     "
@@ -72,7 +72,7 @@ const LearningHeader = ({
             Bài học
           </span>
 
-          <span className="text-[10px] text-[#8A80D9]">
+          <span className="text-[11px] text-[#5B4BD6]">
             {lessonCount}
           </span>
         </button>

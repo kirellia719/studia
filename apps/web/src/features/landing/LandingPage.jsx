@@ -29,7 +29,7 @@ const LandingPage = () => {
                             bg-white
                             px-4 py-2.5
                             text-xs font-bold
-                            text-[#3D82AC]
+                            text-[#2F6B8F]
                             shadow-[0_2px_8px_rgba(45,75,65,0.04)]
                             transition-all duration-200
                             hover:border-[#4E9BCB]
@@ -188,7 +188,7 @@ const LandingPage = () => {
                                     bg-white/90
                                     px-3.5 py-2
                                     text-[11px] font-bold
-                                    text-[#3D82AC]
+                                    text-[#2F6B8F]
                                     shadow-[0_4px_14px_rgba(45,75,65,0.05)]
                                     backdrop-blur-sm
                                     sm:mb-6 sm:px-4 sm:text-xs
@@ -294,7 +294,7 @@ const LandingPage = () => {
                                         transition-all duration-200
                                         hover:-translate-y-0.5
                                         hover:border-[#4E9BCB]/40
-                                        hover:text-[#3D82AC]
+                                        hover:text-[#2F6B8F]
                                         hover:shadow-[0_10px_22px_rgba(45,75,65,0.08)]
                                         sm:w-auto sm:px-7
                                     "

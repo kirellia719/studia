@@ -116,7 +116,7 @@ const StudentSidebar = () => {
                                 "Học viên"}
                         </p>
 
-                        <p className="truncate text-[12px] text-[#A1A1AA]">
+                        <p className="truncate text-[12px] text-[#71717A]">
                             {user?.email ||
                                 "Tài khoản học viên"}
                         </p>
