@@ -201,13 +201,6 @@ const LoginPage = () => {
                   className="mb-2 flex items-center justify-between text-[13px] font-semibold text-[#405563]"
                 >
                   <span>Mật khẩu</span>
-
-                  <Link
-                    to="/forgot-password"
-                    className="text-[12px] font-semibold text-[#3D82AC] transition-colors hover:text-[#286585] hover:underline"
-                  >
-                    Quên mật khẩu?
-                  </Link>
                 </label>
 
                 <div className="relative">

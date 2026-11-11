@@ -43,19 +43,6 @@ const CoursesPage = () => {
         navigate("/teacher/courses/create");
     };
 
-    const handleManageCourse = (courseId) => {
-        navigate(`/teacher/courses/${courseId}`);
-    };
-
-    const handleEditCourse = (courseId) => {
-        navigate(`/teacher/courses/${courseId}/edit`);
-    };
-
-    const handleDeleteCourse = async (courseId) => {
-        // Xử lý sau khi có API delete course.
-        console.log("Delete course:", courseId);
-    };
-
     return (
         <div className="min-h-full bg-[#F5F7FA]">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -140,9 +127,6 @@ const CoursesPage = () => {
                             <CourseCard
                                 key={course.id}
                                 course={course}
-                                onManage={handleManageCourse}
-                                onEdit={handleEditCourse}
-                                onDelete={handleDeleteCourse}
                             />
                         ))}
                     </div>

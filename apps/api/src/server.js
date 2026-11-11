@@ -8,6 +8,8 @@ import {
     disconnectDatabase,
 } from "./config/database.js";
 
+import { startTempUploadsCleanup } from "./utils/tempFiles.js";
+
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 3000;
 
@@ -80,6 +82,8 @@ const startServer = async () => {
     // ==========================================
     // Start Express server
     // ==========================================
+
+    startTempUploadsCleanup();
 
     const server = serverApp.listen(
         env.PORT,

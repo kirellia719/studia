@@ -42,9 +42,8 @@ const DocumentCard = ({
         ].join(" ")}
       >
         <DocumentIcon
-          sx={{
-            fontSize: 19,
-          }}
+          size={19}
+          strokeWidth={1.8}
         />
       </div>
 

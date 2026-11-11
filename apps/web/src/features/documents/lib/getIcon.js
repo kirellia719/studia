@@ -1,7 +1,9 @@
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import DescriptionIcon from "@mui/icons-material/Description";
-import SlideshowIcon from "@mui/icons-material/Slideshow";
-import TableChartIcon from "@mui/icons-material/TableChart";
+import {
+  FileSpreadsheet,
+  FileText,
+  FileType,
+  Presentation,
+} from "lucide-react";
 
 const getDocumentIcon = (
   fileName = "",
@@ -18,7 +20,7 @@ const getDocumentIcon = (
     mimeType === "application/pdf"
   ) {
     return {
-      Icon: PictureAsPdfIcon,
+      Icon: FileText,
       className: "bg-[#FEF2F2] text-[#DC2626]",
     };
   }
@@ -26,7 +28,7 @@ const getDocumentIcon = (
   // Word
   if (["doc", "docx"].includes(extension)) {
     return {
-      Icon: DescriptionIcon,
+      Icon: FileType,
       className: "bg-[#EFF6FF] text-[#2563EB]",
     };
   }
@@ -34,7 +36,7 @@ const getDocumentIcon = (
   // PowerPoint
   if (["ppt", "pptx"].includes(extension)) {
     return {
-      Icon: SlideshowIcon,
+      Icon: Presentation,
       className: "bg-[#FFF7ED] text-[#EA580C]",
     };
   }
@@ -42,14 +44,14 @@ const getDocumentIcon = (
   // Excel
   if (["xls", "xlsx"].includes(extension)) {
     return {
-      Icon: TableChartIcon,
+      Icon: FileSpreadsheet,
       className: "bg-[#F0FDF4] text-[#16A34A]",
     };
   }
 
   // Default
   return {
-    Icon: DescriptionIcon,
+    Icon: FileText,
     className: "bg-[#F4F4F5] text-[#71717A]",
   };
 };

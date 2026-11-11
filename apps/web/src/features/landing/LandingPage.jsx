@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 
 import {
     ArrowRight,
+    Heart,
     Languages,
 } from "lucide-react";
-
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import Brand from "@/components/ui/Brand.jsx";
 
@@ -234,14 +233,10 @@ const LandingPage = () => {
                                     vì có Achan
 
                                     <span className="ml-1 flex">
-                                        <FavoriteIcon
-                                            sx={{
-                                                fontSize: {
-                                                    xs: 17,
-                                                    sm: 19,
-                                                },
-                                                color: "#D5A83C",
-                                            }}
+                                        <Heart
+                                            size={18}
+                                            fill="currentColor"
+                                            className="text-[#D5A83C]"
                                         />
                                     </span>
                                 </p>
