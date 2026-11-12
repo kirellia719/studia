@@ -4,13 +4,13 @@ import TeacherSidebar from "@/components/layout/teacher/TeacherSidebar.jsx";
 
 const TeacherLayout = () => {
     return (
-        <div className="app-canvas min-h-dvh">
+        <div className="app-canvas flex min-h-dvh flex-col">
             <TeacherSidebar />
 
             <main
                 className={[
                     // Mobile
-                    "min-h-dvh",
+                    "flex-1",
 
                     // Desktop
                     "lg:ml-64",

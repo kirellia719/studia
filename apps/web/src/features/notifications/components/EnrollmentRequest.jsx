@@ -135,7 +135,7 @@ const EnrollmentRequest = ({
                         justify-center
                         rounded-lg
                         bg-[var(--brand-solid)]/10
-                        text-[var(--brand)]
+                        text-[var(--brand-text)]
                     "
                 >
                     <BookOpen size={18} />
@@ -149,7 +149,7 @@ const EnrollmentRequest = ({
                             {studentName}
                         </span>{" "}
                         muốn đăng ký khóa học{" "}
-                        <span className="font-medium text-[var(--brand)]">
+                        <span className="font-medium text-[var(--brand-text)]">
                             "{courseTitle}"
                         </span>
                     </p>
@@ -161,7 +161,7 @@ const EnrollmentRequest = ({
                             flex
                             items-center
                             gap-1.5
-                            text-[11px]
+                            text-[12px]
                             text-[var(--faint)]
                         "
                     >
@@ -186,7 +186,7 @@ const EnrollmentRequest = ({
                                 inline-flex
                                 items-center
                                 gap-1.5
-                                rounded-lg
+                                rounded-full
                                 bg-[var(--brand-solid)]
                                 px-3
                                 py-2
@@ -215,7 +215,7 @@ const EnrollmentRequest = ({
                                 inline-flex
                                 items-center
                                 gap-1.5
-                                rounded-lg
+                                rounded-full
                                 border
                                 border-[var(--line)]
                                 bg-[var(--surface)]

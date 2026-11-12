@@ -68,7 +68,7 @@ const TeacherNotifications = () => {
                 <div className="flex items-center gap-2">
                     <Bell
                         size={18}
-                        className="text-[var(--brand)]"
+                        className="text-[var(--brand-text)]"
                     />
 
                     <h1 className="text-base font-semibold text-[var(--ink)]">

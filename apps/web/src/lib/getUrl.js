@@ -1,7 +1,3 @@
-import useAuthStore from "@/stores/authStore";
-
-const PRIVATE_MEDIA = /^\/uploads\/(lessons|documents)\//;
-
 const getUrl = (url) => {
     if (!url) {
         return "";
@@ -20,20 +16,11 @@ const getUrl = (url) => {
         return url;
     }
 
-    // URL tương đối từ BE
-    const fullUrl = `${import.meta.env.VITE_API_URL}${url}`;
-
-    // Học liệu nằm sau middleware auth, thẻ media không gắn được header
-    if (!PRIVATE_MEDIA.test(url)) {
-        return fullUrl;
-    }
-
-    const token =
-        useAuthStore.getState().accessToken;
-
-    return token
-        ? `${fullUrl}?token=${encodeURIComponent(token)}`
-        : fullUrl;
+    // URL tương đối từ BE.
+    // Học liệu riêng tư (/uploads/lessons, /uploads/documents)
+    // được tải kèm cookie phiên media ngắn hạn do trình duyệt
+    // tự gửi, nên không đặt token vào URL.
+    return `${import.meta.env.VITE_API_URL}${url}`;
 };
 
 export default getUrl;

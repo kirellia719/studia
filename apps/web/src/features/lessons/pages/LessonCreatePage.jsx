@@ -335,7 +335,7 @@ const LessonCreatePage = () => {
                         font-medium
                         text-[var(--muted)]
                         transition
-                        hover:text-[var(--brand)]
+                        hover:text-[var(--brand-text)]
                     "
                 >
                     <ArrowLeft size={15} />
@@ -394,7 +394,7 @@ const LessonCreatePage = () => {
                             placeholder="Ví dụ: Giới thiệu React"
                             className="
                                 w-full
-                                rounded-lg
+                                rounded-full
                                 border
                                 border-[var(--line)]
                                 px-3
@@ -440,7 +440,7 @@ const LessonCreatePage = () => {
                             className="
                                 w-full
                                 resize-none
-                                rounded-lg
+                                rounded-2xl
                                 border
                                 border-[var(--line)]
                                 px-3
@@ -484,7 +484,7 @@ const LessonCreatePage = () => {
                                     justify-center
                                     rounded-lg
                                     bg-[var(--brand-solid)]/10
-                                    text-[var(--brand)]
+                                    text-[var(--brand-text)]
                                 "
                             >
                                 <LockOpen size={16} />
@@ -495,7 +495,7 @@ const LessonCreatePage = () => {
                                     Bài học miễn phí
                                 </p>
 
-                                <p className="mt-0.5 text-[11px] leading-5 text-[var(--faint)]">
+                                <p className="mt-0.5 text-[12px] leading-5 text-[var(--faint)]">
                                     Cho phép người chưa tham gia
                                     khóa học xem bài học này.
                                 </p>
@@ -506,45 +506,29 @@ const LessonCreatePage = () => {
                             type="button"
                             role="switch"
                             aria-checked={form.isFree}
+                            aria-label="Bài học miễn phí"
                             disabled={saving}
                             onClick={handleFreeToggle}
-                            className={`
-                                relative
-                                inline-flex
-                                h-5
-                                w-9
-                                shrink-0
-                                items-center
-                                rounded-full
-                                transition-colors
-                                duration-200
-                                focus:outline-none
-                                focus:ring-2
-                                focus:ring-[var(--brand)]/20
-                                disabled:cursor-not-allowed
-                                disabled:opacity-50
-                                ${form.isFree
-                                    ? "bg-[var(--brand-solid)]"
-                                    : "bg-gray-300"
-                                }
-                            `}
+                            className="-mr-2 flex h-11 w-12 shrink-0 items-center justify-center rounded-full transition hover:bg-[var(--surface)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             <span
-                                className={`
-                                    inline-block
-                                    h-4
-                                    w-4
-                                    rounded-full
-                                    bg-[var(--surface)]
-                                    shadow-md
-                                    transition-transform
-                                    duration-200
-                                    ${form.isFree
-                                        ? "translate-x-4"
-                                        : "translate-x-0.5"
-                                    }
-                                `}
-                            />
+                                className={[
+                                    "flex h-6 w-11 items-center rounded-full p-0.5 transition-colors",
+                                    form.isFree
+                                        ? "bg-[var(--brand-solid)]"
+                                        : "border border-[var(--line)] bg-[var(--surface-2)]",
+                                ].join(" ")}
+                            >
+                                <span
+                                    className={[
+                                        "h-5 w-5 rounded-full bg-white shadow-sm",
+                                        "transition-transform",
+                                        form.isFree
+                                            ? "translate-x-5"
+                                            : "translate-x-0",
+                                    ].join(" ")}
+                                />
+                            </span>
                         </button>
                     </div>
                 </section>
@@ -576,7 +560,7 @@ const LessonCreatePage = () => {
                         >
                             <Video
                                 size={17}
-                                className="text-[var(--brand)]"
+                                className="text-[var(--brand-text)]"
                             />
 
                             Video bài học
@@ -623,7 +607,7 @@ const LessonCreatePage = () => {
                                     justify-center
                                     rounded-full
                                     bg-[var(--brand-solid)]/10
-                                    text-[var(--brand)]
+                                    text-[var(--brand-text)]
                                 "
                             >
                                 <Upload size={21} />
@@ -701,7 +685,7 @@ const LessonCreatePage = () => {
                                         <p
                                             className="
                                                 mt-0.5
-                                                text-[11px]
+                                                text-[12px]
                                                 text-[var(--faint)]
                                             "
                                         >
@@ -731,7 +715,7 @@ const LessonCreatePage = () => {
                                                 shrink-0
                                                 items-center
                                                 justify-center
-                                                rounded-lg
+                                                rounded-full
                                                 text-[var(--faint)]
                                                 transition
                                                 hover:bg-[var(--danger-soft)]
@@ -772,7 +756,7 @@ const LessonCreatePage = () => {
                                                 className="
                                                     text-xs
                                                     font-semibold
-                                                    text-[var(--brand)]
+                                                    text-[var(--brand-text)]
                                                 "
                                             >
                                                 {uploadProgress}%
@@ -849,7 +833,7 @@ const LessonCreatePage = () => {
                             inline-flex
                             items-center
                             justify-center
-                            rounded-sm
+                            rounded-full
                             bg-[var(--brand-solid)]
                             px-5
                             py-2.5

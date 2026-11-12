@@ -42,6 +42,17 @@ const enrollmentApi = {
         return response.data;
     },
 
+    async updateExpiration(enrollmentId, durationMonths) {
+        const response = await apiClient.patch(
+            `/enrollments/${enrollmentId}/expiration`,
+            {
+                durationMonths,
+            }
+        );
+
+        return response.data;
+    },
+
     async remove(enrollmentId) {
         const response = await apiClient.delete(
             `/enrollments/${enrollmentId}`

@@ -111,9 +111,9 @@ const userService = {
             );
         }
 
-        if (newPassword.length < 6) {
+        if (newPassword.length < 8) {
             throw new AppError(
-                "Mật khẩu mới phải có ít nhất 6 ký tự",
+                "Mật khẩu mới phải có ít nhất 8 ký tự",
                 400
             );
         }

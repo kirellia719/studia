@@ -1,84 +1,46 @@
-// src/pages/student/courses/components/learning/LearningHeader.jsx
-
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft, ListVideo } from "lucide-react";
 
 const LearningHeader = ({
-  courseTitle,
-  lessonCount,
-  onBack,
-  onOpenLessons,
+    courseTitle,
+    currentLessonNumber,
+    lessonCount,
+    onBack,
+    onOpenLessons,
 }) => {
-  return (
-    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--surface)]/95 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3 sm:px-5">
-        {/* Back */}
+    return (
+        <header className="page-band sticky top-0 z-30 h-16">
+            <div className="mx-auto flex h-full w-full max-w-7xl items-center gap-2 px-4 sm:px-6 lg:px-8">
+                <button
+                    type="button"
+                    onClick={onBack}
+                    aria-label="Quay lại danh sách khóa học"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink-2)]"
+                >
+                    <ArrowLeft size={20} />
+                </button>
 
-        <button
-          type="button"
-          onClick={onBack}
-          className="
-                        flex
-                        h-9
-                        w-9
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-md
-                        text-[var(--muted)]
-                        transition
-                        hover:bg-[var(--surface-2)]
-                        hover:text-[var(--ink-2)]
-                    "
-          aria-label="Quay lại"
-        >
-          <ArrowLeft size={19} />
-        </button>
+                <p className="min-w-0 flex-1 truncate text-[15px] font-semibold tracking-tight text-[var(--ink)] sm:text-lg">
+                    {courseTitle}
+                </p>
 
-        {/* Course title */}
+                <button
+                    type="button"
+                    onClick={onOpenLessons}
+                    aria-label="Mở nội dung khóa học"
+                    className="flex h-11 shrink-0 items-center gap-1.5 rounded-full border border-[var(--brand-soft)] bg-[var(--brand-tint)] px-3 text-[12px] font-semibold text-[var(--brand-text)] transition hover:bg-[var(--brand-soft)] lg:hidden"
+                >
+                    <ListVideo
+                        size={17}
+                        strokeWidth={1.9}
+                    />
 
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-[var(--ink)]">
-            {courseTitle}
-          </p>
-        </div>
-
-        {/* Lesson drawer */}
-
-        <button
-          type="button"
-          onClick={onOpenLessons}
-          className="
-                        flex
-                        h-9
-                        shrink-0
-                        items-center
-                        gap-1.5
-                        rounded-md
-                        border
-                        border-[var(--brand-soft)]
-                        bg-[var(--brand-tint)]
-                        px-2.5
-                        text-xs
-                        font-medium
-                        text-[var(--brand-strong)]
-                        transition
-                        hover:bg-[var(--brand-soft)]
-                    "
-          aria-label="Danh sách bài học"
-        >
-          <BookOpen size={16} />
-
-          <span className="hidden sm:inline">
-            Bài học
-          </span>
-
-          <span className="text-[11px] text-[var(--brand-strong)]">
-            {lessonCount}
-          </span>
-        </button>
-      </div>
-    </header>
-  );
+                    <span className="tabular-nums">
+                        {currentLessonNumber}/{lessonCount}
+                    </span>
+                </button>
+            </div>
+        </header>
+    );
 };
 
 export default LearningHeader;

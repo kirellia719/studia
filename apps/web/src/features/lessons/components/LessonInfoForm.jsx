@@ -1,39 +1,29 @@
 import { useEffect, useState } from "react";
 
-import {
-    Clock3,
-    Save,
-    Trash2,
-    Upload,
-} from "lucide-react";
+import { Save } from "lucide-react";
 
 import appToast from "@/lib/toast.js";
-import getUrl from "@/lib/getUrl.js";
 import lessonApi from "@/features/lessons/api.js";
-
-const MAX_VIDEO_SIZE = 500 * 1024 * 1024;
-
-const ALLOWED_VIDEO_TYPES = [
-    "video/mp4",
-    "video/webm",
-    "video/quicktime",
-];
 
 const createInitialForm = (lesson) => ({
     title: lesson?.title || "",
     description: lesson?.description || "",
-    videoFile: null,
     isFree: lesson?.isFree || false,
 });
 
-const LessonInfoForm = ({ lesson, onUpdated }) => {
+const LessonInfoForm = ({ lesson, onLessonUpdated }) => {
     const [form, setForm] = useState(
         () => createInitialForm(lesson)
     );
 
     const [saving, setSaving] = useState(false);
-    const [videoPreview, setVideoPreview] = useState("");
-    const [uploadProgress, setUploadProgress] = useState(0);
+
+    const savedForm = createInitialForm(lesson);
+
+    const dirty =
+        form.title.trim() !== savedForm.title.trim() ||
+        form.description.trim() !== savedForm.description.trim() ||
+        Boolean(form.isFree) !== Boolean(savedForm.isFree);
 
     useEffect(() => {
         if (!lesson) return;
@@ -52,12 +42,21 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
     ]);
 
     useEffect(() => {
-        return () => {
-            if (videoPreview) {
-                URL.revokeObjectURL(videoPreview);
-            }
+        if (!dirty) return undefined;
+
+        const handleBeforeUnload = (event) => {
+            event.preventDefault();
+            event.returnValue = "";
         };
-    }, [videoPreview]);
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () =>
+            window.removeEventListener(
+                "beforeunload",
+                handleBeforeUnload
+            );
+    }, [dirty]);
 
     const updateForm = (field, value) => {
         setForm((prev) => ({
@@ -66,105 +65,10 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
         }));
     };
 
-    const formatFileSize = (bytes) => {
-        if (!bytes || bytes <= 0) return "0 KB";
-
-        if (bytes < 1024 * 1024) {
-            return `${(bytes / 1024).toFixed(0)} KB`;
-        }
-
-        return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-    };
-
-    const formatDuration = (seconds) => {
-        if (
-            seconds === null ||
-            seconds === undefined ||
-            seconds <= 0
-        ) {
-            return "--:--";
-        }
-
-        const totalSeconds = Math.floor(seconds);
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor(
-            (totalSeconds % 3600) / 60
-        );
-        const remainingSeconds = totalSeconds % 60;
-
-        if (hours > 0) {
-            return `${String(hours).padStart(2, "0")}:${String(
-                minutes
-            ).padStart(2, "0")}:${String(
-                remainingSeconds
-            ).padStart(2, "0")}`;
-        }
-
-        return `${String(minutes).padStart(2, "0")}:${String(
-            remainingSeconds
-        ).padStart(2, "0")}`;
-    };
-
-    const handleSelectVideo = (event) => {
-        const file = event.target.files?.[0];
-
-        if (!file) return;
-
-        if (!ALLOWED_VIDEO_TYPES.includes(file.type)) {
-            appToast.error(
-                "Chỉ hỗ trợ video MP4, WebM hoặc MOV."
-            );
-
-            event.target.value = "";
-            return;
-        }
-
-        if (file.size > MAX_VIDEO_SIZE) {
-            appToast.error(
-                "Video không được vượt quá 500MB."
-            );
-
-            event.target.value = "";
-            return;
-        }
-
-        if (videoPreview) {
-            URL.revokeObjectURL(videoPreview);
-        }
-
-        setVideoPreview(URL.createObjectURL(file));
-
-        setForm((prev) => ({
-            ...prev,
-            videoFile: file,
-        }));
-
-        setUploadProgress(0);
-
-        event.target.value = "";
-    };
-
-    const handleRemoveNewVideo = () => {
-        if (saving) return;
-
-        if (videoPreview) {
-            URL.revokeObjectURL(videoPreview);
-        }
-
-        setVideoPreview("");
-
-        setForm((prev) => ({
-            ...prev,
-            videoFile: null,
-        }));
-
-        setUploadProgress(0);
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (saving) return;
+        if (saving || !dirty) return;
 
         if (!form.title.trim()) {
             appToast.error(
@@ -176,7 +80,6 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
 
         try {
             setSaving(true);
-            setUploadProgress(0);
 
             const formData = new FormData();
 
@@ -195,55 +98,22 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                 String(form.isFree)
             );
 
-            if (form.videoFile) {
-                formData.append(
-                    "video",
-                    form.videoFile
-                );
-            }
-
             const response =
                 await lessonApi.update(
                     lesson.id,
-                    formData,
-                    (progress) => {
-                        setUploadProgress(progress);
-                    }
+                    formData
                 );
 
             const updatedLesson = response?.data;
 
             if (updatedLesson) {
-                onUpdated?.(updatedLesson);
+                onLessonUpdated?.(updatedLesson);
             }
 
             appToast.success(
                 response?.message ||
                 "Cập nhật bài học thành công."
             );
-
-            if (videoPreview) {
-                URL.revokeObjectURL(videoPreview);
-            }
-
-            setVideoPreview("");
-            setUploadProgress(0);
-
-            if (updatedLesson) {
-                setForm({
-                    title: updatedLesson.title || "",
-                    description:
-                        updatedLesson.description || "",
-                    videoFile: null,
-                    isFree:
-                        updatedLesson.isFree || false,
-                });
-            } else {
-                setForm((prev) => ({
-                    ...prev,
-                    videoFile: null,
-                }));
-            }
         } catch (error) {
             console.error(
                 "Update lesson error:",
@@ -254,8 +124,6 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                 error?.response?.data?.message ||
                 "Không thể cập nhật bài học."
             );
-
-            setUploadProgress(0);
         } finally {
             setSaving(false);
         }
@@ -266,10 +134,8 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="space-y-6"
         >
-            {/* Basic information */}
-            <section className="space-y-5">
+            <div className="space-y-5">
                 <div>
                     <label
                         htmlFor="lesson-title"
@@ -294,7 +160,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         disabled={saving}
                         placeholder="Nhập tên bài học..."
                         className={[
-                            "w-full rounded-lg",
+                            "w-full rounded-full",
                             "border border-[var(--line)]",
                             "bg-[var(--surface)] px-3 py-2.5",
                             "text-sm text-[var(--ink)]",
@@ -316,7 +182,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                             Mô tả
                         </label>
 
-                        <span className="text-[10px] text-[var(--faint)]">
+                        <span className="text-[12px] text-[var(--faint)]">
                             Không bắt buộc
                         </span>
                     </div>
@@ -334,7 +200,7 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         rows={4}
                         placeholder="Mô tả ngắn về bài học..."
                         className={[
-                            "w-full resize-y rounded-lg",
+                            "w-full resize-y rounded-2xl",
                             "border border-[var(--line)]",
                             "bg-[var(--surface)] px-3 py-2.5",
                             "text-sm leading-6 text-[var(--ink)]",
@@ -348,43 +214,37 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                 </div>
 
                 <div>
-                    <div className="mb-2">
-                        <p className="text-xs font-medium text-[var(--ink-2)]">
-                            Quyền truy cập
-                        </p>
-                    </div>
+                    <p className="mb-2 text-xs font-medium text-[var(--ink-2)]">
+                        Quyền truy cập
+                    </p>
 
                     <button
                         type="button"
+                        role="switch"
+                        aria-checked={Boolean(form.isFree)}
+                        aria-label="Bài học miễn phí"
                         onClick={() =>
                             updateForm("isFree", !form.isFree)
                         }
                         disabled={saving}
                         className={[
-                            "flex w-full items-center justify-between",
-                            "rounded-lg border px-3 py-2.5",
+                            "flex w-full items-center justify-between gap-3",
+                            "rounded-lg border border-[var(--line)]",
+                            "bg-[var(--surface-3)] px-3 py-2.5",
                             "text-left transition-colors",
-                            form.isFree
-                                ? "border-[var(--success-soft)] bg-[var(--success-soft)]"
-                                : "border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-3)]",
+                            "hover:bg-[var(--surface-2)]",
+                            "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
                             saving
                                 ? "cursor-not-allowed opacity-60"
                                 : "",
                         ].join(" ")}
                     >
                         <div>
-                            <p
-                                className={[
-                                    "text-xs font-medium",
-                                    form.isFree
-                                        ? "text-[var(--success)]"
-                                        : "text-[var(--ink-2)]",
-                                ].join(" ")}
-                            >
+                            <p className="text-xs font-semibold text-[var(--ink-2)]">
                                 Bài học miễn phí
                             </p>
 
-                            <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                            <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                                 {form.isFree
                                     ? "Học viên có thể xem miễn phí."
                                     : "Chỉ dành cho học viên của khóa học."}
@@ -392,189 +252,61 @@ const LessonInfoForm = ({ lesson, onUpdated }) => {
                         </div>
 
                         <span
+                            aria-hidden="true"
                             className={[
-                                "relative h-5 w-9 shrink-0 rounded-full",
+                                "flex h-6 w-11 shrink-0 items-center rounded-full p-0.5",
                                 "transition-colors",
                                 form.isFree
-                                    ? "bg-[var(--success)]"
-                                    : "bg-[var(--line-strong)]",
+                                    ? "bg-[var(--brand-solid)]"
+                                    : "border border-[var(--line)] bg-[var(--surface-2)]",
                             ].join(" ")}
                         >
                             <span
                                 className={[
-                                    "absolute top-0.5 h-4 w-4 rounded-full",
-                                    "bg-[var(--surface)] shadow-sm",
+                                    "h-5 w-5 rounded-full bg-white shadow-sm",
                                     "transition-transform",
                                     form.isFree
-                                        ? "translate-x-4"
-                                        : "translate-x-0.5",
+                                        ? "translate-x-5"
+                                        : "translate-x-0",
                                 ].join(" ")}
                             />
                         </span>
                     </button>
                 </div>
-            </section>
 
-            {/* Video */}
-            <section className="border-t border-[var(--surface-2)] pt-5">
-                <div className="mb-3 flex items-center justify-between gap-3">
-                    <div>
-                        <p className="text-xs font-medium text-[var(--ink-2)]">
-                            Video bài học
-                        </p>
+                <div className="flex flex-col-reverse gap-3 border-t border-[var(--surface-2)] pt-4 sm:flex-row sm:items-center sm:justify-between">
+                    <p
+                        aria-live="polite"
+                        className={[
+                            "text-[12px]",
+                            dirty
+                                ? "text-[var(--muted)]"
+                                : "text-[var(--faint)]",
+                        ].join(" ")}
+                    >
+                        {dirty
+                            ? "Có thay đổi chưa lưu."
+                            : "Mọi thay đổi đã được lưu."}
+                    </p>
 
-                        <p className="mt-1 text-[10px] text-[var(--faint)]">
-                            MP4, WebM, MOV · tối đa 500MB
-                        </p>
-                    </div>
+                    <button
+                        type="submit"
+                        disabled={saving || !dirty}
+                        className={[
+                            "inline-flex w-full items-center justify-center gap-2",
+                            "rounded-full bg-[var(--solid)]",
+                            "px-4 py-2.5",
+                            "text-xs font-semibold text-white",
+                            "hover:bg-[var(--solid-hover)]",
+                            "disabled:cursor-not-allowed disabled:opacity-40",
+                            "sm:w-auto",
+                        ].join(" ")}
+                    >
+                        <Save size={14} />
 
-                    {lesson.duration > 0 && (
-                        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[var(--surface-2)] px-2 py-1 text-[10px] text-[var(--muted)]">
-                            <Clock3 size={11} />
-                            {formatDuration(
-                                lesson.duration
-                            )}
-                        </span>
-                    )}
+                        {saving ? "Đang lưu..." : "Lưu thay đổi"}
+                    </button>
                 </div>
-
-                {form.videoFile ? (
-                    <div className="overflow-hidden rounded-lg border border-[var(--line)]">
-                        <video
-                            src={videoPreview}
-                            controls
-                            className="max-h-[400px] w-full bg-black"
-                        />
-
-                        <div className="flex items-center justify-between gap-3 p-3">
-                            <div className="min-w-0">
-                                <p className="truncate text-xs font-medium text-[var(--ink-2)]">
-                                    {form.videoFile.name}
-                                </p>
-
-                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
-                                    {formatFileSize(
-                                        form.videoFile.size
-                                    )}
-                                </p>
-                            </div>
-
-                            {!saving && (
-                                <button
-                                    type="button"
-                                    onClick={
-                                        handleRemoveNewVideo
-                                    }
-                                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[var(--faint)] hover:bg-[var(--danger-soft)] hover:text-[var(--danger)]"
-                                >
-                                    <Trash2 size={15} />
-                                </button>
-                            )}
-                        </div>
-
-                        {saving && (
-                            <div className="px-3 pb-3">
-                                <div className="mb-1 flex justify-between text-[10px] text-[var(--muted)]">
-                                    <span>
-                                        {uploadProgress >=
-                                            100
-                                            ? "Đang xử lý..."
-                                            : "Đang tải..."}
-                                    </span>
-
-                                    <span>
-                                        {uploadProgress}%
-                                    </span>
-                                </div>
-
-                                <div className="h-1 overflow-hidden rounded-full bg-[var(--line)]">
-                                    <div
-                                        className="h-full rounded-full bg-[var(--solid)] transition-all"
-                                        style={{
-                                            width: `${uploadProgress}%`,
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ) : lesson.video ? (
-                    <div className="overflow-hidden rounded-lg border border-[var(--line)]">
-                        <video
-                            src={getUrl(lesson.video)}
-                            controls
-                            className="max-h-[400px] w-full bg-black"
-                        />
-
-                        <div className="flex flex-col gap-2.5 p-3 sm:flex-row sm:items-center sm:justify-between">
-
-                            <label className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-2 text-[11px] font-medium text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--ink)]">
-                                <Upload size={13} />
-                                Thay video
-
-                                <input
-                                    type="file"
-                                    accept="video/mp4,video/webm,video/quicktime"
-                                    onChange={
-                                        handleSelectVideo
-                                    }
-                                    disabled={saving}
-                                    className="hidden"
-                                />
-                            </label>
-                        </div>
-                    </div>
-                ) : (
-                    <label className="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[var(--line-strong)] bg-[var(--surface-3)] px-4 text-center hover:border-[var(--faint)] hover:bg-[var(--surface)]">
-                        <Upload
-                            size={20}
-                            className="text-[var(--muted)]"
-                        />
-
-                        <span className="mt-2 text-xs font-medium text-[var(--ink-2)]">
-                            Chọn video
-                        </span>
-
-                        <span className="mt-1 text-[10px] text-[var(--faint)]">
-                            MP4, WebM, MOV · tối đa 500MB
-                        </span>
-
-                        <input
-                            type="file"
-                            accept="video/mp4,video/webm,video/quicktime"
-                            onChange={handleSelectVideo}
-                            disabled={saving}
-                            className="hidden"
-                        />
-                    </label>
-                )}
-            </section>
-
-            {/* Save */}
-            <div className="flex justify-end border-t border-[var(--surface-2)] pt-4">
-                <button
-                    type="submit"
-                    disabled={saving}
-                    className={[
-                        "inline-flex w-full items-center justify-center gap-2",
-                        "rounded-lg bg-[var(--solid)]",
-                        "px-4 py-2.5",
-                        "text-xs font-semibold text-white",
-                        "hover:bg-[var(--solid-hover)]",
-                        "disabled:cursor-not-allowed disabled:opacity-50",
-                        "sm:w-auto",
-                    ].join(" ")}
-                >
-                    <Save size={14} />
-
-                    {saving
-                        ? form.videoFile
-                            ? uploadProgress >= 100
-                                ? "Đang xử lý..."
-                                : `Đang tải ${uploadProgress}%...`
-                            : "Đang lưu..."
-                        : "Lưu thay đổi"}
-                </button>
             </div>
         </form>
     );

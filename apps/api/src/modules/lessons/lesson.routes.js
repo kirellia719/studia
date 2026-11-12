@@ -54,14 +54,6 @@ router.delete(
     lessonController.deleteLesson
 );
 
-// Khóa / mở khóa lesson
-// PATCH /lesson/:id/lock
-router.patch(
-    "/:id/lock",
-    authorize("TEACHER"),
-    lessonController.toggleLock
-);
-
 // Di chuyển lesson
 // PUT /lesson/:id/move
 router.put(

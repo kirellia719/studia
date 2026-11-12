@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/stores/authStore";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher.jsx";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -55,17 +56,19 @@ const ProfilePage = () => {
     return (
         <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* HEADER */}
-            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
-                <div className="mx-auto flex h-14 w-full max-w-[720px] items-center px-4 sm:px-6">
+            <header className="page-band sticky top-0 z-30 h-16">
+                <div className="mx-auto flex h-full w-full max-w-[720px] items-center justify-between px-4 sm:px-6">
                     <h1 className="text-[17px] font-semibold text-[var(--ink)]">
                         Hồ sơ
                     </h1>
+
+                    <ThemeSwitcher variant="floating" className="lg:hidden" />
                 </div>
             </header>
 
             <div className="mx-auto w-full max-w-[720px] px-4 pb-10 pt-5 sm:px-6">
                 {/* PROFILE CARD */}
-                <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-6 shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
+                <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-6 shadow-sm">
                     <div className="flex flex-col items-center text-center sm:flex-row sm:text-left">
                         {/* AVATAR */}
                         <div className="relative shrink-0">
@@ -77,7 +80,7 @@ const ProfilePage = () => {
                                         className="h-full w-full object-cover"
                                     />
                                 ) : (
-                                    <span className="text-2xl font-semibold text-[var(--brand)]">
+                                    <span className="text-2xl font-semibold text-[var(--brand-text)]">
                                         {getInitial(user?.name)}
                                     </span>
                                 )}
@@ -89,12 +92,14 @@ const ProfilePage = () => {
                                 onClick={() =>
                                     navigate("/student/profile/personal")
                                 }
-                                className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--brand-solid)] text-white shadow-sm transition hover:bg-[var(--brand-solid-hover)] active:scale-95"
+                                className="group absolute bottom-0 right-0 flex h-11 w-11 items-center justify-center rounded-full"
                             >
-                                <UserRound
-                                    size={13}
-                                    strokeWidth={1.8}
-                                />
+                                <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--brand-solid)] text-white shadow-sm transition group-hover:bg-[var(--brand-solid-hover)] group-active:scale-95">
+                                    <UserRound
+                                        size={13}
+                                        strokeWidth={1.8}
+                                    />
+                                </span>
                             </button>
                         </div>
 
@@ -109,7 +114,7 @@ const ProfilePage = () => {
                             </p>
 
                             <div className="mt-2.5 flex items-center justify-center gap-2 sm:justify-start">
-                                <div className="inline-flex items-center gap-1.5 rounded-full bg-[var(--brand-soft)] px-2.5 py-1 text-[10px] font-medium text-[var(--brand)]">
+                                <div className="inline-flex items-center gap-1.5 rounded-full bg-[var(--brand-soft)] px-2.5 py-1 text-[12px] font-medium text-[var(--brand-text)]">
                                     <GraduationCap
                                         size={13}
                                         strokeWidth={1.8}
@@ -118,7 +123,7 @@ const ProfilePage = () => {
                                 </div>
 
                                 {user?.studentCode && (
-                                    <span className="rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-[10px] font-medium text-[var(--muted)]">
+                                    <span className="rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-[12px] font-medium text-[var(--muted)]">
                                         {user.studentCode}
                                     </span>
                                 )}
@@ -128,7 +133,7 @@ const ProfilePage = () => {
                 </section>
 
                 {/* MENU */}
-                <section className="mt-5 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[0_4px_18px_rgba(0,0,0,0.03)]">
+                <section className="mt-5 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-sm">
                     {menuItems.map((item, index) => {
                         const Icon = item.icon;
 
@@ -154,7 +159,7 @@ const ProfilePage = () => {
                                         {item.label}
                                     </p>
 
-                                    <p className="mt-0.5 truncate text-[11px] text-[var(--muted)]">
+                                    <p className="mt-0.5 truncate text-[12px] text-[var(--muted)]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -173,7 +178,7 @@ const ProfilePage = () => {
                 <button
                     type="button"
                     onClick={handleLogout}
-                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--danger-soft)] bg-[var(--surface)] py-3 text-[13px] font-medium text-[var(--danger)] transition hover:bg-[var(--danger-soft)] active:bg-[var(--danger-soft)]"
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-full border border-[var(--danger-soft)] bg-[var(--surface)] py-3 text-[13px] font-medium text-[var(--danger)] transition hover:bg-[var(--danger-soft)] active:bg-[var(--danger-soft)]"
                 >
                     <LogOut
                         size={16}

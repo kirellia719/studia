@@ -4,6 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import useAuthStore from "@/stores/authStore";
 import Loading from "@/components/ui/Loading.jsx";
 import profileApi from "@/features/profile/api.js";
+import authApi from "@/features/auth/api.js";
 
 const ProtectedRoute = ({ redirectTo = "/login" }) => {
     const accessToken = useAuthStore(
@@ -23,16 +24,24 @@ const ProtectedRoute = ({ redirectTo = "/login" }) => {
                 return;
             }
 
-            try {
-                if (!user) {
-                    await profileApi.getMe();
-                }
-            } catch (error) {
-                console.log("Protected Error:", error);
+            // Mở phiên học liệu song song; lỗi phiên media
+            // không đăng xuất người dùng.
+            const [profile] = await Promise.allSettled([
+                user
+                    ? Promise.resolve()
+                    : profileApi.getMe(),
+                authApi.openMediaSession(),
+            ]);
+
+            if (profile.status === "rejected") {
+                console.log(
+                    "Protected Error:",
+                    profile.reason
+                );
                 useAuthStore.getState().logout();
-            } finally {
-                setLoading(false);
             }
+
+            setLoading(false);
         };
 
         loadUser();

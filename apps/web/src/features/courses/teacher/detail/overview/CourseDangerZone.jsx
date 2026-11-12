@@ -13,7 +13,7 @@ const CourseDangerZone = ({
                 bg-[var(--surface)]
                 shadow-sm
 
-                sm:rounded-md
+                sm:rounded-2xl
             "
         >
             <div className="p-4 sm:p-5">
@@ -42,7 +42,7 @@ const CourseDangerZone = ({
                     <div className="min-w-0">
                         <p
                             className="
-                                text-[11px]
+                                text-[12px]
                                 leading-4
                                 text-[var(--faint)]
 
@@ -68,7 +68,7 @@ const CourseDangerZone = ({
                             items-center
                             justify-center
                             gap-2
-                            rounded-md
+                            rounded-full
                             border
                             border-red-200
                             px-3

@@ -25,9 +25,21 @@ const learningApi = {
         return response.data;
     },
 
-    async completeLesson(lessonId) {
+    async updateVideoProgress(
+        lessonId,
+        { positionSeconds, durationSeconds }
+    ) {
+        const response = await apiClient.patch(
+            `/learning/lessons/${lessonId}/progress`,
+            { positionSeconds, durationSeconds }
+        );
+
+        return response.data;
+    },
+
+    async markReadingComplete(lessonId) {
         const response = await apiClient.post(
-            `/learning/lessons/${lessonId}/complete`
+            `/learning/lessons/${lessonId}/reading`
         );
 
         return response.data;

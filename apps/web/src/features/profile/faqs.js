@@ -2,7 +2,7 @@ export const faqs = [
     {
         question: "Làm thế nào để tham gia một khóa học?",
         answer:
-            "Bạn vào mục Khám phá, chọn khóa học muốn học và xem thông tin chi tiết. Sau đó thực hiện đăng ký khóa học theo hướng dẫn.",
+            "Bạn liên hệ giáo viên phụ trách để được ghi danh vào khóa học. Sau khi được ghi danh, khóa học sẽ xuất hiện trong mục Học tập của bạn.",
     },
     {
         question: "Làm thế nào để xem bài học?",
@@ -17,7 +17,7 @@ export const faqs = [
     {
         question: "Tôi quên mật khẩu thì phải làm gì?",
         answer:
-            "Tại màn hình đăng nhập, chọn Quên mật khẩu và thực hiện các bước xác minh để đặt lại mật khẩu.",
+            "Vui lòng liên hệ giáo viên phụ trách hoặc quản trị viên để được hỗ trợ đặt lại mật khẩu.",
     },
     {
         question: "Làm thế nào để thay đổi thông tin cá nhân?",

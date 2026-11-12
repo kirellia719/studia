@@ -342,9 +342,16 @@ const enrollmentService = {
             throw error;
         }
 
-        const expiresAt = new Date(
-            enrollment.enrolledAt
-        );
+        // Gia hạn cộng dồn từ ngày hết hạn hiện tại;
+        // nếu khóa đã hết hạn thì tính lại từ hôm nay.
+        const now = new Date();
+
+        const baseDate =
+            enrollment.expiresAt > now
+                ? new Date(enrollment.expiresAt)
+                : now;
+
+        const expiresAt = new Date(baseDate);
 
         expiresAt.setMonth(
             expiresAt.getMonth() + durationMonths

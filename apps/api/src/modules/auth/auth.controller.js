@@ -1,6 +1,7 @@
 import authService from "./auth.service.js";
 
 import AppError from "../../utils/appError.js";
+import { MEDIA_COOKIE_NAME } from "../../utils/mediaToken.js";
 
 const authController = {
     async register(req, res, next) {
@@ -57,6 +58,33 @@ const authController = {
                 success: true,
                 message: "Đăng nhập thành công.",
                 data: result,
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async mediaSession(req, res, next) {
+        try {
+            const { token, expiresIn } =
+                authService.createMediaSession(
+                    req.user
+                );
+
+            res.cookie(MEDIA_COOKIE_NAME, token, {
+                httpOnly: true,
+                // Frontend và API cùng một site (khác cổng/subdomain)
+                // nên Lax vẫn gửi cookie cho <video>, cả khi chạy http.
+                sameSite: "lax",
+                secure: req.secure,
+                path: "/uploads",
+                maxAge: expiresIn * 1000,
+            });
+
+            res.status(200).json({
+                success: true,
+                message: "Đã mở phiên học liệu.",
+                data: { expiresIn },
             });
         } catch (error) {
             next(error);

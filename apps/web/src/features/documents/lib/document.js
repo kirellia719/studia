@@ -80,10 +80,10 @@ export const getDocumentIconClass = (
       return "bg-[var(--brand-soft)] text-[var(--brand)]";
 
     case "POWERPOINT":
-      return "bg-orange-50 text-orange-500";
+      return "bg-[var(--accent-soft)] text-[var(--accent)]";
 
     case "EXCEL":
-      return "bg-green-50 text-green-600";
+      return "bg-[var(--success-soft)] text-[var(--success)]";
 
     default:
       return "bg-[var(--surface-2)] text-[var(--muted)]";

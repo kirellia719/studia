@@ -103,7 +103,7 @@ const userController = {
     async deleteMe(req, res, next) {
         try {
             await userService.delete(
-                req.user.userId
+                req.user.id
             );
 
             res.status(200).json({

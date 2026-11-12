@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 import {
     ArrowRight,
+    BookOpen,
+    Clock3,
+    GraduationCap,
     Heart,
     Languages,
 } from "lucide-react";
@@ -33,13 +36,13 @@ const LandingPage = () => {
                             bg-[var(--surface)]
                             px-4 py-2.5
                             text-xs font-bold
-                            text-[var(--brand)]
-                            shadow-[0_2px_8px_rgba(45,75,65,0.04)]
+                            text-[var(--brand-text)]
+                            shadow-[0_2px_8px_rgba(0,0,0,0.04)]
                             transition-all duration-200
                             hover:border-[var(--brand)]
                             hover:bg-[var(--brand)]
-                            hover:text-white
-                            hover:shadow-[0_8px_20px_rgba(78,155,203,0.18)]
+                            hover:text-[var(--on-brand)]
+                            hover:shadow-[0_8px_20px_rgba(0,0,0,0.12)]
                             sm:px-5 sm:text-sm
                         "
                     >
@@ -80,6 +83,27 @@ const LandingPage = () => {
                         {/* Accent dots */}
                         <div className="absolute right-[9%] top-[18%] h-2 w-2 rounded-full bg-[var(--brand)]/50" />
                         <div className="absolute left-[6%] top-[40%] h-2 w-2 rounded-full bg-[var(--accent)]/60" />
+
+                        {/* Chữ Lào mờ — chất liệu học tập */}
+                        <div
+                            aria-hidden="true"
+                            className="absolute -left-4 bottom-[12%] hidden select-none text-[170px] font-black leading-none text-[var(--brand-text)] opacity-[0.07] lg:block"
+                        >
+                            ກ
+                        </div>
+
+                        <div
+                            aria-hidden="true"
+                            className="absolute right-[6%] top-[6%] hidden select-none text-[150px] font-black leading-none text-[var(--accent)] opacity-[0.09] lg:block"
+                        >
+                            ຂ
+                        </div>
+
+                        {/* Vòng cung trang trí */}
+                        <div
+                            aria-hidden="true"
+                            className="absolute -left-24 top-[24%] hidden h-72 w-72 rounded-full border border-[var(--brand)]/15 lg:block"
+                        />
                     </div>
 
                     <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 xl:gap-24">
@@ -96,13 +120,13 @@ const LandingPage = () => {
                                     w-[min(84vw,330px)]
                                     items-center justify-center
                                     overflow-visible
-                                    rounded-[28px]
+                                    rounded-[24px]
                                     border border-white
                                     bg-[var(--surface)]/95
-                                    shadow-[0_25px_80px_-30px_rgba(45,75,65,0.20)]
+                                    shadow-[0_25px_80px_-30px_rgba(0,0,0,0.20)]
                                     backdrop-blur-xl
                                     sm:w-[370px]
-                                    sm:rounded-[32px]
+                                    sm:rounded-[24px]
                                     md:w-[410px]
                                     lg:w-[420px]
                                     xl:w-[440px]
@@ -129,7 +153,7 @@ const LandingPage = () => {
                                 <div className="absolute h-[70%] w-[70%] rounded-full border border-[var(--brand)]/[0.10]" />
 
                                 {/* Gold dot */}
-                                <div className="absolute -right-1 top-14 z-20 h-4 w-4 rounded-full bg-[var(--accent)] shadow-[0_6px_18px_rgba(213,168,60,0.20)] sm:right-1 sm:top-16 sm:h-5 sm:w-5" />
+                                <div className="absolute -right-1 top-14 z-20 h-4 w-4 rounded-full bg-[var(--accent)] shadow-[0_6px_18px_rgba(232,154,0,0.20)] sm:right-1 sm:top-16 sm:h-5 sm:w-5" />
 
                                 {/* Blue dot */}
                                 <div className="absolute -left-1 top-24 z-20 h-3 w-3 rounded-full bg-[var(--brand)]/70 sm:left-1 sm:top-28 sm:h-3.5 sm:w-3.5" />
@@ -138,35 +162,35 @@ const LandingPage = () => {
                                 <div className="absolute bottom-9 right-7 h-2.5 w-2.5 rounded-full bg-[var(--accent)]/65 sm:bottom-12 sm:right-9 sm:h-3 sm:w-3" />
 
                                 {/* Plus */}
-                                <div className="absolute bottom-7 left-7 text-xl font-light text-[var(--brand)]/30 sm:bottom-9 sm:left-9 sm:text-2xl">
+                                <div className="absolute bottom-7 left-7 text-xl font-light text-[var(--brand-text)]/30 sm:bottom-9 sm:left-9 sm:text-2xl">
                                     +
                                 </div>
 
                                 {/* Logo */}
                                 <div className="relative z-10 w-[67%] sm:w-[72%]">
                                     <img
-                                        src="/logo.png"
+                                        src="/badge-amber.png"
                                         alt="Achan - Học tiếng Lào"
                                         className="
                                             h-auto
                                             w-full
-                                            drop-shadow-[0_18px_25px_rgba(45,75,65,0.14)]
+                                            drop-shadow-[0_18px_25px_rgba(0,0,0,0.14)]
                                         "
                                     />
                                 </div>
 
                                 {/* Floating information card */}
-                                <div className="absolute -bottom-4 -right-2 z-20 hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 shadow-[0_14px_35px_-15px_rgba(45,75,65,0.20)] sm:block sm:-right-5">
+                                <div className="absolute -bottom-4 -right-2 z-20 hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 shadow-[0_14px_35px_-15px_rgba(0,0,0,0.20)] sm:block sm:-right-5">
                                     <div className="flex items-center gap-3">
                                         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--surface-3)]">
                                             <Languages
                                                 size={16}
-                                                className="text-[var(--brand)]"
+                                                className="text-[var(--brand-text)]"
                                             />
                                         </div>
 
                                         <div>
-                                            <p className="text-[10px] font-medium text-[var(--faint)]">
+                                            <p className="text-[12px] font-medium text-[var(--faint)]">
                                                 Learning
                                             </p>
 
@@ -192,9 +216,9 @@ const LandingPage = () => {
                                     border border-[var(--line)]
                                     bg-[var(--surface)]/90
                                     px-3.5 py-2
-                                    text-[11px] font-bold
-                                    text-[var(--brand)]
-                                    shadow-[0_4px_14px_rgba(45,75,65,0.05)]
+                                    text-[12px] font-bold
+                                    text-[var(--brand-text)]
+                                    shadow-[0_4px_14px_rgba(0,0,0,0.06)]
                                     backdrop-blur-sm
                                     sm:mb-6 sm:px-4 sm:text-xs
                                 "
@@ -202,7 +226,7 @@ const LandingPage = () => {
                                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--surface-3)]">
                                     <Languages
                                         size={13}
-                                        className="text-[var(--brand)]"
+                                        className="text-[var(--brand-text)]"
                                     />
                                 </span>
 
@@ -225,7 +249,7 @@ const LandingPage = () => {
                             >
                                 Tiếng Lào
 
-                                <span className="mt-1 block bg-gradient-to-r from-[var(--brand)] via-[var(--brand-solid)] to-[var(--brand)] bg-clip-text pb-2 text-transparent">
+                                <span className="mt-1 block bg-gradient-to-r from-[var(--brand-strong)] via-[var(--brand-text)] to-[var(--brand-strong)] bg-clip-text pb-2 text-transparent">
                                     không khó
                                 </span>
                             </h1>
@@ -268,11 +292,11 @@ const LandingPage = () => {
                                         bg-[var(--brand)]
                                         px-6 py-3.5
                                         text-sm font-bold text-white
-                                        shadow-[0_12px_28px_-10px_rgba(78,155,203,0.40)]
+                                        shadow-[0_12px_28px_-10px_rgba(232,154,0,0.35)]
                                         transition-all duration-200
                                         hover:-translate-y-0.5
                                         hover:bg-[var(--brand-solid)]
-                                        hover:shadow-[0_18px_34px_-10px_rgba(78,155,203,0.45)]
+                                        hover:shadow-[0_18px_34px_-10px_rgba(232,154,0,0.40)]
                                         sm:w-auto sm:px-7
                                     "
                                 >
@@ -295,12 +319,12 @@ const LandingPage = () => {
                                         px-6 py-3.5
                                         text-sm font-bold
                                         text-[var(--ink)]
-                                        shadow-[0_3px_10px_rgba(45,75,65,0.04)]
+                                        shadow-[0_3px_10px_rgba(0,0,0,0.04)]
                                         transition-all duration-200
                                         hover:-translate-y-0.5
                                         hover:border-[var(--brand)]/40
-                                        hover:text-[var(--brand)]
-                                        hover:shadow-[0_10px_22px_rgba(45,75,65,0.08)]
+                                        hover:text-[var(--brand-text)]
+                                        hover:shadow-[0_10px_22px_rgba(0,0,0,0.08)]
                                         sm:w-auto sm:px-7
                                     "
                                 >
@@ -309,13 +333,53 @@ const LandingPage = () => {
                             </div>
                         </div>
                     </div>
+
+                    {/* Feature strip */}
+                    <div className="relative mx-auto mt-14 grid w-full max-w-6xl gap-3 sm:grid-cols-3 sm:gap-4 lg:mt-20">
+                        {[
+                            {
+                                icon: BookOpen,
+                                title: "Bài học ngắn, dễ hiểu",
+                                text: "Chia nhỏ kiến thức để bạn học đều mỗi ngày.",
+                            },
+                            {
+                                icon: GraduationCap,
+                                title: "Lộ trình rõ ràng",
+                                text: "Theo dõi tiến độ và biết mình cần học gì tiếp.",
+                            },
+                            {
+                                icon: Clock3,
+                                title: "Học mọi lúc, mọi nơi",
+                                text: "Mở máy là học, trên điện thoại hay máy tính.",
+                            },
+                        ].map(({ icon: Icon, title, text }) => (
+                            <div
+                                key={title}
+                                className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)]/85 p-4 shadow-[0_10px_30px_-22px_var(--ring)] backdrop-blur-sm"
+                            >
+                                <span className="brand-tile flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+                                    <Icon size={19} strokeWidth={2} />
+                                </span>
+
+                                <div className="min-w-0">
+                                    <p className="text-sm font-semibold text-[var(--ink)]">
+                                        {title}
+                                    </p>
+
+                                    <p className="mt-1 text-xs leading-5 text-[var(--muted)]">
+                                        {text}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </section>
             </main>
 
             {/* Footer */}
             {/* <footer className="border-t border-[var(--line)] bg-[var(--surface)] px-4 py-6 sm:px-6 sm:py-7 md:px-8">
                 <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center sm:flex-row sm:text-left">
-                    <p className="text-[11px] font-medium text-[var(--faint)] sm:text-xs">
+                    <p className="text-[12px] font-medium text-[var(--faint)] sm:text-xs">
                         © {new Date().getFullYear()} Achan
                     </p>
                 </div>

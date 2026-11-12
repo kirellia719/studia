@@ -192,6 +192,8 @@ const CourseCreatePage = () => {
             ========================================== */}
 
             <div className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--surface)] px-4 py-3">
+                <h1 className="sr-only">Tạo khóa học</h1>
+
                 <Breadcrumb
                     items={[
                         {
@@ -215,7 +217,7 @@ const CourseCreatePage = () => {
 
                 <form
                     onSubmit={handleSubmit}
-                    className="rounded-md border border-[var(--line)] bg-[var(--surface)] p-4 shadow-sm"
+                    className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-sm"
                 >
                     <div className="space-y-4">
                         {/* Title */}
@@ -241,7 +243,7 @@ const CourseCreatePage = () => {
                                 placeholder="Ví dụ: React cơ bản"
                                 disabled={loading}
                                 maxLength={150}
-                                className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
+                                className="w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                             />
                         </div>
 
@@ -267,7 +269,7 @@ const CourseCreatePage = () => {
                                 disabled={loading}
                                 rows={5}
                                 maxLength={1000}
-                                className="w-full resize-none rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
+                                className="w-full resize-none rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                             />
                         </div>
 
@@ -300,7 +302,7 @@ const CourseCreatePage = () => {
                                         }
                                         placeholder="0"
                                         disabled={loading}
-                                        className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
+                                        className="w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                                     />
 
                                     <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-[var(--faint)]">
@@ -337,7 +339,7 @@ const CourseCreatePage = () => {
                                         }
                                         placeholder="Ví dụ: 3"
                                         disabled={loading}
-                                        className="w-full rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
+                                        className="w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 pr-16 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 disabled:bg-[var(--surface-2)]"
                                     />
 
                                     <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-[var(--faint)]">
@@ -371,7 +373,7 @@ const CourseCreatePage = () => {
                             />
 
                             {thumbnailPreview ? (
-                                <div className="relative overflow-hidden rounded-xl border border-[var(--line)]">
+                                <div className="relative overflow-hidden rounded-2xl border border-[var(--line)]">
                                     <img
                                         src={thumbnailPreview}
                                         alt="Xem trước ảnh khóa học"
@@ -384,7 +386,7 @@ const CourseCreatePage = () => {
                                             handleRemoveThumbnail
                                         }
                                         disabled={loading}
-                                        className="absolute right-3 top-3 rounded-lg bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-black/80 disabled:cursor-not-allowed"
+                                        className="absolute right-3 top-3 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-black/80 disabled:cursor-not-allowed"
                                     >
                                         Xóa ảnh
                                     </button>
@@ -396,7 +398,7 @@ const CourseCreatePage = () => {
                                         fileInputRef.current?.click()
                                     }
                                     disabled={loading}
-                                    className="flex aspect-video w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-3)] text-[var(--faint)] transition hover:border-[var(--brand)]/50 hover:bg-[var(--brand-solid)]/5 hover:text-[var(--brand)] disabled:cursor-not-allowed disabled:opacity-60"
+                                    className="flex aspect-video w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-3)] text-[var(--faint)] transition hover:border-[var(--brand)]/50 hover:bg-[var(--brand-solid)]/5 hover:text-[var(--brand-text)] disabled:cursor-not-allowed disabled:opacity-60"
                                 >
                                     <ImagePlus size={32} />
 
@@ -423,7 +425,7 @@ const CourseCreatePage = () => {
                             onClick={handleBack}
                             disabled={loading}
                             className="
-            rounded-sm
+            rounded-full
             border border-[var(--line)]
             bg-[var(--surface)]
             px-5 py-2.5
@@ -432,7 +434,7 @@ const CourseCreatePage = () => {
             transition
             hover:border-[var(--brand)]/30
             hover:bg-[var(--surface-3)]
-            hover:text-[var(--brand)]
+            hover:text-[var(--brand-text)]
             focus:outline-none
             focus:ring-2
             focus:ring-[var(--brand)]/20
@@ -447,7 +449,7 @@ const CourseCreatePage = () => {
                             type="submit"
                             disabled={loading}
                             className="
-            rounded-sm
+            rounded-full
             bg-[var(--brand-solid)]
             px-5 py-2.5
             text-sm font-semibold

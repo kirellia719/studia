@@ -7,6 +7,10 @@ import { hashPassword, comparePassword } from "../../utils/password.js";
 import AppError from "../../utils/appError.js";
 
 import env from "../../config/env.js";
+import {
+    signMediaToken,
+    MEDIA_TOKEN_TTL_SECONDS,
+} from "../../utils/mediaToken.js";
 
 const authService = {
     async register({ name, email, password }) {
@@ -42,7 +46,7 @@ const authService = {
     async login({ email, password }) {
         const user = await authRepository.findUserByEmail(email);
 
-        if (!user) {
+        if (!user || user.isDelete) {
             throw new AppError(
                 "Email hoặc mật khẩu không chính xác.",
                 401
@@ -78,6 +82,18 @@ const authService = {
         return {
             user: safeUser,
             accessToken,
+        };
+    },
+
+    // Phiên ngắn hạn để thẻ <video> tải học liệu bằng cookie,
+    // tránh đặt access token vào URL.
+    createMediaSession(user) {
+        return {
+            token: signMediaToken({
+                id: user.id,
+                role: user.role,
+            }),
+            expiresIn: MEDIA_TOKEN_TTL_SECONDS,
         };
     },
 };

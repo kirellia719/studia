@@ -82,7 +82,7 @@ const RegisterPage = () => {
     "border border-[var(--line)]",
     "bg-[var(--surface)]",
     "py-2.5",
-    "text-sm text-[var(--ink)]",
+    "text-base text-[var(--ink)] sm:text-sm",
     "outline-none",
     "transition-colors",
     "placeholder:text-[var(--faint)]",
@@ -122,9 +122,6 @@ const RegisterPage = () => {
         <div className="w-full max-w-[430px]">
           {/* Card */}
           <div className="relative overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[0_16px_45px_rgba(24,24,27,0.06)] sm:rounded-3xl sm:p-8">
-            {/* Top accent */}
-            <div className="absolute inset-x-0 top-0 h-0.5 bg-[var(--brand-solid)]" />
-
             {/* Header */}
             <div className="text-center">
               <div className="mb-4 flex justify-center">
@@ -255,7 +252,7 @@ const RegisterPage = () => {
                         ? "Ẩn mật khẩu"
                         : "Hiển thị mật khẩu"
                     }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
                   >
                     {showPassword ? (
                       <EyeOff size={17} />
@@ -314,7 +311,7 @@ const RegisterPage = () => {
                         ? "Ẩn mật khẩu"
                         : "Hiển thị mật khẩu"
                     }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-[var(--faint)] transition-colors hover:text-[var(--ink-2)] disabled:cursor-not-allowed"
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={17} />
@@ -332,7 +329,7 @@ const RegisterPage = () => {
                 className={[
                   "mt-1 flex h-11 w-full",
                   "items-center justify-center",
-                  "rounded-xl",
+                  "rounded-full",
                   "bg-[var(--solid)]",
                   "px-4",
                   "text-sm font-semibold text-white",
@@ -355,7 +352,7 @@ const RegisterPage = () => {
               Đã có tài khoản?{" "}
               <Link
                 to="/login"
-                className="font-semibold text-[var(--brand)] transition-colors hover:text-[var(--brand-strong)] hover:underline"
+                className="font-semibold text-[var(--brand-text)] transition-colors hover:text-[var(--brand-text)] hover:underline"
               >
                 Đăng nhập
               </Link>
@@ -363,7 +360,7 @@ const RegisterPage = () => {
           </div>
 
           {/* Footer */}
-          <div className="mt-5 text-center text-[10px] text-[var(--faint)]">
+          <div className="mt-5 text-center text-[12px] text-[var(--faint)]">
             Achan
           </div>
         </div>

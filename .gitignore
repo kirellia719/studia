@@ -4,8 +4,11 @@
 
 node_modules/
 .pnp/
-.pnp.js
-yarn.lock
+.pnp.*
+.pnp.cjs
+.pnp.loader.mjs
+
+# package-lock.json / npm-shrinkwrap.json được commit (dự án dùng npm)
 
 
 # ==========================================
@@ -15,10 +18,21 @@ yarn.lock
 dist/
 build/
 out/
+.output/
 .next/
 .nuxt/
 coverage/
+*.tsbuildinfo
+
+
+# ==========================================
+# Dữ liệu chạy (upload, file tạm)
+# ==========================================
+
 uploads/
+tmp/
+temp/
+logs/
 
 
 # ==========================================
@@ -26,13 +40,9 @@ uploads/
 # ==========================================
 
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Cho phép commit file mẫu
+.env.*
 !.env.example
+!.env.*.example
 
 
 # ==========================================
@@ -42,6 +52,7 @@ uploads/
 *.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
@@ -54,6 +65,8 @@ lerna-debug.log*
 .parcel-cache/
 .vite/
 .turbo/
+.npm/
+.pnpm-store/
 .eslintcache
 
 
@@ -67,6 +80,13 @@ lerna-debug.log*
 
 .idea/
 *.iml
+
+
+# ==========================================
+# Công cụ chạy cục bộ
+# ==========================================
+
+.orthex/
 
 
 # ==========================================
@@ -86,6 +106,9 @@ Desktop.ini
 *.temp
 *.swp
 *.swo
+*~
+*.pid
+*.pid.lock
 
 
 # ==========================================
@@ -93,6 +116,13 @@ Desktop.ini
 # ==========================================
 
 .nyc_output/
+
+
+# ==========================================
+# Kết quả xuất / preview tạo tự động
+# ==========================================
+
+/exports/
 
 
 # ==========================================

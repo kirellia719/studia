@@ -59,7 +59,7 @@ const DocumentCard = ({
         <div className="mt-0.5 flex items-center gap-1.5">
           <span
             className={[
-              "text-[10px] font-medium",
+              "text-[12px] font-medium",
               iconClass.split(" ").find((className) =>
                 className.startsWith("text-")
               ),
@@ -70,11 +70,11 @@ const DocumentCard = ({
 
           {document.size > 0 && (
             <>
-              <span className="text-[10px] text-[var(--line-strong)]">
+              <span className="text-[12px] text-[var(--line-strong)]">
                 ·
               </span>
 
-              <span className="text-[10px] text-[var(--faint)]">
+              <span className="text-[12px] text-[var(--faint)]">
                 {formatFileSize(document.size)}
               </span>
             </>
@@ -90,8 +90,8 @@ const DocumentCard = ({
         title="Tải xuống"
         aria-label={`Tải xuống ${fileName}`}
         className={[
-          "flex h-8 w-8 shrink-0 items-center justify-center",
-          "rounded-lg",
+          "flex h-11 w-11 shrink-0 items-center justify-center",
+          "rounded-full",
           "text-[var(--faint)]",
           "transition-colors",
           "hover:bg-[var(--surface-2)] hover:text-[var(--ink)]",

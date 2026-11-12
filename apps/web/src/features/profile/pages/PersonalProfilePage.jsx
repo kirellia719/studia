@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Camera, Check, ChevronLeft, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/stores/authStore";
+import appToast from "@/lib/toast.js";
 import profileApi from "@/features/profile/api.js";
 import { ANIMAL_AVATARS } from "@/features/profile/avatars.js";
 
@@ -112,6 +113,11 @@ const PersonalProfilePage = () => {
                 "Failed to update profile:",
                 error
             );
+
+            appToast.error(
+                error?.response?.data?.message ||
+                    "Không thể lưu thay đổi. Vui lòng thử lại."
+            );
         } finally {
             setIsSaving(false);
         }
@@ -127,13 +133,13 @@ const PersonalProfilePage = () => {
     return (
         <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* ==================== HEADER ==================== */}
-            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
-                <div className="mx-auto flex h-14 max-w-[720px] items-center px-4 sm:px-6">
+            <header className="page-band sticky top-0 z-30 h-16">
+                <div className="mx-auto flex h-full max-w-[720px] items-center px-4 sm:px-6">
                     {/* Back */}
                     <button
                         type="button"
                         onClick={handleBack}
-                        className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+                        className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         aria-label="Quay lại"
                     >
                         <ChevronLeft size={18} />
@@ -145,12 +151,12 @@ const PersonalProfilePage = () => {
                     </h1>
 
                     {/* Spacer để title nằm chính giữa */}
-                    <div className="h-8 w-8" />
+                    <div className="h-11 w-11" />
                 </div>
             </header>
 
             {/* ==================== CONTENT ==================== */}
-            <main className="mx-auto max-w-[720px] p-3 sm:px-6">
+            <div className="mx-auto max-w-[720px] p-3 sm:px-6">
                 <div className="space-y-4">
                     {/* ==================== AVATAR ==================== */}
                     <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
@@ -173,7 +179,7 @@ const PersonalProfilePage = () => {
 
                                     {/* Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/30">
-                                        <span className="rounded-md bg-black/50 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition group-hover:opacity-100">
+                                        <span className="rounded-md bg-black/50 px-2 py-1 text-[12px] font-medium text-white opacity-0 transition group-hover:opacity-100">
                                             Đổi
                                         </span>
                                     </div>
@@ -185,19 +191,21 @@ const PersonalProfilePage = () => {
                                     onClick={() =>
                                         setIsAvatarModalOpen(true)
                                     }
-                                    className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--solid)] text-white shadow-sm transition hover:bg-[var(--solid-hover)]"
+                                    className="group absolute bottom-0 right-0 flex h-11 w-11 items-center justify-center rounded-full"
                                     aria-label="Chọn avatar"
                                 >
-                                    <Camera
-                                        size={13}
-                                        strokeWidth={2}
-                                    />
+                                    <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[var(--solid)] text-white shadow-sm transition group-hover:bg-[var(--solid-hover)]">
+                                        <Camera
+                                            size={13}
+                                            strokeWidth={2}
+                                        />
+                                    </span>
                                 </button>
                             </div>
 
                             {/* Name */}
                             <div className="mt-3 text-center">
-                                <p className="mt-1 text-[12px] text-[var(--muted)]">
+                                <p className="mt-1 text-[13px] text-[var(--muted)]">
                                     {getRoleLabel(user?.role)}
                                 </p>
                             </div>
@@ -213,7 +221,7 @@ const PersonalProfilePage = () => {
                                     Thông tin cá nhân
                                 </h2>
 
-                                <p className="mt-1 text-[11px] text-[var(--muted)]">
+                                <p className="mt-1 text-[12px] text-[var(--muted)]">
                                     Cập nhật thông tin cá nhân của bạn.
                                 </p>
                             </div>
@@ -224,7 +232,7 @@ const PersonalProfilePage = () => {
                                 <div>
                                     <label
                                         htmlFor="name"
-                                        className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
+                                        className="mb-1.5 block text-[12px] font-medium text-[var(--ink-2)]"
                                     >
                                         Họ và tên
                                     </label>
@@ -237,7 +245,7 @@ const PersonalProfilePage = () => {
                                             setName(e.target.value)
                                         }
                                         placeholder="Nhập họ và tên"
-                                        className="h-10 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 text-[12px] text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/10"
+                                        className="h-11 w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 text-base text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/10 sm:text-sm"
                                     />
                                 </div>
 
@@ -245,7 +253,7 @@ const PersonalProfilePage = () => {
                                 <div>
                                     <label
                                         htmlFor="email"
-                                        className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
+                                        className="mb-1.5 block text-[12px] font-medium text-[var(--ink-2)]"
                                     >
                                         Email
                                     </label>
@@ -255,7 +263,7 @@ const PersonalProfilePage = () => {
                                         type="email"
                                         value={user?.email || ""}
                                         disabled
-                                        className="h-10 w-full cursor-not-allowed rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 text-[12px] text-[var(--muted)] outline-none"
+                                        className="h-11 w-full cursor-not-allowed rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-3 text-base text-[var(--muted)] outline-none sm:text-sm"
                                     />
                                 </div>
 
@@ -264,7 +272,7 @@ const PersonalProfilePage = () => {
                                     <div>
                                         <label
                                             htmlFor="studentCode"
-                                            className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
+                                            className="mb-1.5 block text-[12px] font-medium text-[var(--ink-2)]"
                                         >
                                             Mã học viên
                                         </label>
@@ -276,7 +284,7 @@ const PersonalProfilePage = () => {
                                                 user?.studentCode || ""
                                             }
                                             disabled
-                                            className="h-10 w-full cursor-not-allowed rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-3 text-[12px] text-[var(--muted)] outline-none"
+                                            className="h-11 w-full cursor-not-allowed rounded-full border border-[var(--line)] bg-[var(--surface-2)] px-3 text-base text-[var(--muted)] outline-none sm:text-sm"
                                         />
                                     </div>
                                 )}
@@ -286,7 +294,7 @@ const PersonalProfilePage = () => {
                                     {/* Saved message */}
                                     <div>
                                         {isSaved && (
-                                            <div className="flex items-center gap-1.5 text-[11px] text-green-600">
+                                            <div className="flex items-center gap-1.5 text-[12px] font-medium text-[var(--success)]">
                                                 <Check size={14} />
 
                                                 <span>
@@ -304,7 +312,7 @@ const PersonalProfilePage = () => {
                                             !name.trim() ||
                                             !hasChanges
                                         }
-                                        className="inline-flex h-9 items-center justify-center rounded-lg bg-[var(--solid)] px-4 text-[11px] font-medium text-white transition hover:bg-[var(--solid-hover)] disabled:cursor-not-allowed disabled:opacity-40"
+                                        className="inline-flex h-11 items-center justify-center rounded-full bg-[var(--solid)] px-4 text-[13px] font-medium text-white transition hover:bg-[var(--solid-hover)] disabled:cursor-not-allowed disabled:opacity-40"
                                     >
                                         {isSaving
                                             ? "Đang lưu..."
@@ -315,7 +323,7 @@ const PersonalProfilePage = () => {
                         </form>
                     </section>
                 </div>
-            </main>
+            </div>
 
             <div
                 className={`fixed inset-0 z-50 flex items-end justify-center bg-black/40 transition-opacity duration-200 sm:items-center sm:p-4 ${isAvatarModalOpen
@@ -324,7 +332,7 @@ const PersonalProfilePage = () => {
                     }`}
             >
                 <div
-                    className={`flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-2xl bg-[var(--surface)] shadow-xl transition-transform duration-200 sm:max-w-[520px] sm:rounded-2xl ${isAvatarModalOpen
+                    className={`flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-3xl bg-[var(--surface)] shadow-xl transition-transform duration-200 sm:max-w-[520px] sm:rounded-3xl ${isAvatarModalOpen
                         ? "translate-y-0"
                         : "translate-y-4 sm:translate-y-2"
                         }`}
@@ -336,7 +344,7 @@ const PersonalProfilePage = () => {
                                 Chọn avatar
                             </h2>
 
-                            <p className="mt-0.5 text-[11px] text-[var(--muted)]">
+                            <p className="mt-0.5 text-[12px] text-[var(--muted)]">
                                 Chọn hình đại diện cho hồ sơ của bạn.
                             </p>
                         </div>
@@ -344,7 +352,8 @@ const PersonalProfilePage = () => {
                         <button
                             type="button"
                             onClick={() => setIsAvatarModalOpen(false)}
-                            className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+                            aria-label="Đóng"
+                            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         >
                             <X size={17} />
                         </button>
@@ -394,7 +403,7 @@ const PersonalProfilePage = () => {
                                             )}
                                         </div>
 
-                                        <span className="w-full truncate px-1 text-center text-[10px] text-[var(--muted)]">
+                                        <span className="w-full truncate px-1 text-center text-[12px] text-[var(--muted)]">
                                             {avatar.name}
                                         </span>
                                     </button>
@@ -408,7 +417,7 @@ const PersonalProfilePage = () => {
                         <button
                             type="button"
                             onClick={() => setIsAvatarModalOpen(false)}
-                            className="h-9 rounded-lg bg-[var(--solid)] px-4 text-[11px] font-medium text-white transition hover:bg-[var(--solid-hover)]"
+                            className="h-9 rounded-full bg-[var(--solid)] px-4 text-[12px] font-medium text-white transition hover:bg-[var(--solid-hover)]"
                         >
                             Chọn avatar
                         </button>

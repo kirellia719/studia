@@ -35,6 +35,13 @@ router.post(
     enrollmentController.enrollStudent
 );
 
+// PATCH /enrollment/:enrollmentId/expiration
+router.patch(
+    "/:enrollmentId/expiration",
+    authorize("TEACHER"),
+    enrollmentController.updateExpiration
+);
+
 // GET /enrollment/:enrollmentId
 router.get(
     "/:enrollmentId",

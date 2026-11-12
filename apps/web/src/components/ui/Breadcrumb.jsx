@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Breadcrumb = ({
     items = [],
     className = "",
+    currentAs: CurrentTag = "span",
 }) => {
     return (
         <nav
@@ -20,6 +21,10 @@ const Breadcrumb = ({
             {items.map((item, index) => {
                 const isLast =
                     index === items.length - 1;
+
+                const TextTag = isLast
+                    ? CurrentTag
+                    : "span";
 
                 return (
                     <div
@@ -42,7 +47,7 @@ const Breadcrumb = ({
                         )}
 
                         {isLast || !item.to ? (
-                            <span
+                            <TextTag
                                 className={`
                                     min-w-0
                                     truncate
@@ -65,7 +70,7 @@ const Breadcrumb = ({
                                 )}
 
                                 {item.label}
-                            </span>
+                            </TextTag>
                         ) : (
                             <Link
                                 to={item.to}
@@ -73,10 +78,12 @@ const Breadcrumb = ({
                                     inline-flex
                                     min-w-0
                                     shrink-0
+                                    -my-1
                                     items-center
+                                    py-1
                                     text-[var(--muted)]
                                     transition
-                                    hover:text-[var(--brand)]
+                                    hover:text-[var(--brand-text)]
                                 "
                                 title={item.label}
                             >

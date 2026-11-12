@@ -1,4 +1,4 @@
-import BrandImage from "@/assets/achan.png";
+import BrandImage from "@/assets/achan-amber.png";
 
 const Brand = ({
   width = 220,

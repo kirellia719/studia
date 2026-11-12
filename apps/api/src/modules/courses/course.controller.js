@@ -167,7 +167,7 @@ const courseController = {
 
             const course = await courseService.updateCourse({
                 courseId: id,
-                teacherId: req.user.userId,
+                teacherId: req.user.id,
                 title,
                 description,
                 thumbnail: req.file,
@@ -198,7 +198,7 @@ const courseController = {
 
             await courseService.deleteCourse({
                 courseId: id,
-                teacherId: req.user.userId,
+                teacherId: req.user.id,
             });
 
             res.status(200).json({

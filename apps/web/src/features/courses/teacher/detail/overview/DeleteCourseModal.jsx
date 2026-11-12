@@ -49,7 +49,7 @@ const DeleteCourseModal = ({
                 className="
                     w-full
                     max-w-md
-                    rounded-md
+                    rounded-2xl
                     bg-[var(--surface)]
                     shadow-xl
                 "
@@ -118,7 +118,7 @@ const DeleteCourseModal = ({
                             shrink-0
                             items-center
                             justify-center
-                            rounded-md
+                            rounded-full
                             text-[var(--faint)]
                             transition
                             hover:bg-[var(--surface-2)]
@@ -160,7 +160,7 @@ const DeleteCourseModal = ({
                         className="
                             mt-3
                             w-full
-                            rounded-md
+                            rounded-full
                             border
                             border-[var(--line)]
                             px-3
@@ -197,7 +197,7 @@ const DeleteCourseModal = ({
                         onClick={onClose}
                         disabled={deleting}
                         className="
-                            rounded-md
+                            rounded-full
                             border
                             border-[var(--line)]
                             px-4
@@ -222,7 +222,7 @@ const DeleteCourseModal = ({
                             deleting
                         }
                         className="
-                            rounded-md
+                            rounded-full
                             bg-[var(--danger-solid)]
                             px-4
                             py-2.5

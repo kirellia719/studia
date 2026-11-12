@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { LogOut, User } from "lucide-react";
 
-import Logo from "@/components/ui/Logo.jsx";
+import SidebarBrand from "@/components/ui/SidebarBrand.jsx";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher.jsx";
 import useAuthStore from "@/stores/authStore";
 import studentMenuItems from "@/components/layout/student/studentMenuItems.js";
@@ -27,11 +27,9 @@ const StudentSidebar = () => {
                 "bg-[var(--surface)]",
             ].join(" ")}
         >
-            <div className="flex h-16 shrink-0 items-center px-5">
-                <Logo />
+            <div className="page-band flex h-16 shrink-0 items-center px-4">
+                <SidebarBrand />
             </div>
-
-            <div className="mx-4 h-px bg-[var(--line)]" />
 
             <nav
                 aria-label="Điều hướng chính"
@@ -52,8 +50,8 @@ const StudentSidebar = () => {
                                         "rounded-lg px-3 py-2.5 pl-4",
                                         "text-[14px] font-medium",
                                         isActive
-                                            ? "bg-[var(--bg)] text-[var(--ink)]"
-                                            : "text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--ink)]",
+                                            ? "bg-[var(--brand-soft)] font-semibold text-[var(--brand-text)]"
+                                            : "text-[var(--muted)] hover:bg-[var(--surface-3)] hover:text-[var(--brand-text)]",
                                     ].join(" ")
                                 }
                             >
@@ -63,10 +61,10 @@ const StudentSidebar = () => {
                                             className={[
                                                 "absolute left-0 top-1/2",
                                                 "-translate-y-1/2",
-                                                "h-5 w-[3px]",
+                                                "h-6 w-[4px]",
                                                 "rounded-r-full",
                                                 isActive
-                                                    ? "bg-[var(--solid)]"
+                                                    ? "bg-[var(--brand-solid)]"
                                                     : "opacity-0",
                                             ].join(" ")}
                                         />
@@ -80,8 +78,8 @@ const StudentSidebar = () => {
                                             }
                                             className={
                                                 isActive
-                                                    ? "text-[var(--ink)]"
-                                                    : "text-[var(--muted)] group-hover:text-[var(--ink)]"
+                                                    ? "text-[var(--brand-text)]"
+                                                    : "text-[var(--muted)] group-hover:text-[var(--brand-text)]"
                                             }
                                         />
 
@@ -98,7 +96,7 @@ const StudentSidebar = () => {
 
             <div className="border-t border-[var(--line)] p-3">
                 <div className="flex items-center gap-3 px-2 py-2">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--muted)]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-[var(--brand-text)] ring-1 ring-[var(--brand)]/20">
                         {user?.avatar ? (
                             <img
                                 src={user.avatar}
@@ -131,7 +129,7 @@ const StudentSidebar = () => {
                     onClick={handleLogout}
                     className={[
                         "mt-2 flex w-full items-center gap-3",
-                        "rounded-lg px-3 py-2.5",
+                        "rounded-full px-3 py-2.5",
                         "text-[14px] font-medium text-[var(--muted)]",
                         "transition-colors duration-150",
                         "hover:bg-[var(--danger-soft)]",

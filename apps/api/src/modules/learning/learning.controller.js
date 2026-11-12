@@ -85,26 +85,53 @@ const learningController = {
   },
 
   // ==========================================
-  // Complete lesson
-  // POST /learning/lessons/:lessonId/complete
+  // Update video progress
+  // PATCH /learning/lessons/:lessonId/progress
   // ==========================================
 
-  async completeLesson(req, res, next) {
+  async updateVideoProgress(req, res, next) {
     try {
       const { lessonId } = req.params;
       const studentId = req.user.id;
 
-      const progress =
-        await learningService.completeLesson({
+      const completion =
+        await learningService.updateVideoProgress({
+          lessonId,
+          studentId,
+          positionSeconds: req.body?.positionSeconds,
+          durationSeconds: req.body?.durationSeconds,
+        });
+
+      return res.status(200).json({
+        success: true,
+        message: "Cập nhật tiến độ video thành công.",
+        data: completion,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // ==========================================
+  // Reading timer (quy tắc ngầm)
+  // POST /learning/lessons/:lessonId/reading
+  // ==========================================
+
+  async markReadingComplete(req, res, next) {
+    try {
+      const { lessonId } = req.params;
+      const studentId = req.user.id;
+
+      const completion =
+        await learningService.markReadingComplete({
           lessonId,
           studentId,
         });
 
       return res.status(200).json({
         success: true,
-        message:
-          "Hoàn thành bài học thành công.",
-        data: progress,
+        message: "Đã cập nhật tiến độ bài học.",
+        data: completion,
       });
     } catch (error) {
       next(error);

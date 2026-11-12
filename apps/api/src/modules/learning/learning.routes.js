@@ -53,12 +53,20 @@ router.post(
   learningController.accessLesson
 );
 
-// Complete lesson
-// POST /learning/lessons/:lessonId/complete
-router.post(
-  "/lessons/:lessonId/complete",
+// Update video progress
+// PATCH /learning/lessons/:lessonId/progress
+router.patch(
+  "/lessons/:lessonId/progress",
   authorize("STUDENT"),
-  learningController.completeLesson
+  learningController.updateVideoProgress
+);
+
+// Reading timer (quy tắc ngầm 10 giây)
+// POST /learning/lessons/:lessonId/reading
+router.post(
+  "/lessons/:lessonId/reading",
+  authorize("STUDENT"),
+  learningController.markReadingComplete
 );
 
 // Get lesson progress

@@ -42,7 +42,7 @@ const ThemeList = ({ theme, onPick }) => (
                             {item.label}
                         </span>
 
-                        <span className="block truncate text-[11px] text-[var(--muted)]">
+                        <span className="block truncate text-[12px] text-[var(--muted)]">
                             {item.hint}
                         </span>
                     </span>
@@ -51,7 +51,7 @@ const ThemeList = ({ theme, onPick }) => (
                         <Check
                             size={16}
                             strokeWidth={2.5}
-                            className="shrink-0 text-[var(--brand)]"
+                            className="shrink-0 text-[var(--brand-text)]"
                         />
                     )}
                 </button>
@@ -102,14 +102,14 @@ const ThemeSwitcher = ({ variant = "sidebar", className = "" }) => {
                     aria-haspopup="listbox"
                     aria-expanded={open}
                     aria-label="Chọn giao diện"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink-2)] shadow-sm transition-colors hover:bg-[var(--surface-2)]"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink-2)] shadow-sm transition-colors hover:border-[var(--brand)]/40 hover:bg-[var(--surface-2)] hover:text-[var(--brand-text)]"
                 >
                     <Palette size={17} strokeWidth={2} />
                 </button>
 
                 {open && (
-                    <div className="absolute right-0 top-12 z-50 w-64 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-xl">
-                        <p className="px-2 pb-1.5 pt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
+                    <div className="absolute right-0 top-12 z-50 w-72 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-xl">
+                        <p className="px-2 pb-1.5 pt-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                             Giao diện
                         </p>
 
@@ -140,9 +140,9 @@ const ThemeSwitcher = ({ variant = "sidebar", className = "" }) => {
             </button>
 
             {open && (
-                <div className="absolute bottom-full left-0 z-50 mb-2 w-64 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-xl">
+                <div className="absolute bottom-full left-0 z-50 mb-2 w-72 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-xl">
                     <div className="flex items-center justify-between px-2 pb-1.5 pt-1">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
+                        <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                             Giao diện
                         </p>
 
@@ -150,7 +150,7 @@ const ThemeSwitcher = ({ variant = "sidebar", className = "" }) => {
                             type="button"
                             onClick={() => setOpen(false)}
                             aria-label="Đóng"
-                            className="rounded-md p-0.5 text-[var(--faint)] transition-colors hover:text-[var(--ink)]"
+                            className="rounded-full p-0.5 text-[var(--faint)] transition-colors hover:text-[var(--ink)]"
                         >
                             <X size={14} />
                         </button>

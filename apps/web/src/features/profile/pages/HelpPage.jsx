@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "/logo.png";
+import Logo from "/badge-amber.png";
 import { faqs } from "@/features/profile/faqs.js";
 
 const FB_URL = "https://www.facebook.com/achan.phuong";
@@ -25,12 +25,12 @@ const HelpPage = () => {
     return (
         <div className="min-h-full bg-[var(--surface-3)] text-[var(--ink)]">
             {/* HEADER */}
-            <header className="border-b border-[var(--line)] bg-[var(--surface)]">
-                <div className="mx-auto flex h-14 w-full max-w-[720px] items-center gap-2 px-4 sm:px-6">
+            <header className="page-band sticky top-0 z-30 h-16">
+                <div className="mx-auto flex h-full w-full max-w-[720px] items-center gap-2 px-4 sm:px-6">
                     <button
                         type="button"
                         onClick={() => navigate(-1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+                        className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--muted)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
                         aria-label="Quay lại"
                     >
                         <ChevronLeft
@@ -53,9 +53,9 @@ const HelpPage = () => {
                 {/* FAQ */}
                 <section className="">
                     <div className="mb-2.5 flex items-center justify-between">
-                        <h3 className="text-[13px] font-semibold text-[var(--ink)]">
+                        <h2 className="text-[13px] font-semibold text-[var(--ink)]">
                             Câu hỏi thường gặp
-                        </h3>
+                        </h2>
                     </div>
 
                     <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
@@ -98,7 +98,7 @@ const HelpPage = () => {
                                     >
                                         <div className="overflow-hidden">
                                             <div className="px-4 pb-4 pr-10">
-                                                <p className="text-[11px] leading-5 text-[var(--muted)]">
+                                                <p className="text-[12px] leading-5 text-[var(--muted)]">
                                                     {item.answer}
                                                 </p>
                                             </div>
@@ -114,65 +114,62 @@ const HelpPage = () => {
 
                 <section className="mt-6">
                     <div className="mb-2.5">
-                        <h3 className="text-[13px] font-semibold text-[var(--ink)]">
+                        <h2 className="text-[13px] font-semibold text-[var(--ink)]">
                             Cần hỗ trợ thêm?
-                        </h3>
-                        <p className="mt-0.5 text-[11px] text-[var(--muted)]">
+                        </h2>
+                        <p className="mt-0.5 text-[12px] text-[var(--muted)]">
                             Liên hệ trực tiếp với người phụ trách.
                         </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-                        <div className="flex items-center gap-3">
-                            {/* Avatar */}
-                            <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[var(--brand-soft)]">
-                                <img
-                                    src={Logo}
-                                    alt="Achan Phương"
-                                    className="h-full w-full object-cover"
-                                />
-                            </div>
-
-                            {/* Info */}
-                            <div className="min-w-0 flex-1">
-                                <div className="flex items-center gap-2">
-                                    <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
-                                        Achan Phương
-                                    </p>
-
-                                    <span className="shrink-0 rounded-full bg-[var(--success-soft)] px-1.5 py-0.5 text-[9px] font-medium text-[var(--success)]">
-                                        Giáo viên
-                                    </span>
-                                </div>
-
-                                <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-[var(--faint)]">
-                                    {/* <Facebook size={12} /> */}
-                                    <span className="truncate">
-                                        {FB_URL.replace("https://www.", "")}
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Facebook button */}
-                            <a
-                                href={FB_URL}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label="Liên hệ Facebook"
-                                className={[
-                                    "flex h-9 w-9 shrink-0 items-center justify-center",
-                                    "rounded-xl",
-                                    "bg-[var(--brand-soft)]",
-                                    "text-[var(--brand)]",
-                                    "transition-all duration-200",
-                                    "hover:bg-[var(--brand-soft)]",
-                                    "hover:text-[var(--brand-strong)]",
-                                ].join(" ")}
-                            >
-                                <ArrowUpRight size={16} strokeWidth={2} />
-                            </a>
+                    <a
+                        href={FB_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--brand-soft)] hover:bg-[var(--surface-3)]"
+                    >
+                        {/* Avatar */}
+                        <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[var(--brand-soft)]">
+                            <img
+                                src={Logo}
+                                alt="Achan Phương"
+                                className="h-full w-full object-cover"
+                            />
                         </div>
-                    </div>
+
+                        {/* Info */}
+                        <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                                <p className="truncate text-[13px] font-semibold text-[var(--ink)]">
+                                    Achan Phương
+                                </p>
+
+                                <span className="shrink-0 rounded-full bg-[var(--success-soft)] px-1.5 py-0.5 text-[12px] font-medium text-[var(--success)]">
+                                    Giáo viên
+                                </span>
+                            </div>
+
+                            <div className="mt-1.5 flex items-center gap-1.5 text-[12px] text-[var(--faint)]">
+                                {/* <Facebook size={12} /> */}
+                                <span className="truncate">
+                                    {FB_URL.replace("https://www.", "")}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Facebook button */}
+                        <span
+                            aria-hidden="true"
+                            className={[
+                                "flex h-11 w-11 shrink-0 items-center justify-center",
+                                "rounded-full",
+                                "bg-[var(--brand-soft)]",
+                                "text-[var(--brand-text)]",
+                            ].join(" ")}
+                        >
+                            <ArrowUpRight size={16} strokeWidth={2} />
+                        </span>
+                    </a>
                 </section>
             </div>
         </div>

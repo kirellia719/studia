@@ -9,7 +9,20 @@ import {
 
 import { Link } from "react-router-dom";
 
+import formatDate from "@/lib/format/formatDate.js";
 import getUrl from "@/lib/getUrl.js";
+
+const getRemainingDays = (expiresAt) => {
+  if (!expiresAt) return null;
+
+  const expiry = new Date(expiresAt);
+
+  if (Number.isNaN(expiry.getTime())) return null;
+
+  return Math.ceil(
+    (expiry.getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+  );
+};
 
 const StudentCourseCard = ({ enrollment }) => {
   const course = enrollment?.course;
@@ -40,6 +53,8 @@ const StudentCourseCard = ({ enrollment }) => {
   const isCompleted =
     totalLessons > 0 && completedLessons >= totalLessons;
 
+  const remainingDays = getRemainingDays(enrollment?.expiresAt);
+
   const actionLabel = isCompleted
     ? "Xem lại khóa học"
     : hasStarted
@@ -52,11 +67,12 @@ const StudentCourseCard = ({ enrollment }) => {
     <article
       className={[
         "group",
+        "relative",
         "flex",
         "w-full",
         "flex-col",
         "overflow-hidden",
-        "rounded-xl",
+        "rounded-2xl",
         "border",
         "border-[var(--line)]",
         "bg-[var(--surface)]",
@@ -64,8 +80,8 @@ const StudentCourseCard = ({ enrollment }) => {
         "transition-all",
         "duration-200",
         "hover:-translate-y-0.5",
-        "hover:border-[var(--brand-soft)]",
-        "hover:shadow-[0_8px_24px_rgba(37,99,235,0.08)]",
+        "hover:border-[var(--brand)]",
+        "hover:shadow-[0_14px_32px_-12px_var(--ring)]",
       ].join(" ")}
     >
       {/* ==========================================
@@ -163,7 +179,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "justify-center",
               isLocked
                 ? "bg-[var(--line)] text-[var(--muted)]"
-                : "bg-gradient-to-br from-[var(--brand-soft)] to-[var(--surface-2)] text-[var(--brand)]",
+                : "bg-gradient-to-br from-[var(--brand-soft)] to-[var(--surface-2)] text-[var(--brand-text)]",
             ].join(" ")}
           >
             {isLocked ? (
@@ -205,7 +221,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "tracking-tight",
               "text-[var(--ink)]",
               !isLocked
-                ? "transition-colors duration-200 group-hover:text-[var(--brand)]"
+                ? "transition-colors duration-200 group-hover:text-[var(--brand-text)]"
                 : "",
               "sm:text-[17px]",
             ].join(" ")}
@@ -231,7 +247,7 @@ const StudentCourseCard = ({ enrollment }) => {
                 "tabular-nums",
                 isCompleted
                   ? "text-[var(--success)]"
-                  : "text-[var(--brand)]",
+                  : "text-[var(--brand-text)]",
               ].join(" ")}
             >
               {progress}%
@@ -246,7 +262,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "w-full",
               "overflow-hidden",
               "rounded-full",
-              "bg-[var(--line)]",
+              "bg-[var(--brand-soft)]",
             ].join(" ")}
           >
             <div
@@ -272,19 +288,35 @@ const StudentCourseCard = ({ enrollment }) => {
             </span>
 
             {isCompleted ? (
-              <span className="text-[11px] font-semibold text-[var(--success)]">
+              <span className="text-[12px] font-semibold text-[var(--success)]">
                 Hoàn thành
               </span>
             ) : hasStarted ? (
-              <span className="text-[11px] font-semibold text-[var(--brand)]">
+              <span className="text-[12px] font-semibold text-[var(--brand-text)]">
                 Đang học
               </span>
             ) : (
-              <span className="text-[11px] font-semibold text-[var(--muted)]">
+              <span className="text-[12px] font-semibold text-[var(--muted)]">
                 Chưa bắt đầu
               </span>
             )}
           </div>
+
+          {enrollment?.expiresAt && (
+            <p
+              className={[
+                "mt-2 text-[12px]",
+                remainingDays !== null && remainingDays <= 7
+                  ? "text-[var(--accent)]"
+                  : "text-[var(--muted)]",
+              ].join(" ")}
+            >
+              Hạn học: {formatDate(enrollment.expiresAt)}
+              {remainingDays !== null && remainingDays > 0 && remainingDays <= 7
+                ? ` (còn ${remainingDays} ngày)`
+                : ""}
+            </p>
+          )}
         </div>
 
         {/* ======================================
@@ -307,7 +339,7 @@ const StudentCourseCard = ({ enrollment }) => {
               "items-center",
               "justify-center",
               "gap-2",
-              "rounded-lg",
+              "rounded-full",
               "text-xs",
               "font-semibold",
               "transition-all",

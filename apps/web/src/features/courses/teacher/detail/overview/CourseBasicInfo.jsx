@@ -67,7 +67,7 @@ const CourseBasicInfo = ({
                     Thông tin khóa học
                 </h2>
 
-                <p className="mt-0.5 text-[11px] text-[var(--faint)]">
+                <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                     Cập nhật nội dung, giá và trạng thái khóa học.
                 </p>
             </div>
@@ -95,7 +95,7 @@ const CourseBasicInfo = ({
                             disabled={saving}
                             className={[
                                 "group relative block aspect-video w-full",
-                                "overflow-hidden rounded-xl",
+                                "overflow-hidden rounded-2xl",
                                 "border border-[var(--line)]",
                                 "bg-[var(--surface-3)]",
                                 "transition-colors",
@@ -119,7 +119,7 @@ const CourseBasicInfo = ({
                                         <span className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--surface)] px-3 py-1.5 text-xs font-medium text-[var(--ink-2)] shadow-sm">
                                             <Upload
                                                 size={14}
-                                                className="text-[var(--brand)]"
+                                                className="text-[var(--brand-text)]"
                                             />
                                             Đổi ảnh
                                         </span>
@@ -127,7 +127,7 @@ const CourseBasicInfo = ({
                                 </>
                             ) : (
                                 <div className="flex h-full flex-col items-center justify-center">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--surface)] text-[var(--faint)] shadow-sm">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--surface)] text-[var(--faint)] shadow-sm">
                                         <ImagePlus size={19} />
                                     </div>
 
@@ -135,7 +135,7 @@ const CourseBasicInfo = ({
                                         Tải ảnh lên
                                     </p>
 
-                                    <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                                    <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                                         PNG, JPG hoặc WEBP
                                     </p>
                                 </div>
@@ -198,7 +198,7 @@ const CourseBasicInfo = ({
                                         className={`${inputClass} pr-20`}
                                     />
 
-                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[var(--faint)]">
+                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[12px] font-medium text-[var(--faint)]">
                                         nghìn VNĐ
                                     </span>
                                 </div>
@@ -232,14 +232,14 @@ const CourseBasicInfo = ({
                                         className={`${inputClass} pr-16`}
                                     />
 
-                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[var(--faint)]">
+                                    <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[12px] font-medium text-[var(--faint)]">
                                         Tháng
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-[10px] leading-4 text-[var(--faint)]">
+                        <p className="text-[12px] leading-4 text-[var(--faint)]">
                             Giá = 0 nếu miễn phí. Thời hạn = 0 hoặc
                             để trống nếu học trọn đời.
                         </p>
@@ -251,7 +251,7 @@ const CourseBasicInfo = ({
                                     Trạng thái khóa học
                                 </p>
 
-                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                                <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                                     {isPublished
                                         ? "Khóa học đang công khai"
                                         : "Khóa học đang tạm đóng"}
@@ -262,30 +262,29 @@ const CourseBasicInfo = ({
                                 type="button"
                                 role="switch"
                                 aria-checked={isPublished}
+                                aria-label="Trạng thái khóa học"
                                 disabled={saving}
                                 onClick={handleStatusToggle}
-                                className={[
-                                    "relative h-5 w-9 shrink-0 rounded-full",
-                                    "transition-colors",
-                                    "focus:outline-none",
-                                    "focus:ring-2 focus:ring-[var(--brand-soft)]",
-                                    "disabled:cursor-not-allowed",
-                                    "disabled:opacity-50",
-                                    isPublished
-                                        ? "bg-[var(--brand-solid)]"
-                                        : "bg-[var(--line-strong)]",
-                                ].join(" ")}
+                                className="-mr-2 flex h-11 w-12 shrink-0 items-center justify-center rounded-full transition hover:bg-[var(--surface-2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] disabled:cursor-not-allowed disabled:opacity-40"
                             >
                                 <span
                                     className={[
-                                        "absolute top-0.5 h-4 w-4 rounded-full",
-                                        "bg-[var(--surface)] shadow-sm",
-                                        "transition-transform",
+                                        "flex h-6 w-11 items-center rounded-full p-0.5 transition-colors",
                                         isPublished
-                                            ? "translate-x-4"
-                                            : "translate-x-0.5",
+                                            ? "bg-[var(--brand-solid)]"
+                                            : "border border-[var(--line)] bg-[var(--surface-2)]",
                                     ].join(" ")}
-                                />
+                                >
+                                    <span
+                                        className={[
+                                            "h-5 w-5 rounded-full bg-white shadow-sm",
+                                            "transition-transform",
+                                            isPublished
+                                                ? "translate-x-5"
+                                                : "translate-x-0",
+                                        ].join(" ")}
+                                    />
+                                </span>
                             </button>
                         </div>
 
@@ -327,7 +326,7 @@ const CourseBasicInfo = ({
                     disabled={saving}
                     className={[
                         "inline-flex w-full items-center justify-center gap-2",
-                        "rounded-xl bg-[var(--solid)]",
+                        "rounded-full bg-[var(--solid)]",
                         "px-4 py-2.5",
                         "text-xs font-semibold text-white",
                         "transition-colors",

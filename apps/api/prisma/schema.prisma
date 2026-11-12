@@ -28,6 +28,7 @@ model User {
   courses          Course[]
   enrollments      Enrollment[]
   lessonProgresses LessonProgress[]
+  quizAttempts     QuizAttempt[]
 
   // Soft delete
   isDelete Boolean @default(false)
@@ -104,6 +105,7 @@ model Lesson {
 
   documents  LessonDocument[]
   progresses LessonProgress[]
+  quiz       Quiz?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -165,10 +167,144 @@ model LessonProgress {
   // Lần cuối học sinh truy cập bài học
   lastAccessedAt DateTime @default(now())
 
+  // Tiến độ xem video (giây), dùng để tính hoàn thành
+  // và cho học sinh xem tiếp trên thiết bị khác.
+  videoPositionSeconds Int @default(0)
+  videoDurationSeconds Int @default(0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([studentId, lessonId])
   @@index([studentId])
   @@index([lessonId])
+}
+
+// ==========================================
+// Quiz (trắc nghiệm ôn tập)
+// Mỗi bài học có tối đa 1 đề.
+// ==========================================
+
+model Quiz {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  lessonId String @unique @db.ObjectId
+  lesson   Lesson @relation(fields: [lessonId], references: [id])
+
+  title       String
+  description String?
+
+  // Điểm đạt, đơn vị phần trăm (0 - 100)
+  passingScore Int @default(70)
+
+  // false = giáo viên đang soạn, học sinh không thấy đề
+  isPublished Boolean @default(false)
+
+  // Bắt buộc đạt đề này thì bài học mới được tính hoàn thành
+  requiresPassForCompletion Boolean @default(false)
+
+  questions Question[]
+  attempts  QuizAttempt[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished])
+}
+
+model Question {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  quizId String @db.ObjectId
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+
+  content     String
+  explanation String?
+
+  order   Int
+  options QuestionOption[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([quizId, order])
+}
+
+model QuestionOption {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  questionId String   @db.ObjectId
+  question   Question @relation(fields: [questionId], references: [id])
+
+  content   String
+  isCorrect Boolean @default(false)
+
+  order Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([questionId, order])
+}
+
+// ==========================================
+// Lượt làm bài của học sinh
+// Đáp án được chụp lại tại thời điểm nộp bài
+// để xem lại đúng nội dung dù đề bị sửa sau đó.
+// ==========================================
+
+model QuizAttempt {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  quizId String @db.ObjectId
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+
+  studentId String @db.ObjectId
+  student   User   @relation(fields: [studentId], references: [id])
+
+  startedAt   DateTime  @default(now())
+
+  // null = đang làm
+  submittedAt DateTime?
+
+  // Điểm phần trăm, chỉ có khi đã nộp
+  score         Int?
+  correctCount  Int @default(0)
+  totalQuestions Int
+
+  answers QuizAnswer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([quizId, studentId])
+  @@index([studentId, submittedAt])
+}
+
+model QuizAnswer {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  attemptId String      @db.ObjectId
+  attempt   QuizAttempt @relation(fields: [attemptId], references: [id])
+
+  questionId String
+  order      Int
+
+  // Ảnh chụp nội dung tại thời điểm nộp bài
+  questionContent String
+
+  selectedOptionId String?
+  selectedContent  String?
+
+  correctOptionId String
+  correctContent  String
+
+  explanation String?
+  isCorrect   Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([attemptId, questionId])
+  @@index([attemptId])
 }

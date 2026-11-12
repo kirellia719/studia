@@ -19,6 +19,6 @@ export const ANIMAL_AVATARS = [
     { id: 'squirrel', url: 'https://images.unsplash.com/vector-1756774242551-af5634a561ad?w=400&h=400&fit=crop', name: 'Sóc nhỏ' },
     { id: 'jellyfish', url: 'https://plus.unsplash.com/premium_vector-1724834248296-1e2eedfcfa86?w=400&h=400&fit=crop', name: 'Sứa biển' },
     { id: 'giraffe', url: 'https://images.unsplash.com/vector-1740286698448-13e9b06e53d8?w=400&h=400&fit=crop', name: 'Hươu cao cổ' },
-    { id: 'monkey', url: 'https://images.unsplash.com/vector-1740629145770-fdbf92aaed9a?w=400&h=400&fit=crop', name: 'Khỉ con' },
+    { id: 'whale', url: 'https://images.unsplash.com/vector-1740629145770-fdbf92aaed9a?w=400&h=400&fit=crop', name: ' Cá voi' },
     { id: 'horse', url: 'https://plus.unsplash.com/premium_vector-1721839366958-c083c6d217db?w=400&h=400&fit=crop', name: 'Ngựa' },
 ];

@@ -164,21 +164,22 @@ const LessonDocuments = ({
   };
 
   return (
-    <div className="space-y-4">
+    <section className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
       {/* Header */}
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-3 border-b border-[var(--surface-2)] px-4 py-4 sm:px-5">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--surface-2)] text-[var(--muted)]">
           <FileText
             size={16}
             strokeWidth={1.8}
           />
         </div>
-        <div className="min-w-0">
-          <h2 className="text-sm font-semibold text-[var(--ink)]">
+
+        <div className="min-w-0 flex-1">
+          <h2 className="text-[13px] font-semibold text-[var(--ink)]">
             Tài liệu
           </h2>
 
-          <p className="mt-0.5 text-[11px] text-[var(--faint)]">
+          <p className="mt-0.5 text-[12px] text-[var(--faint)]">
             {documents.length > 0
               ? `${documents.length} tài liệu`
               : "Chưa có tài liệu"}
@@ -190,7 +191,7 @@ const LessonDocuments = ({
             "inline-flex shrink-0 cursor-pointer",
             "items-center gap-1.5",
             "rounded-lg border px-2.5 py-2",
-            "text-[11px] font-medium",
+            "text-[12px] font-medium",
             "transition-colors",
             uploading
               ? "pointer-events-none border-[var(--line)] text-[var(--faint)]"
@@ -217,6 +218,7 @@ const LessonDocuments = ({
         </label>
       </div>
 
+      <div className="space-y-3 p-4 sm:p-5">
       {/* Documents */}
       {documents.length > 0 ? (
         <div className="divide-y divide-[var(--surface-2)] rounded-xl border border-[var(--line)]">
@@ -276,7 +278,7 @@ const LessonDocuments = ({
                     {fileName}
                   </p>
 
-                  <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                  <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                     {fileType}
                     {document.size
                       ? ` · ${formatFileSize(
@@ -298,11 +300,11 @@ const LessonDocuments = ({
                     className={[
                       "flex h-8 w-8",
                       "items-center justify-center",
-                      "rounded-lg",
+                      "rounded-full",
                       "text-[var(--faint)]",
                       "transition-colors",
                       "hover:bg-[var(--brand-soft)]",
-                      "hover:text-[var(--brand)]",
+                      "hover:text-[var(--brand-text)]",
                       "disabled:cursor-not-allowed",
                       "disabled:opacity-40",
                     ].join(" ")}
@@ -325,7 +327,7 @@ const LessonDocuments = ({
                     className={[
                       "flex h-8 w-8",
                       "items-center justify-center",
-                      "rounded-lg",
+                      "rounded-full",
                       "text-[var(--faint)]",
                       "transition-colors",
                       "hover:bg-[var(--danger-soft)]",
@@ -369,7 +371,7 @@ const LessonDocuments = ({
             Thêm tài liệu
           </p>
 
-          <p className="mt-1 text-[10px] text-[var(--faint)]">
+          <p className="mt-1 text-[12px] text-[var(--faint)]">
             PDF, Word, PowerPoint, Excel
           </p>
 
@@ -383,11 +385,12 @@ const LessonDocuments = ({
         </label>
       )}
 
-      <p className="text-[10px] leading-4 text-[var(--faint)]">
+      <p className="text-[12px] leading-4 text-[var(--faint)]">
         PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX · tối đa
         20MB/file
       </p>
-    </div>
+      </div>
+    </section>
   );
 };
 

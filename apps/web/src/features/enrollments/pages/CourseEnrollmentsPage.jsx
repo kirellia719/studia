@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { ArrowRight, Plus, Users } from "lucide-react";
+import {
+    ArrowRight,
+    CalendarPlus,
+    Plus,
+    Users,
+} from "lucide-react";
 
 import { useNavigate, useOutletContext } from "react-router-dom";
 
@@ -9,6 +14,7 @@ import formatDate from "@/lib/format/formatDate.js";
 import enrollmentApi from "@/features/enrollments/api.js";
 
 import AddStudentModal from "@/features/enrollments/components/AddStudentModal.jsx";
+import RenewEnrollmentModal from "@/features/enrollments/components/RenewEnrollmentModal.jsx";
 
 
 // ==========================================
@@ -101,6 +107,7 @@ export default function CourseEnrollmentsPage() {
     const [enrollments, setEnrollments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showAddModal, setShowAddModal] = useState(false);
+    const [renewTarget, setRenewTarget] = useState(null);
 
     const courseId = course?.id;
 
@@ -159,6 +166,23 @@ export default function CourseEnrollmentsPage() {
 
 
     // ==========================================
+    // Enrollment renewed
+    // ==========================================
+
+    const handleRenewed = useCallback((updated) => {
+        if (!updated?.id) return;
+
+        setEnrollments((prev) =>
+            prev.map((item) =>
+                item.id === updated.id
+                    ? { ...item, ...updated }
+                    : item
+            )
+        );
+    }, []);
+
+
+    // ==========================================
     // View student detail
     // ==========================================
 
@@ -190,7 +214,7 @@ export default function CourseEnrollmentsPage() {
 
                     <div className="flex min-w-0 items-center gap-3">
 
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)]">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand-text)]">
                             <Users size={17} />
                         </div>
 
@@ -199,7 +223,7 @@ export default function CourseEnrollmentsPage() {
                                 Học sinh tham gia
                             </h2>
 
-                            <p className="mt-0.5 text-[11px] text-[var(--muted)]">
+                            <p className="mt-0.5 text-[12px] text-[var(--muted)]">
                                 {enrollments.length} học sinh
                             </p>
                         </div>
@@ -212,7 +236,7 @@ export default function CourseEnrollmentsPage() {
                         onClick={() =>
                             setShowAddModal(true)
                         }
-                        className="flex h-9 items-center justify-center gap-1.5 rounded-lg bg-[var(--brand-solid)] px-3.5 text-[12px] font-medium text-white transition hover:bg-[var(--brand-solid-hover)] sm:w-auto"
+                        className="flex h-9 items-center justify-center gap-1.5 rounded-full bg-[var(--brand-solid)] px-3.5 text-[12px] font-medium text-white transition hover:bg-[var(--brand-solid-hover)] sm:w-auto"
                     >
                         <Plus size={15} />
                         Thêm
@@ -278,7 +302,7 @@ export default function CourseEnrollmentsPage() {
                             Chưa có học sinh
                         </p>
 
-                        <p className="mt-1 text-[11px] text-[var(--faint)]">
+                        <p className="mt-1 text-[12px] text-[var(--faint)]">
                             Thêm học sinh đầu tiên vào khóa học.
                         </p>
 
@@ -287,7 +311,7 @@ export default function CourseEnrollmentsPage() {
                             onClick={() =>
                                 setShowAddModal(true)
                             }
-                            className="mx-auto mt-4 flex h-8 items-center gap-1.5 rounded-lg border border-[var(--line)] px-3 text-[11px] font-medium text-[var(--muted)] transition hover:bg-[var(--surface-3)]"
+                            className="mx-auto mt-4 flex h-8 items-center gap-1.5 rounded-full border border-[var(--line)] px-3 text-[12px] font-medium text-[var(--muted)] transition hover:bg-[var(--surface-3)]"
                         >
                             <Plus size={14} />
                             Thêm học sinh
@@ -339,7 +363,7 @@ export default function CourseEnrollmentsPage() {
                                             Index
                                         =================================== */}
 
-                                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--surface-2)] text-[11px] font-medium text-[var(--muted)]">
+                                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--surface-2)] text-[12px] font-medium text-[var(--muted)]">
                                             {index + 1}
                                         </div>
 
@@ -354,9 +378,24 @@ export default function CourseEnrollmentsPage() {
                                                 {studentName}
                                             </p>
 
-                                            <p className="mt-0.5 truncate text-[11px] text-[var(--muted)]">
-                                                {studentCode}
-                                            </p>
+                                            <div className="mt-0.5 flex min-w-0 items-center gap-1.5 text-[12px] text-[var(--muted)]">
+                                                <span className="truncate">
+                                                    {studentCode}
+                                                </span>
+
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="sm:hidden"
+                                                >
+                                                    ·
+                                                </span>
+
+                                                <span
+                                                    className={`shrink-0 sm:hidden ${remainingClass}`}
+                                                >
+                                                    {remainingLabel}
+                                                </span>
+                                            </div>
 
                                         </div>
 
@@ -365,7 +404,7 @@ export default function CourseEnrollmentsPage() {
                                             Expiration
                                         =================================== */}
 
-                                        <div className="shrink-0 text-right">
+                                        <div className="hidden shrink-0 text-right sm:block">
 
                                             <p
                                                 className={`text-[12px] font-semibold ${remainingClass}`}
@@ -374,19 +413,41 @@ export default function CourseEnrollmentsPage() {
                                             </p>
 
                                             {expiresAt ? (
-                                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                                                <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                                                     Hết hạn{" "}
                                                     {formatDate(
                                                         expiresAt
                                                     )}
                                                 </p>
                                             ) : (
-                                                <p className="mt-0.5 text-[10px] text-[var(--faint)]">
+                                                <p className="mt-0.5 text-[12px] text-[var(--faint)]">
                                                     Không giới hạn
                                                 </p>
                                             )}
 
                                         </div>
+
+
+                                        {/* ==================================
+                                            Renew
+                                        =================================== */}
+
+                                        <button
+                                            type="button"
+                                            aria-label={`Gia hạn khóa học của ${studentName}`}
+                                            title="Gia hạn"
+                                            onClick={() =>
+                                                setRenewTarget(
+                                                    enrollment
+                                                )
+                                            }
+                                            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--muted)] transition hover:border-[var(--brand-soft)] hover:bg-[var(--brand-soft)] hover:text-[var(--brand-text)]"
+                                        >
+                                            <CalendarPlus
+                                                size={16}
+                                                strokeWidth={1.8}
+                                            />
+                                        </button>
 
 
                                         {/* ==================================
@@ -401,7 +462,7 @@ export default function CourseEnrollmentsPage() {
                                                     enrollment.id
                                                 )
                                             }
-                                            className="group flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--line)] text-[var(--muted)] transition hover:border-[var(--brand-soft)] hover:bg-[var(--brand-soft)] hover:text-[var(--brand)]"
+                                            className="group flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--muted)] transition hover:border-[var(--brand-soft)] hover:bg-[var(--brand-soft)] hover:text-[var(--brand-text)]"
                                         >
                                             <ArrowRight
                                                 size={15}
@@ -431,6 +492,14 @@ export default function CourseEnrollmentsPage() {
                     setShowAddModal(false)
                 }
                 onAdded={handleStudentAdded}
+            />
+
+            <RenewEnrollmentModal
+                open={Boolean(renewTarget)}
+                enrollment={renewTarget}
+                courseDurationMonths={course?.durationMonths}
+                onClose={() => setRenewTarget(null)}
+                onRenewed={handleRenewed}
             />
         </>
     );

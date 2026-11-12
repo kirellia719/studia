@@ -60,7 +60,7 @@ app.use(
 
 app.use(
     morgan('dev', {
-        // Không log query vì media dùng ?token=
+        // Không log request tĩnh của học liệu
         skip: (req) => req.path.startsWith('/uploads'),
     })
 );

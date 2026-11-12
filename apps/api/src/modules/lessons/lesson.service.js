@@ -2,6 +2,7 @@
 
 import lessonRepository from "./lesson.repository.js";
 import courseRepository from "../courses/course.repository.js";
+import quizService from "../quizzes/quiz.service.js";
 
 import storage from "../../utils/storage/index.js";
 import videoUtils from "../../utils/video.js";
@@ -704,6 +705,11 @@ const lessonService = {
         // Delete lesson
         // ==========================================
 
+        await quizService.deleteQuiz({
+            lessonId,
+            teacherId,
+        });
+
         await lessonRepository.delete(
             lessonId
         );
@@ -840,93 +846,6 @@ const lessonService = {
         });
     },
 
-    // ==========================================
-    // Toggle lock lesson
-    // ==========================================
-
-    async toggleLock({
-        lessonId,
-        teacherId,
-    }) {
-        // ==========================================
-        // Find lesson
-        // ==========================================
-
-        const lesson =
-            await lessonRepository.findById(
-                lessonId
-            );
-
-        if (!lesson) {
-            const error = new Error(
-                "Không tìm thấy bài học."
-            );
-
-            error.statusCode = 404;
-            throw error;
-        }
-
-        // ==========================================
-        // Find course
-        // ==========================================
-
-        const course =
-            await courseRepository.findById(
-                lesson.courseId
-            );
-
-        if (!course) {
-            const error = new Error(
-                "Không tìm thấy khóa học."
-            );
-
-            error.statusCode = 404;
-            throw error;
-        }
-
-        // ==========================================
-        // Check course deleted
-        // ==========================================
-
-        if (course.isDelete) {
-            const error = new Error(
-                "Khóa học đã bị xóa."
-            );
-
-            error.statusCode = 404;
-            throw error;
-        }
-
-        // ==========================================
-        // Check permission
-        // ==========================================
-
-        if (course.teacherId !== teacherId) {
-            const error = new Error(
-                "Bạn không có quyền khóa bài học này."
-            );
-
-            error.statusCode = 403;
-            throw error;
-        }
-
-        // ==========================================
-        // Toggle lock
-        // ==========================================
-
-        const isLocked = !lesson.isLocked;
-
-        // ==========================================
-        // Update lesson
-        // ==========================================
-
-        return lessonRepository.update(
-            lessonId,
-            {
-                isLocked,
-            }
-        );
-    },
 };
 
 export default lessonService;

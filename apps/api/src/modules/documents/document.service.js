@@ -8,6 +8,7 @@ import lessonRepository from "../lessons/lesson.repository.js";
 import courseRepository from "../courses/course.repository.js";
 import storage from "../../utils/storage/index.js";
 import decodeFilename from "../../utils/decodeFilename.js";
+import { canAccessLessonMedia } from "../../utils/lessonMediaAccess.js";
 
 const documentService = {
   // ==========================================
@@ -293,9 +294,19 @@ const documentService = {
         throw error;
       }
     } else if (userRole === "STUDENT") {
-      // TODO:
-      // Kiểm tra enrollment khi triển khai
-      // quyền tải tài liệu cho Student.
+      const allowed = await canAccessLessonMedia({
+        user: { id: userId, role: userRole },
+        lesson,
+        course,
+      });
+
+      if (!allowed) {
+        const error = new Error(
+          "Bạn cần đăng ký khóa học để tải tài liệu này."
+        );
+        error.statusCode = 403;
+        throw error;
+      }
     } else {
       const error = new Error(
         "Bạn không có quyền tải tài liệu này."

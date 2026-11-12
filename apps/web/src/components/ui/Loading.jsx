@@ -25,7 +25,7 @@ const Loading = ({
                 <span className="absolute bottom-[25%] left-[25%] h-2.5 w-2.5 rounded-full bg-[var(--success-soft)]/60" />
 
                 {/* Decorative flower */}
-                <div className="absolute right-[15%] bottom-[27%] rotate-12 text-[var(--brand)]/30">
+                <div className="absolute right-[15%] bottom-[27%] rotate-12 text-[var(--brand-text)]/30">
                     <div className="relative h-12 w-12">
                         <span className="absolute left-4 top-0 h-6 w-6 rounded-full bg-current" />
                         <span className="absolute bottom-0 left-4 h-6 w-6 rounded-full bg-current" />
@@ -78,7 +78,7 @@ const Loading = ({
                             from-[var(--brand-solid)]
                             to-[var(--brand-solid)]
                             text-white
-                            shadow-[0_8px_25px_rgba(108,92,231,0.25)]
+                            shadow-[0_8px_25px_rgba(232,154,0,0.28)]
                         "
                     >
                         <BookOpen

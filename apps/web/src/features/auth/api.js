@@ -57,6 +57,12 @@ const authApi = {
             .getState()
             .logout();
     },
+
+    // Cấp cookie ngắn hạn cho /uploads, để thẻ media
+    // tải học liệu mà không cần token trong URL.
+    async openMediaSession() {
+        await apiClient.get("/auth/media-session");
+    },
 };
 
 export default authApi;

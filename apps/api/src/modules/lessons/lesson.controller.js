@@ -171,29 +171,6 @@ const lessonController = {
         }
     },
 
-    // ==========================================
-    // Toggle lock lesson
-    // PATCH /:id/lock
-    // ==========================================
-
-    async toggleLock(req, res, next) {
-        try {
-            const lesson = await lessonService.toggleLock({
-                lessonId: req.params.id,
-                teacherId: req.user.id,
-            });
-
-            res.status(200).json({
-                success: true,
-                message: lesson.isLocked
-                    ? "Khóa bài học thành công."
-                    : "Mở khóa bài học thành công.",
-                data: lesson,
-            });
-        } catch (error) {
-            next(error);
-        }
-    },
 };
 
 export default lessonController;

@@ -211,6 +211,15 @@ const courseService = {
         return {
             ...course,
 
+            // Chỉ bài miễn phí được trả URL video để xem trước.
+            // Video bài trả phí chỉ có trong API học tập sau khi
+            // học sinh đã được ghi danh.
+            lessons: (course.lessons || []).map((lesson) =>
+                lesson.isFree
+                    ? lesson
+                    : { ...lesson, video: null }
+            ),
+
             teacher: course.teacher
                 ? {
                     id: course.teacher.id,

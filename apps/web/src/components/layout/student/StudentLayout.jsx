@@ -19,14 +19,11 @@ const StudentLayout = () => {
             <main
                 ref={mainRef}
                 className={[
-                    "min-h-dvh",
+                    "h-dvh",
                     "overflow-y-auto",
                     "app-canvas",
-                    "pb-16",
+                    "pb-[calc(4rem_+_env(safe-area-inset-bottom))]",
                     "lg:ml-64",
-                    "lg:h-dvh",
-                    "lg:min-h-0",
-                    "lg:overflow-y-auto",
                     "lg:pb-0",
                 ].join(" ")}
             >

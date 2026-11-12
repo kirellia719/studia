@@ -50,13 +50,32 @@ test("auth: token hết hạn thì trả 401", async () => {
     assert.equal(error?.statusCode, 401);
 });
 
-test("mediaAuth: nhận token qua query", async () => {
-    const req = { headers: {}, query: { token: sign() } };
+test("mediaAuth: nhận token qua cookie phiên media", async () => {
+    const mediaToken = sign({
+        id: "user-1",
+        role: "STUDENT",
+        scope: "media",
+    });
+    const req = {
+        headers: {
+            cookie: `khac=1; media_session=${mediaToken}`,
+        },
+        query: {},
+    };
 
     const error = await run(mediaAuth, req);
 
     assert.equal(error, undefined);
     assert.equal(req.user.role, "STUDENT");
+});
+
+test("mediaAuth: không nhận token qua query nữa", async () => {
+    const error = await run(mediaAuth, {
+        headers: {},
+        query: { token: sign() },
+    });
+
+    assert.equal(error?.statusCode, 401);
 });
 
 test("mediaAuth: nhận token qua header Bearer", async () => {
@@ -78,8 +97,22 @@ test("mediaAuth: không có token thì trả 401", async () => {
 
 test("mediaAuth: token sai thì trả 401", async () => {
     const error = await run(mediaAuth, {
-        headers: {},
-        query: { token: "khong-phai-token" },
+        headers: { cookie: "media_session=khong-phai-token" },
+        query: {},
+    });
+
+    assert.equal(error?.statusCode, 401);
+});
+
+test("auth: token phiên media không dùng được cho API", async () => {
+    const error = await run(auth, {
+        headers: {
+            authorization: `Bearer ${sign({
+                id: "user-1",
+                role: "STUDENT",
+                scope: "media",
+            })}`,
+        },
     });
 
     assert.equal(error?.statusCode, 401);

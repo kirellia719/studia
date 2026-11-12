@@ -46,7 +46,7 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="relative min-h-full overflow-hidden bg-[var(--brand-tint)]">
+        <div className="relative min-h-[calc(100dvh-4rem)] overflow-hidden bg-[var(--brand-tint)] lg:min-h-dvh">
             {/* =========================
                 Decorative background
             ========================== */}
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                     h-56
                     w-56
                     rounded-full
-                    bg-[#DCEBFF]
+                    bg-[var(--brand-soft)]
                     opacity-60
                     blur-3xl
                 "
@@ -173,7 +173,7 @@ const ProfilePage = () => {
                                 bg-gradient-to-br
                                 from-[var(--brand-soft)]
                                 via-[var(--brand-soft)]
-                                to-[#DCEBFF]
+                                to-[var(--brand-tint)]
                                 opacity-70
                                 blur-md
                             "
@@ -195,8 +195,8 @@ const ProfilePage = () => {
                                 bg-gradient-to-br
                                 from-[var(--brand-soft)]
                                 via-[var(--brand-soft)]
-                                to-[#DDEBFF]
-                                shadow-[0_8px_25px_rgba(108,92,231,0.18)]
+                                to-[var(--brand-tint)]
+                                shadow-[0_8px_25px_rgba(0,0,0,0.10)]
                             "
                         >
                             {user?.avatar ? (
@@ -206,7 +206,7 @@ const ProfilePage = () => {
                                     className="h-full w-full object-cover"
                                 />
                             ) : (
-                                <span className="text-[34px] font-semibold text-[var(--brand)]">
+                                <span className="text-[34px] font-semibold text-[var(--brand-text)]">
                                     {getInitial(user?.name)}
                                 </span>
                             )}
@@ -217,29 +217,34 @@ const ProfilePage = () => {
                             type="button"
                             aria-label="Đổi ảnh đại diện"
                             className="
+                                group
                                 absolute
                                 bottom-0
                                 right-0
                                 flex
-                                h-8
-                                w-8
+                                h-11
+                                w-11
                                 items-center
                                 justify-center
                                 rounded-full
-                                border-[3px]
-                                border-white
-                                bg-[var(--brand-solid)]
-                                text-white
-                                shadow-[0_4px_10px_rgba(108,92,231,0.35)]
-                                transition
-                                hover:bg-[var(--brand-solid-hover)]
-                                active:scale-95
                             "
                         >
-                            <Pencil
-                                size={13}
-                                strokeWidth={2}
-                            />
+                            <span
+                                className="
+                                    flex h-8 w-8 items-center justify-center
+                                    rounded-full border-[3px] border-white
+                                    bg-[var(--brand-solid)] text-white
+                                    shadow-[0_4px_10px_rgba(0,0,0,0.12)]
+                                    transition
+                                    group-hover:bg-[var(--brand-solid-hover)]
+                                    group-active:scale-95
+                                "
+                            >
+                                <Pencil
+                                    size={13}
+                                    strokeWidth={2}
+                                />
+                            </span>
                         </button>
                     </div>
 
@@ -263,9 +268,9 @@ const ProfilePage = () => {
                             to-[var(--brand-soft)]
                             px-3.5
                             py-1
-                            text-[11px]
+                            text-[12px]
                             font-semibold
-                            text-[var(--brand)]
+                            text-[var(--brand-text)]
                             shadow-sm
                             ring-1
                             ring-[var(--brand-soft)]
@@ -283,7 +288,7 @@ const ProfilePage = () => {
                     className="
         mt-7
         overflow-hidden
-        rounded-xl
+        rounded-2xl
         border
         border-white/80
         bg-[var(--surface)]/90
@@ -311,7 +316,7 @@ const ProfilePage = () => {
                     hover:bg-[var(--brand-soft)]
                     active:bg-[var(--brand-soft)]
                     ${index !== menuItems.length - 1
-                                        ? "border-b border-[#F0EEF8]"
+                                        ? "border-b border-[var(--line)]"
                                         : ""
                                     }
                 `}
@@ -342,7 +347,7 @@ const ProfilePage = () => {
                                         {item.label}
                                     </p>
 
-                                    <p className="mt-0.5 truncate text-[11px] text-[var(--faint)]">
+                                    <p className="mt-0.5 truncate text-[12px] text-[var(--faint)]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -356,7 +361,7 @@ const ProfilePage = () => {
                         text-[var(--faint)]
                         transition-all
                         group-hover:translate-x-0.5
-                        group-hover:text-[var(--brand)]
+                        group-hover:text-[var(--brand-text)]
                     "
                                 />
                             </button>
@@ -411,7 +416,7 @@ const ProfilePage = () => {
                 <div className="mt-6 text-center">
                     <div className="mx-auto mb-2 h-1 w-8 rounded-full bg-gradient-to-r from-[var(--brand-solid)] to-[var(--brand-solid)]" />
 
-                    <p className="text-[11px] font-semibold text-[var(--faint)]">
+                    <p className="text-[12px] font-semibold text-[var(--faint)]">
                         Stady
                     </p>
                 </div>

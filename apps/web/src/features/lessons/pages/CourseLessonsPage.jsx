@@ -188,16 +188,16 @@ const CourseLessonsPage = () => {
                     <div className="flex items-center justify-between gap-4">
                         <div className="min-w-0">
                             <div className="flex items-center gap-2">
-                                <h1 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[var(--ink)] sm:text-base">
+                                <h2 className="truncate text-[15px] font-semibold tracking-[-0.01em] text-[var(--ink)] sm:text-base">
                                     Nội dung
-                                </h1>
+                                </h2>
 
-                                <span className="rounded-full bg-[var(--surface-2)] px-2 py-0.5 text-[10px] font-medium tabular-nums text-[var(--muted)]">
+                                <span className="rounded-full bg-[var(--surface-2)] px-2 py-0.5 text-[12px] font-medium tabular-nums text-[var(--muted)]">
                                     {lessons.length}
                                 </span>
                             </div>
 
-                            <p className="mt-1 text-[11px] text-[var(--muted)] sm:text-xs">
+                            <p className="mt-1 text-[12px] text-[var(--muted)] sm:text-xs">
                                 Quản lý và sắp xếp nội dung
                                 khóa học.
                             </p>
@@ -210,7 +210,7 @@ const CourseLessonsPage = () => {
                                 "rounded-xl",
                                 "bg-[var(--solid)]",
                                 "px-3 py-2",
-                                "text-[11px] font-semibold text-white",
+                                "text-[12px] font-semibold text-white",
                                 "shadow-sm",
                                 "transition-all duration-200",
                                 "hover:bg-[var(--solid-hover)]",
@@ -284,11 +284,11 @@ const CourseLessonsPage = () => {
                 {lessons.length > 0 && (
                     <div className="px-2 py-3 sm:px-4 sm:py-4">
                         <div className="mb-2 flex items-center justify-between px-1">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
+                            <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                                 Danh sách bài học
                             </p>
 
-                            <p className="text-[10px] text-[var(--muted)]">
+                            <p className="text-[12px] text-[var(--muted)]">
                                 Dùng ↑ ↓ để sắp xếp
                             </p>
                         </div>
@@ -340,13 +340,13 @@ const CourseLessonsPage = () => {
                                                         "flex h-8 w-8 shrink-0 items-center justify-center",
                                                         "rounded-xl",
                                                         "bg-[var(--surface-2)]",
-                                                        "text-[10px] font-semibold tabular-nums",
+                                                        "text-[12px] font-semibold tabular-nums",
                                                         "text-[var(--muted)]",
                                                         "ring-1 ring-inset ring-black/[0.04]",
                                                         "transition-all duration-200",
                                                         "group-hover:bg-[var(--solid)]",
                                                         "group-hover:text-white",
-                                                        "sm:h-9 sm:w-9 sm:text-[11px]",
+                                                        "sm:h-9 sm:w-9 sm:text-[12px]",
                                                     ].join(" ")}
                                                 >
                                                     {String(
@@ -365,12 +365,12 @@ const CourseLessonsPage = () => {
                                                     }
                                                     className="min-w-0 flex-1 py-1 focus:outline-none"
                                                 >
-                                                    <h2
+                                                    <h3
                                                         title={
                                                             lesson.title
                                                         }
                                                         className={[
-                                                            "truncate",
+                                                            "line-clamp-2",
                                                             "text-sm font-semibold leading-5",
                                                             "tracking-[-0.01em]",
                                                             "text-[var(--ink-2)]",
@@ -382,11 +382,11 @@ const CourseLessonsPage = () => {
                                                         {
                                                             lesson.title
                                                         }
-                                                    </h2>
+                                                    </h3>
 
                                                     <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                                                         {hasDuration && (
-                                                            <span className="inline-flex items-center gap-1 text-[10px] font-medium tabular-nums text-[var(--muted)] sm:text-[11px]">
+                                                            <span className="inline-flex items-center gap-1 text-[12px] font-medium tabular-nums text-[var(--muted)] sm:text-[12px]">
                                                                 <Clock3
                                                                     size={
                                                                         12
@@ -410,14 +410,14 @@ const CourseLessonsPage = () => {
                                                     {/* Free badge */}
 
                                                     {lesson.isFree && (
-                                                        <span className="rounded-full bg-[var(--success-soft)] px-2 py-1 text-[9px] font-semibold whitespace-nowrap text-[var(--success)] sm:text-[10px]">
+                                                        <span className="rounded-full bg-[var(--success-soft)] px-2 py-1 text-[12px] font-semibold whitespace-nowrap text-[var(--success)] sm:text-[12px]">
                                                             Miễn phí
                                                         </span>
                                                     )}
 
                                                     {/* Reorder */}
 
-                                                    <div className="flex flex-col items-center justify-center border-l border-[var(--surface-2)] pl-2">
+                                                    <div className="-my-3 flex flex-col items-center justify-center border-l border-[var(--surface-2)] sm:-my-3.5">
                                                         <button
                                                             type="button"
                                                             disabled={
@@ -436,7 +436,7 @@ const CourseLessonsPage = () => {
                                                             title="Đưa bài học lên"
                                                             aria-label="Đưa bài học lên"
                                                             className={[
-                                                                "flex h-7 w-7 items-center justify-center rounded-md",
+                                                                "flex h-11 w-11 items-center justify-center rounded-full",
                                                                 "text-[var(--muted)]",
                                                                 "transition-colors",
                                                                 "hover:bg-[var(--surface-2)]",
@@ -448,7 +448,7 @@ const CourseLessonsPage = () => {
                                                         >
                                                             <ChevronUp
                                                                 size={
-                                                                    14
+                                                                    16
                                                                 }
                                                                 strokeWidth={
                                                                     2.4
@@ -475,7 +475,7 @@ const CourseLessonsPage = () => {
                                                             title="Đưa bài học xuống"
                                                             aria-label="Đưa bài học xuống"
                                                             className={[
-                                                                "flex h-7 w-7 items-center justify-center rounded-md",
+                                                                "flex h-11 w-11 items-center justify-center rounded-full",
                                                                 "text-[var(--muted)]",
                                                                 "transition-colors",
                                                                 "hover:bg-[var(--surface-2)]",
@@ -487,7 +487,7 @@ const CourseLessonsPage = () => {
                                                         >
                                                             <ChevronDown
                                                                 size={
-                                                                    14
+                                                                    16
                                                                 }
                                                                 strokeWidth={
                                                                     2.4

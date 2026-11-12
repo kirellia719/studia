@@ -88,6 +88,34 @@ const enrollmentController = {
 
     // ==========================================
     // TEACHER
+    // Extend enrollment expiration
+    // PATCH /enrollment/:enrollmentId/expiration
+    // ==========================================
+    async updateExpiration(req, res, next) {
+        try {
+            const { enrollmentId } = req.params;
+            const { durationMonths } = req.body;
+            const teacherId = req.user.id;
+
+            const enrollment =
+                await enrollmentService.updateExpiration({
+                    enrollmentId,
+                    teacherId,
+                    durationMonths: Number(durationMonths),
+                });
+
+            return res.status(200).json({
+                success: true,
+                message: "Gia hạn khóa học thành công.",
+                data: enrollment,
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    // ==========================================
+    // TEACHER
     // Get enrollment by ID
     // GET /enrollment/:enrollmentId
     // ==========================================

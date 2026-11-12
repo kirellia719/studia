@@ -130,6 +130,31 @@ const lessonRepository = {
 
     /*
      * ==========================================
+     * Dồn thứ tự sau khi xoá bài học
+     * ==========================================
+     *
+     * Các bài đứng sau bài vừa xoá được giảm 1
+     * để danh sách không còn khoảng trống.
+     */
+
+    async decreaseOrderAfter(courseId, order) {
+        return prisma.lesson.updateMany({
+            where: {
+                courseId,
+                order: {
+                    gt: order,
+                },
+            },
+            data: {
+                order: {
+                    decrement: 1,
+                },
+            },
+        });
+    },
+
+    /*
+     * ==========================================
      * Count lessons by Course
      * ==========================================
      */

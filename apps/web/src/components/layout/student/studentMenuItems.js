@@ -21,7 +21,7 @@ const studentMenuItems = [
         label: "Hồ sơ",
         path: "/student/profile",
         icon: UserRound,
-        end: true,
+        end: false,
     },
 ];
 

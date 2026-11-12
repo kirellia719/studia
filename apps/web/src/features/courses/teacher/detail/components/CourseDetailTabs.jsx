@@ -60,7 +60,7 @@ const CourseDetailTabs = ({ courseId }) => {
 
                                 // Active / inactive
                                 isActive
-                                    ? "text-[var(--brand)]"
+                                    ? "text-[var(--brand-text)]"
                                     : [
                                         "text-[var(--muted)]",
                                         "hover:text-[var(--ink-2)]",

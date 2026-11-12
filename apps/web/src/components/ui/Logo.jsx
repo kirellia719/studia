@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import LogoImage from "@/assets/logo.png";
+import LogoImage from "@/assets/logo-amber.png";
 
 const Logo = ({ size = 50, link, className = "" }) => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Logo = ({ size = 50, link, className = "" }) => {
       width={size}
       height={size}
       onClick={handleClick}
-      className={`${link ? "cursor-pointer" : ""} ${className}`.trim()}
+      className={`achan-mark ${link ? "cursor-pointer" : ""} ${className}`.trim()}
     />
   );
 };

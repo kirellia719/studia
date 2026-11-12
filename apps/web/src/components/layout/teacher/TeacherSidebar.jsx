@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useMatch, useNavigate } from "react-router-dom";
 import { LogOut, Menu, User, X } from "lucide-react";
 
-import Logo from "@/components/ui/Logo.jsx";
+import SidebarBrand from "@/components/ui/SidebarBrand.jsx";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher.jsx";
 import useAuthStore from "@/stores/authStore";
 import teacherMenuItems from "@/components/layout/teacher/teacherMenuItems.js";
 
 const TeacherSidebar = () => {
     const navigate = useNavigate();
+    const isLessonEditor = useMatch(
+        "/teacher/courses/:courseId/lessons/:lessonId"
+    );
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const user = useAuthStore((state) => state.user);
@@ -39,7 +42,7 @@ const TeacherSidebar = () => {
                         return (
                             <div key={section.section}>
                                 {/* SECTION TITLE */}
-                                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
+                                <p className="mb-2 px-3 text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
                                     {section.section}
                                 </p>
 
@@ -68,11 +71,11 @@ const TeacherSidebar = () => {
                                                         "transition-all duration-150",
 
                                                         isActive
-                                                            ? "bg-[var(--bg)] text-[var(--ink)]"
+                                                            ? "bg-[var(--brand-soft)] font-semibold text-[var(--brand-text)]"
                                                             : [
                                                                 "text-[var(--muted)]",
                                                                 "hover:bg-[var(--surface-3)]",
-                                                                "hover:text-[var(--ink)]",
+                                                                "hover:text-[var(--brand-text)]",
                                                             ].join(" "),
                                                     ].join(" ")
                                                 }
@@ -84,11 +87,11 @@ const TeacherSidebar = () => {
                                                             className={[
                                                                 "absolute left-0 top-1/2",
                                                                 "-translate-y-1/2",
-                                                                "h-5 w-[3px]",
+                                                                "h-6 w-[4px]",
                                                                 "rounded-r-full",
                                                                 "transition-opacity duration-150",
                                                                 isActive
-                                                                    ? "bg-[var(--solid)] opacity-100"
+                                                                    ? "bg-[var(--brand-solid)] opacity-100"
                                                                     : "opacity-0",
                                                             ].join(" ")}
                                                         />
@@ -103,8 +106,8 @@ const TeacherSidebar = () => {
                                                             className={[
                                                                 "transition-colors duration-150",
                                                                 isActive
-                                                                    ? "text-[var(--ink)]"
-                                                                    : "text-[var(--muted)] group-hover:text-[var(--ink)]",
+                                                                    ? "text-[var(--brand-text)]"
+                                                                    : "text-[var(--muted)] group-hover:text-[var(--brand-text)]",
                                                             ].join(" ")}
                                                         />
 
@@ -141,8 +144,8 @@ const TeacherSidebar = () => {
                             "flex h-9 w-9 shrink-0",
                             "items-center justify-center",
                             "rounded-full",
-                            "bg-[var(--surface-2)]",
-                            "text-[var(--muted)]",
+                            "bg-[var(--brand-soft)]",
+                            "text-[var(--brand-text)]",
                         ].join(" ")}
                     >
                         <User size={17} strokeWidth={1.9} />
@@ -167,7 +170,7 @@ const TeacherSidebar = () => {
                     onClick={handleLogout}
                     className={[
                         "mt-2 flex w-full items-center gap-3",
-                        "rounded-lg px-3 py-2.5",
+                        "rounded-full px-3 py-2.5",
                         "text-[14px] font-medium",
                         "text-[var(--muted)]",
                         "transition-colors duration-150",
@@ -195,16 +198,13 @@ const TeacherSidebar = () => {
                     "w-64",
                     "flex-col",
                     "border-r border-[var(--line)]",
-                    "bg-[var(--surface-3)]",
+                    "bg-[var(--surface)]",
                 ].join(" ")}
             >
                 {/* LOGO */}
-                <div className="flex h-16 shrink-0 items-center px-5">
-                    <Logo />
+                <div className="page-band flex h-16 shrink-0 items-center px-4">
+                    <SidebarBrand />
                 </div>
-
-                {/* DIVIDER */}
-                <div className="mx-4 h-px bg-[var(--line)]" />
 
                 {/* NAVIGATION */}
                 {renderNavigation()}
@@ -216,33 +216,35 @@ const TeacherSidebar = () => {
             {/* =========================================================
                 MOBILE HEADER
             ========================================================= */}
-            <header
-                className={[
-                    "flex h-16 lg:hidden",
-                    "items-center justify-between",
-                    "border-b border-[var(--line)]",
-                    "bg-[var(--surface)]",
-                    "px-4",
-                ].join(" ")}
-            >
-                <Logo />
-
-                <button
-                    type="button"
-                    onClick={() => setMobileOpen(true)}
-                    aria-label="Mở menu"
+            {!isLessonEditor && (
+                <header
                     className={[
-                        "flex h-10 w-10 items-center justify-center",
-                        "rounded-lg",
-                        "text-[var(--muted)]",
-                        "transition-colors duration-150",
-                        "hover:bg-[var(--surface-2)]",
-                        "hover:text-[var(--ink)]",
+                        "page-band flex h-16 lg:hidden",
+                        "items-center justify-between",
+                        "px-4",
                     ].join(" ")}
                 >
-                    <Menu size={22} strokeWidth={2} />
-                </button>
-            </header>
+                    <SidebarBrand />
+
+                    <button
+                        type="button"
+                        onClick={() => setMobileOpen(true)}
+                        aria-label="Mở menu"
+                        disabled={mobileOpen}
+                        className={[
+                            "flex h-11 w-11 items-center justify-center",
+                            "rounded-full",
+                            "text-[var(--muted)]",
+                            "transition-colors duration-150",
+                            "hover:bg-[var(--surface-2)]",
+                            "hover:text-[var(--ink)]",
+                            mobileOpen ? "invisible" : "",
+                        ].join(" ")}
+                    >
+                        <Menu size={22} strokeWidth={2} />
+                    </button>
+                </header>
+            )}
 
             {/* =========================================================
                 MOBILE OVERLAY
@@ -264,12 +266,14 @@ const TeacherSidebar = () => {
                 MOBILE DRAWER
             ========================================================= */}
             <aside
+                aria-hidden={!mobileOpen}
+                inert={!mobileOpen}
                 className={[
                     "fixed inset-y-0 left-0 z-[70]",
                     "flex lg:hidden",
                     "w-[280px] max-w-[85vw]",
                     "flex-col",
-                    "bg-[var(--surface-3)]",
+                    "bg-[var(--surface)]",
                     "shadow-xl",
                     "transition-transform duration-300 ease-out",
                     mobileOpen
@@ -278,16 +282,16 @@ const TeacherSidebar = () => {
                 ].join(" ")}
             >
                 {/* DRAWER HEADER */}
-                <div className="flex h-16 shrink-0 items-center justify-between px-4">
-                    <Logo />
+                <div className="page-band flex h-16 shrink-0 items-center justify-between px-4">
+                    <SidebarBrand />
 
                     <button
                         type="button"
                         onClick={closeMobileMenu}
                         aria-label="Đóng menu"
                         className={[
-                            "flex h-10 w-10 items-center justify-center",
-                            "rounded-lg",
+                            "flex h-11 w-11 items-center justify-center",
+                            "rounded-full",
                             "text-[var(--muted)]",
                             "transition-colors duration-150",
                             "hover:bg-[var(--surface-2)]",

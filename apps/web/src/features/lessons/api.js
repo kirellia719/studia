@@ -42,10 +42,26 @@ const lessonApi = {
         return response.data;
     },
 
-    async update(lessonId, data) {
+    async update(lessonId, data, onProgress) {
         const response = await apiClient.put(
             `/lessons/${lessonId}`,
-            data
+            data,
+            {
+                timeout: 0,
+
+                onUploadProgress: (event) => {
+                    if (!event.total) {
+                        return;
+                    }
+
+                    const progress = Math.round(
+                        (event.loaded * 100) /
+                        event.total
+                    );
+
+                    onProgress?.(progress);
+                },
+            }
         );
 
         return response.data;
@@ -54,14 +70,6 @@ const lessonApi = {
     async delete(lessonId) {
         const response = await apiClient.delete(
             `/lessons/${lessonId}`
-        );
-
-        return response.data;
-    },
-
-    async toggleLock(lessonId) {
-        const response = await apiClient.patch(
-            `/lessons/${lessonId}/lock`
         );
 
         return response.data;

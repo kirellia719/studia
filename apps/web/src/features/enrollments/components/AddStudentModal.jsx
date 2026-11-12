@@ -7,7 +7,7 @@ import enrollmentApi from "@/features/enrollments/api.js";
 const STATUS_CONFIG = {
     NOT_ENROLLED: {
         label: "Chưa tham gia",
-        className: "border-blue-100 bg-[var(--brand-soft)] text-[var(--brand)]",
+        className: "border-blue-100 bg-[var(--brand-soft)] text-[var(--brand-text)]",
     },
     ACTIVE: {
         label: "Đang tham gia",
@@ -209,7 +209,7 @@ const AddStudentModal = ({
             }}
         >
             <div
-                className="w-full max-w-[400px] overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface)] shadow-xl"
+                className="w-full max-w-[400px] overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--surface)] shadow-xl"
                 onMouseDown={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -222,7 +222,7 @@ const AddStudentModal = ({
                         type="button"
                         onClick={handleClose}
                         disabled={isProcessing}
-                        className="flex h-7 w-7 items-center justify-center rounded-md text-[var(--faint)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink-2)] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-7 w-7 items-center justify-center rounded-full text-[var(--faint)] transition hover:bg-[var(--surface-2)] hover:text-[var(--ink-2)] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         <X size={16} />
                     </button>
@@ -234,7 +234,7 @@ const AddStudentModal = ({
                         <div>
                             <label
                                 htmlFor="studentCode"
-                                className="mb-1.5 block text-[11px] font-medium text-[var(--ink-2)]"
+                                className="mb-1.5 block text-[12px] font-medium text-[var(--ink-2)]"
                             >
                                 Mã học sinh
                             </label>
@@ -263,7 +263,7 @@ const AddStudentModal = ({
                                         placeholder="Nhập mã học sinh"
                                         autoFocus
                                         disabled={isProcessing}
-                                        className="h-9 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] pl-9 pr-3 text-xs text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
+                                        className="h-9 w-full rounded-full border border-[var(--line)] bg-[var(--surface)] pl-9 pr-3 text-xs text-[var(--ink)] outline-none transition placeholder:text-[var(--faint)] focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
                                     />
                                 </div>
 
@@ -273,7 +273,7 @@ const AddStudentModal = ({
                                         isProcessing ||
                                         !studentCode.trim()
                                     }
-                                    className="flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-[var(--brand-solid)] px-3 text-xs font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-[var(--brand-solid)] px-3 text-xs font-medium text-white transition hover:bg-[var(--brand-solid-hover)] disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     <Search size={14} />
 
@@ -289,7 +289,7 @@ const AddStudentModal = ({
                             <div className="mt-4 overflow-hidden rounded-lg border border-[var(--line)]">
                                 {/* Student */}
                                 <div className="flex items-center gap-3 px-3 py-3">
-                                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-xs font-semibold text-[var(--brand)]">
+                                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-xs font-semibold text-[var(--brand-text)]">
                                         {student?.name
                                             ?.charAt(0)
                                             ?.toUpperCase() || "?"}
@@ -300,7 +300,7 @@ const AddStudentModal = ({
                                             {student?.name || "--"}
                                         </p>
 
-                                        <p className="mt-0.5 truncate text-[11px] text-[var(--muted)]">
+                                        <p className="mt-0.5 truncate text-[12px] text-[var(--muted)]">
                                             {student?.studentCode}
 
                                             {student?.email
@@ -316,14 +316,14 @@ const AddStudentModal = ({
                                         className={`border-t px-3 py-2.5 ${statusConfig.className}`}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[11px] font-semibold">
+                                            <span className="text-[12px] font-semibold">
                                                 {statusConfig.label}
                                             </span>
 
                                             {enrollment?.expiresAt &&
                                                 status !==
                                                 "NOT_ENROLLED" && (
-                                                    <span className="text-[10px]">
+                                                    <span className="text-[12px]">
                                                         Hết hạn:{" "}
                                                         {formatDate(
                                                             enrollment.expiresAt
@@ -339,11 +339,11 @@ const AddStudentModal = ({
                                     <div className="border-t border-[var(--line)] px-3 py-3">
                                         {/* Duration */}
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[11px] font-medium text-[var(--ink-2)]">
+                                            <span className="text-[12px] font-medium text-[var(--ink-2)]">
                                                 Thời gian
                                             </span>
 
-                                            <span className="text-[11px] font-semibold text-[var(--ink)]">
+                                            <span className="text-[12px] font-semibold text-[var(--ink)]">
                                                 {prediction?.durationMonths
                                                     ? `${prediction.durationMonths} tháng`
                                                     : "--"}
@@ -356,7 +356,7 @@ const AddStudentModal = ({
                                             <div>
                                                 <label
                                                     htmlFor="startDate"
-                                                    className="mb-1.5 block text-[10px] font-medium text-[var(--muted)]"
+                                                    className="mb-1.5 block text-[12px] font-medium text-[var(--muted)]"
                                                 >
                                                     Bắt đầu
                                                 </label>
@@ -374,7 +374,7 @@ const AddStudentModal = ({
                                                             )
                                                     }
                                                     disabled
-                                                    className="h-9 rounded-lg border border-[var(--line)] bg-[var(--surface-3)] px-2.5 text-[11px] text-[var(--muted)] outline-none disabled:cursor-default"
+                                                    className="h-9 rounded-full border border-[var(--line)] bg-[var(--surface-3)] px-2.5 text-[12px] text-[var(--muted)] outline-none disabled:cursor-default"
                                                 />
                                             </div>
 
@@ -387,7 +387,7 @@ const AddStudentModal = ({
                                             <div>
                                                 <label
                                                     htmlFor="expiresAt"
-                                                    className="mb-1.5 block text-[10px] font-medium text-[var(--muted)]"
+                                                    className="mb-1.5 block text-[12px] font-medium text-[var(--muted)]"
                                                 >
                                                     Hết hạn
                                                 </label>
@@ -413,14 +413,14 @@ const AddStudentModal = ({
                                                         disabled={
                                                             isProcessing
                                                         }
-                                                        className="h-9 w-full rounded-lg border border-[var(--line)] bg-[var(--surface)] pl-8 pr-2 text-[11px] text-[var(--ink-2)] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
+                                                        className="h-9 w-full rounded-full border border-[var(--line)] bg-[var(--surface)] pl-8 pr-2 text-[12px] text-[var(--ink-2)] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 disabled:bg-[var(--surface-3)]"
                                                     />
                                                 </div>
                                             </div>
                                         </div>
 
                                         {prediction?.nextExpiresAt && (
-                                            <p className="mt-1.5 text-right text-[10px] text-[var(--faint)]">
+                                            <p className="mt-1.5 text-right text-[12px] text-[var(--faint)]">
                                                 Ngày hết hạn được hệ thống đề xuất
                                             </p>
                                         )}
@@ -436,7 +436,7 @@ const AddStudentModal = ({
                             type="button"
                             onClick={handleClose}
                             disabled={isProcessing}
-                            className="h-8 rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 text-[11px] font-medium text-[var(--muted)] transition hover:bg-[var(--surface-3)] disabled:cursor-not-allowed disabled:opacity-50"
+                            className="h-8 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 text-[12px] font-medium text-[var(--muted)] transition hover:bg-[var(--surface-3)] disabled:cursor-not-allowed disabled:opacity-50"
                         >
                             Hủy
                         </button>
@@ -448,7 +448,7 @@ const AddStudentModal = ({
                                 disabled={
                                     isProcessing || !expiresAt
                                 }
-                                className="h-8 rounded-lg bg-[var(--brand-solid)] px-3 text-[11px] font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="h-8 rounded-full bg-[var(--brand-solid)] px-3 text-[12px] font-medium text-white transition hover:bg-[var(--brand-solid-hover)] disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 {adding
                                     ? "Đang thêm..."
